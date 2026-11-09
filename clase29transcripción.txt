@@ -1,0 +1,2529 @@
+Reunión en General-20261029_182400-Grabación de la reunión
+29 de octubre de 2026, 11:24p.m.
+3 h 4 min 40 s
+
+JULIAN SANTIAGO LOPEZ CORREA ha iniciado la transcripción
+
+HANS IGOR LOPEZ CHAVEZ   0:03
+Ya pueden hablar con los compañeros y venga el profe mío, justo hizo bien la tarea, tiene ahí el resultado para comparar con los que nosotros tenemos.
+Boy.
+Listo, entonces ahora sí nos vamos para Matlab.
+Les cuento entonces en la última clase, la de hace 8 días, finalizamos.
+El ejercicio de plantear.
+Un diagrama de flujo para implementar la cola MM uno, cierto.
+Y espero yo que cada uno de ustedes en sus grupos ya haya hecho un ejercicio similar, porque eso es como la primera parte, tener claro qué es lo que se debe hacer en el sistema y cómo llenar los vectores. Y por supuesto, si va a ser necesario agregar nuevas variables, cómo llenarlas.
+Ustedes tienen una variable adicional, todos los grupos, una variable llamada K, que en cada caso podría significar algo diferente. Yo no tengo esa variable K, entonces mi diagrama de flujo es mucho más sencillo. Mi solución también es más sencilla. En el caso, ustedes tienen que preocuparse con la dificultad de SK, ¿cómo lo incluyo?
+Mi recomendación, yo lo hice así y me fue bien. Fue empezar con K igual a dos. Entonces yo empecé a pensar en solo dos. Por ejemplo, los que tienen MM1 K, un usuario puede esperar y el otro lo pueden atender.
+No hay más, no hay más opción. Entonces empecé a hacer mi programa, mi prueba de escritorio, como hicimos hace 8 días pensando en ese caso.
+Logré encontrar cómo calcular el bloqueo. Entonces dije, listo, voy a crear un vector llamado bloqueos. Si el usuario lo atienden, lo pongo en cero y si el usuario no lo atienden, lo pongo en uno. Y al final lo que hice fue sumar cuántos unos tenía el vector y lo divide entre el total del tamaño del vector. Y esa era mi probabilidad de bloquear.
+Para los que tienen Airland B, solo 2 servidores, entonces mismo, mismo ejemplo, hice el programita o el en el tablero coloqué listo. El primer usuario llega al primer servidor, el segundo usuario le toca el segundo. Ahora el tercer usuario, que es el distinto. ¿Qué hago ahí? Entonces ahí me di cuenta, pues que tenía que comparar, era con el tiempo de salida del que salía más rápido.
+¿O sea, quién se desocupaba primero, el servidor uno o el servidor 2? Esa información tenía que conocerla.
+Porque ese era el servidor que iba a atender al tercer usuario. Y así entonces hice mi diagrama de flujo y dije listo, ya me funcionó para dos. Para el lancé misma historia, 2 servidores y una línea de espera. Una vez lo resolví para acá igual a dos. Ahora traté de.
+pasarlo acá igual a tres. Y ahí me di cuenta que era posible generalizarlo. A mí me gusta trabajar así, empezar desde lo más sencillito y luego generalizar. Y creo que me ahorro mucho tiempo si de entrada pongo a hacer el ejercicio con cualquier K, porque de pronto ya la lógica no me da para tanto.
+Es mi recomendación ya cada grupo sabrá cómo atiende el ejercicio, de pronto ya lo tiene resuelto.
+Bueno, entonces les iba a mostrar los apuntes de hoy B 2 B 2 B 2 donde está estoy en H HM, perdón, HM trabajo, sesión un décima, creo que es esta.
+Simulación de colas, sí.
+Listo.
+Entonces demora que un F 5 Pro.
+Eve.
+Y vamos a partir justo desde la simulación de la cola. ¿Entonces ustedes tienen ahí a la mano los apuntes de la clase pasada?
+¿Cuáles los del diagrama de flujo?
+¿Alguno los tiene?
+Yo subí el los tableros ahí a Tims.
+Entonces, si alguno tuvo la oportunidad de revisar los apuntes.
+Es para 2 cosas, uno, para que comparemos lo que les voy a mostrar ahorita en MATLAB con el diagrama de flujo que estaba ya originalmente planteado, y 2, porque también habían unos valores sugeridos para t a y tds y a mano hicimos entre todos el cálculo de todos los vectores.
+En la simulación que les voy a mostrar, pues se van a obtener otra vez esos vectores y necesito que me ayuden a validar que los resultados son iguales.
+Entonces, ya alguno los descar los descargó.
+No los escucho.
+
+JISSEDT ANDREA PACHECO CASTRO   5:33
+Yo los yo tengo las pantallas en mis apuntes, pero sí ya estoy mirando cómo descargar.
+
+MIGUEL ANGEL RODRIGUEZ REYES   5:33
+Discover.
+
+HANS IGOR LOPEZ CHAVEZ   5:36
+bueno.
+Sí, es este está acá donde está Teams Teams Teams Teams es listos y recuerden aquí en equipos en compartido.
+
+MIGUEL ANGEL RODRIGUEZ REYES   5:42
+Ya lo estoy esperando.
+
+HANS IGOR LOPEZ CHAVEZ   5:50
+En materiales de clase, yo les dije, voy a crear una carpeta llamada apuntes de clases asistidas por TIC y está a veintidos de octubre. En esa carpeta está el PDF.
+Y ese PDF es lo que hicimos en el tablero, ese era lo que quería. Entonces, ¿qué necesito de todo este PDF? Necesito esos vectores ahorita, por favor.
+A ver si nos dio lo mismo.
+Y pues el diagrama de flujo que lo tenían ahí a la mano, porque fue lo último que hicimos.
+Listo.
+
+JISSEDT ANDREA PACHECO CASTRO   6:29
+Listo.
+
+HANS IGOR LOPEZ CHAVEZ   6:30
+Bien, entonces, ¿en qué quedamos? ¿En qué ahora toca convertir este diagrama de flujo en un código? Entonces, lo pueden hacer en el lenguaje que ustedes quieran. Como siempre, yo no soy restrictivo en cuanto a que lo hagan en Matlab, si ustedes se sienten más cómodos haciendo todo el ejercicio en Python.
+Hágale, si lo quieren hacer en otro lenguaje diferente a Python y MATLAB también. O sea, que ese no sea el problema. Por eso es que yo les pido en los trabajos grupales, esto, el diagrama de flujo, porque ese sí debería ser universal. O sea, la lógica que ustedes implementaron es lo que a mí me interesa revisar, ya que usen una inteligencia artificial para.
+implementar eso en código. Eso es otro cuento y yo con eso no tengo problema. Entonces, según el diagrama de flujo que planteamos hace ocho días, lo primero que hacemos es pedir TAITDS. Eso quiere decir que en MATLAB yo voy a crear un encabezado donde diga función. Le pongo un nombre a la función.
+¿Tenemos un estudiante sospechoso, alguien conoce a Santiago Lopez?
+Será Julia.
+
+YAN SEBASTIAN MUNOZ GAMBA   7:39
+Yeah, then.
+
+HANS IGOR LOPEZ CHAVEZ   7:41
+listo, bien.
+Y de esa manera, el desencabezado de la función, va a decir function.
+¿Qué devuelve va a devolver ETW?
+Igual nombre de la función, el nombre de la cola y vamos a colocar todo eso. Entonces, si les parece bien, revisemos esos apartes entonces.
+Yo aquí en los apuntes se los tengo desmenuzado con comentarios. Entonces este es el vector. Entonces, para no estar cambiando de pantalla, revisen los vectores.
+El vector de los tiempos entre arribos de usuarios era este: 12372380 y 5.
+
+MIGUEL ANGEL MOLINA NOVA   8:31
+Sí.
+
+HANS IGOR LOPEZ CHAVEZ   8:32
+Gracias bien, entonces uno de los primeros pasos que está en ese diagrama de flujo que ustedes ahorita deberían estar viendo, o sea, no lo voy a compartir, ustedes lo van a estar viendo, es que necesitamos saber cuántos usuarios hay. Entonces una de las casillitas decía, el número de usuarios es igual a la cantidad de elementos del vector tal.
+Entonces, en este caso, yo escogí el vector de tiempos entre arriba. Entonces hay nueve usuarios, o sea, hay nueve elementos en el vector. Es este TDS 914115382.
+
+MIGUEL ANGEL MOLINA NOVA   9:17
+Y también.
+
+HANS IGOR LOPEZ CHAVEZ   9:18
+Gracias bien, perfecto. Y luego en nuestra misión era llenar estos cuatro vectores. Entonces dijimos reloj se llena fácil porque reloj se calcula con consum. Cierto, inicio se va a ir llenando salida va a ser inicio más lo que tenga TDS.
+
+JISSEDT ANDREA PACHECO CASTRO   9:18
+Sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   9:37
+¿Y al final voy a hacer la resta entre 2 elementos, entre a qué hora?
+Empezaron a atenderlo y a qué hora llegó, porque esa resta me va a dar cuánto tiempo espera. Entonces todo eso es como un resumen del diagrama de flujo. Entonces el cuadrito que dice haga la suma acumulativa del TEA.
+Reloj, aquí está entonces en Matlab la función que nos permite hacer eso, ustedes ya la conocen, es suma acumulativa o consum.
+Entonces, el resultado es 1361315182626 y 31.
+Entonces ahora van a ir, por favor, donde están el vector reloj y revisen, por favor, que coincidan los numeritos.
+
+MIGUEL ANGEL RODRIGUEZ REYES   10:37
+Because you.
+
+MIGUEL ANGEL MOLINA NOVA   10:38
+Sí, está bien.
+
+HANS IGOR LOPEZ CHAVEZ   10:39
+Uy, qué bueno, listo. Siguiente paso. El siguiente paso si van a llenar según como fuese la disciplina de la cola y como fuese la lógica del sistema. Entonces, en mi caso, que solo había un servidor, la lógica era sencilla. El primer usuario, tú, de una.
+Lo empiezan a atender inmediatamente. Entonces creo que en el diagrama de flujo dice así como que inicio en la posición uno es igual a reloj de la posición uno. Entonces eso de estar por acá. este.
+Stop.
+Esto que está aquí previo no lo tengo en el diagrama de flujo, pero recuerden que la idea es facilitar el acceso a memoria, o sea, optimizar de algún modo esa sí, ese acceso a memoria. ¿Se acuerdan de la historia del mata 7? Es para evitarla. Entonces inicio igual a ceros, uno como usuarios crea un vector de ceros.
+inicializados en cero. Y perdón, un vector en ceros de tanto longitud como la cantidad de usuarios, en este caso nueve. Y salida también. Entonces, de esa manera, Llamar Lab tiene separada en memoria nueve elementos para uno y nueve para el otro. Y en cada iteración los va a ir llenando. A diferencia de.
+crear un nuevo vector más grande, copielos de allá, peguelos aquí y en la siguiente iteración. Ahora es más grande, copie todo eso. Se va a evitar. Listo. ¿Dónde está lo de las preguntas y todo eso? Entonces yo lo hice de esta manera. Lo hice con un ciclo for.
+Entonces, como ya sabemos dentro del algoritmo, decía que la salida del usuario era a qué hora lo empezaron a atender más el TDS. Entonces eso está ahí.
+Y luego viene la pregunta. Lo que yo no recuerdo es si esta pregunta fue la que hicimos porque nosotros preguntamos, comparamos salida con reloj, pero no me acuerdo si preguntamos si era mayor que o si era menor que.
+Pues podrían verificar ese pedacito en el diagrama de flujo.
+
+MIGUEL ANGEL RODRIGUEZ REYES   12:46
+Sí, señor, ahí comparamos si salía n menos uno es mayor que el reloj actual.
+
+HANS IGOR LOPEZ CHAVEZ   12:52
+Exacto, bueno, entonces sí usamos el mayor, pero no lo hicimos con iey más uno, sino con el anterior, cierto, con i menos 1 y con i.
+
+MIGUEL ANGEL RODRIGUEZ REYES   13:03
+Just good.
+
+HANS IGOR LOPEZ CHAVEZ   13:04
+Y creo que nosotros habíamos empezado desde el 2. Entonces, como yo lo estoy haciendo de esta manera, debo empezar desde el uno.
+Listo, lo que sí me interesa es esto, las 2 condiciones, entonces cuando era así.
+Mencionamos que inicio en la posición, me imagino que ya será en la posición n o en la posición I, no me acuerdo, era igual a salida de la anterior del I menos uno.
+O sea, están viendo ustedes esto, eso era lo que quería hacer este.
+Sí, ahí está, vea, inicio en la n es salida en la n menos 1.
+Yo lo codifiqué acá como inicio en la siguiente es salida de la I porque no empiezo es de 2 y no es de uno.
+Es eso y la otra condición, el no era, pues entonces inicio es igual a reloj. La condición del no, recuerden, es lo atienden de una vez, cierto, él llega y no hay nadie delante de él, tú lo ponen de una vez. Entonces aquí está en la misma, inicio y reloj en la misma aquí y más uno.
+Pero en el código que tenemos lo tenemos como n.
+Luego hacemos el incremento en matlab, el form hace incrementos unitarios. Si ustedes le ponen aquí el inicial 2 puntos y el final, entonces por defecto los incrementos son unitarios. No hay que colocar la línea de i igual a i más uno.
+Y listo.
+El último paso del algoritmo, este de acá, era espera igual a inicio menor reloj, espera igual a inicio menor reloj. Y esto es cómo vamos a calcular la medida de desempeño para este ejercicio. Para este ejercicio es 1000 de el vector espera.
+Entonces los que tienen el sistema Erlance.
+¿Por favor, ustedes van a hacer eso mismo?
+Una vez calculen su vector espera, le calculan la media aritmética con la función min y ese va a ser el resultado que debería devolver la simulación de Erlanc. ¿Estamos?
+¿Alguno de que tenga la ley?
+
+JESUS ALFONSO ARIAS SANTOS   15:22
+Sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   15:24
+Sí, listo, David, yo por eso le decía lo de las ecuaciones, porque la idea es que este valor se compara es con la probabilidad de espera dividida entre creo que era mi porque aminos a.
+
+JESUS ALFONSO ARIAS SANTOS   15:24
+No.
+
+HANS IGOR LOPEZ CHAVEZ   15:38
+Listo.
+Los que tienen Erlanby MM uno K, o sea, los que tienen sistemas de pérdida, no lo van a comparar con esto. O sea, de hecho, ustedes no calculan esto.
+Ustedes van a calcular la probabilidad de bloqueo. Entonces, como les comenté, deben agregar un par de vectores o bueno, un vector adicional que sea el de si se bloqueó o no. Podría ser una de las formas de hacerlo. Entonces, cero si el usuario no fue bloqueado, uno si es bloqueado y lo que van a hacer es.
+sumar todos los elementos, todos los unos y dividirlos entre el total. Entonces un zoom de ese vector bloqueo dividido usuarios les va a dar la probabilidad de bloqueo y esa va a ser el resultado que debería devolver el sistema de ustedes para ambos, para MM uno k y para Hernán B.
+¿Listos?
+
+MIGUEL ANGEL RODRIGUEZ REYES   16:32
+What is this now?
+
+HANS IGOR LOPEZ CHAVEZ   16:33
+¿Bien, entonces ahora qué les voy a mostrar? Pues voy a probar si este algoritmo nos da los mismos resultados que hicimos como prueba de escritorio. Entonces aquí están los mismos 2 vectores que ustedes verificaron ahorita. Yo codifiqué esto como aquí está detallado así, pasito a pasito.
+lo codifique en una función aparte que está aquí al final de este live script que se llama xx uno. Toma los dos vectores que se piden TA y TDS y devuelve TW y lo que hace la función es imprimir en pantalla todos los vectores. Entonces aquí está.
+¿Entonces, la tarea cuál es? Es una ayuda muy rápida. Comparen esto con los vectores que originalmente teníamos en el tablero. O sea, ya les muestro en qué página están por aquí estos.
+Entonces tengan a mano esto porque yo les voy a mostrar, son los resultados de MATLAB.
+Entonces quisiera que alguien verifique y me diga sí, profe, sí le dio igual, ojalá.
+Importante, vayan de una vez con el de espera.
+Si el de espera está bien, lo más seguro es que los de ahí hacia atrás también hayan estado correctos, hayan sido correctos.
+Si nos dio el ejercicio.
+
+MIGUEL ANGEL RODRIGUEZ REYES   18:09
+Estamos rezando.
+
+HANS IGOR LOPEZ CHAVEZ   18:11
+Perfecto.
+Pero aunque sea deme un spoiler, dígame profe, el de espera sí le digo yo listo, ya estoy tranquilo.
+
+MIGUEL ANGEL RODRIGUEZ REYES   18:26
+Sí, te espera si coincide.
+
+HANS IGOR LOPEZ CHAVEZ   18:28
+Rispy.
+
+MIGUEL ANGEL RODRIGUEZ REYES   18:30
+Yes.
+
+HANS IGOR LOPEZ CHAVEZ   18:30
+Descansé.
+Porque donde espera no nos haya dado. Ay, Dios mío, hicimos todo el ejercicio mal.
+
+MIGUEL ANGEL RODRIGUEZ REYES   18:35
+What's new?
+Si el sólido si coincide, entonces inicio coincide.
+
+HANS IGOR LOPEZ CHAVEZ   18:43
+Mhm.
+
+MIGUEL ANGEL RODRIGUEZ REYES   18:45
+Six.
+
+HANS IGOR LOPEZ CHAVEZ   18:46
+Sí, listo. Muchas gracias Miguel Ángel y a todos los que se tomaron ese tiempo de revisar ahí de rapidez. Perfecto. Entonces esa también es una recomendación que yo les doy. Hagan eso, coloquen un vector. Yo de ustedes, como tiene un K diferente de uno, le sugerí con K igual a 2, pues pongan vectores primero más largos.
+Pues porque ahora va a ser más difícil o que haya espera o que se bloqueen usuarios que cuando K valía uno, entonces pongan primero vectores más largos y también asegúrense de colocar valores extraños. ¿Qué son valores extraños? Por ejemplo, los que tienen Airland B, pues un valor extraño sería.
+que los usuarios llegan muy rápido. O sea, que los tiempos entre usuarios son pequeños. Entonces uno, dos, tres. Y que los tiempos de servicio son muy largos para provocar que el sistema empiece a llenarse y a llenarse y que se presenten bloqueos. Porque si hacen una simulación donde no haya ningún solo bloqueo, solo van a programar la lógica.
+Del caso fácil, que es cuando no hay bloque.
+Esa sería la otra sugerencia.
+Bueno, la siguiente sugerencia es que además de probar con esos numeritos, pues una vez tengan su función ya parcialmente verificada, o sea, con la prueba de escritorio, que modifiquen los valores de TA y TDS de forma aleatoria. Entonces yo aquí les tengo un pequeño
+código previo que podrían agregar. Entonces es esta función. Entonces yo coloqué aquí la función Randy. La función Randy genera números aleatorios entre uno y el número que le digan. Entonces, en este caso del uno al 11. Listo.
+Y.
+Yo le doy el tamaño del vector, entonces aquí propuse una simulación para 9 usuarios.
+¿Por qué le resto uno? Porque como genera números del uno al 11, nunca me iba a simular un caso de cero, que recuerden que es importante colocar también esos casos raros. Entonces le resto uno y así ya no me da del uno al 11, sino me dan números del cero al 10.
+Y de esa manera tengo un TEA y un TDS totalmente aleatorio y después puedo verificar de pronto con una prueba de escritorio si están haciendo los resultados correctos.
+Otra opción, entonces yo lo tengo acá cada vez que ejecuté este código. Por cierto, porque no me sale la barrita de ejecutar código, bueno, démosle F 5.
+Pues va a generar 2 vectores diferentes y cuatro vectores distintos.
+Esperemos que termine de ejecutar todo el código.
+A ver si cambió aquí cambió, si aquí cambió porque antes había unos ceros ya no.
+Listo, entonces, por ejemplo, aquí hay casos donde hay usuarios que no esperan estos 2 y otros que sí, y en el caso de ustedes que les recomendaría probarlo para más, por ejemplo, voy a poner para 15 usuarios.
+Pues ahora tienen una matriz más grande de números para hacer la prueba, esa sería como la idea.
+Bueno, entonces lo voy a dejar otra vez en 9 como estaba, que sería bonito.
+observaciones de lo que hicimos en la clase pasada, o sea, de la cola que estamos tratando aquí de validar. Esa función que yo le puse el nombre XX1, pues está únicamente diseñada para el sistema de un servidor y en donde los usuarios pueden esperar indefinidamente.
+Lo interesante es que si ustedes se dan cuenta en ningún lado, yo tuve en cuenta lo de que el sistema no tenía memoria. En ningún lado tuve en cuenta que las distribuciones eran exponenciales. Eso no estuvo aquí ni por ahí. ¿Eso qué quiere decir? Que pues este sistema, esta tipo de simulación.
+es totalmente ajena a las distribuciones de arribo y las distribuciones de servicio. Y por esa razón, pues esta cola no sería conveniente llamarla MM1, porque en realidad la M y la M puede ser cualquier letra. Podría ser determinístico si yo aquí los números.
+los pongo como que te a vale siempre el mismo uno uno uno uno uno tres tres tres tres. Entonces estoy simulando un sistema tipo D o podría ser una distribución chi cuadrado. Entonces cambio los TDS, que aquí los tengo como valores enteros por un random tipo chi cuadrado.
+Bueno, otro caso, claro. O puedo poner ambos determinísticos. Puedo poner uno exponencial y el otro no. O puedo cargarle valores verdaderos, reales, por ejemplo, los que teníamos del sistema que se obtuvo en la prueba de los laboratorios de Velcor. O sea, el archivo BCPAUC 89 que en algún momento les mostré.
+De ahí se podrían sacar valores reales y reemplazarlos. Esa es la razón por la cual a la función no le puse MM, sino Xx, en donde el X para mí representa cualquier tipo de distribución.
+Entonces eso es una ventaja que tiene aquí la herramienta de simulación. Por un lado, tenemos el valor teórico que ese no tiene, pierde. Entonces lo demostramos y nos dio tanto. Ustedes les dio P sub K, me dio esto, profe, listo, es el valor teórico. Pero ojo, ese valor teórico solo es válido si
+Los tiempos entre arribos se distribuyen exponenciales y si los tiempos del servicio también se distribuyen exponenciales y esto aplica para todos los grupos.
+Por el otro lado está la simulación. Entonces, aunque la simulación no me reemplaza el valor teórico, aquí tiene una ventaja. Y es que yo podría simular casos diferentes a los que ese valor teórico no permite. O sea, de alguna manera tenemos lo mejor de los dos mundos. Tenemos cuánto debería dar.
+Para un caso particular y tenemos una herramienta que nos permite simular para ese caso particular y para cualquier otro. Bien, entonces de eso también trata el ejercicio de que ustedes traten de extraer eso, de cómo las simulaciones les pueden servir a ustedes para resolver esos casos que analíticamente no tienen un valor.
+Una solución.
+La segunda observación se las tengo acá, y es que el sistema que tenemos podría simular caso que también es prohibido el caso de que los usuarios lleguen al mismo tiempo en un sistema MM. Eso no se puede dar. O sea, esa es una de las premisas. Yo no puedo pasar del estado cero al estado 2.
+¿Se acuerdan del diagrama de transición de estados?
+¿Que todos hicieron?
+Sí se acuerda alguien que mira, sí, profe.
+
+JESUS ALFONSO ARIAS SANTOS   25:46
+Mora.
+
+HANS IGOR LOPEZ CHAVEZ   25:49
+Cuando hicieron el diagrama de transición de estados, las los nacimientos, las flechitas de arriba, siempre iban de un estado al siguiente, del cero al uno, del uno al 2, del 2 al 3 y nunca colocamos una flecha del cero al 2 o del uno al 5, nunca. ¿Eso qué quiere decir?
+Que en el caso de los nacimientos, ese sistema no contempla que los usuarios puedan llegar al tiempo.
+No obstante, en la simulación yo sí puedo generar esa situación extraña.
+¿Cómo hago? Pues le pongo el mismo valor en reloj a los dos. O sea, si uno llegó en el instante cinco, le digo que el siguiente llegó en el instante cinco y de esa manera, cuando se calcula la resta, pues me va a dar que los dos llegaron al mismo. O sea, uno pasa primero que el otro.
+Pero llegan al mismo tiempo. Esa situación sucede en la realidad, ¿cierto? Cuando la gente se pone de acuerdo para hacer la fila. Entonces no, pues vamos al cajero, acompáñenme. Listo, ¿va a sacar plata? Sí, y usted también. Bueno, y llegan los dos y cuando llegan a la fila les toca tomar una decisión de quién pasa primero. Entonces los dos.
+Llegan simultáneamente, pero al final, en la fila, termina quedando uno delante y otro atrás. Y si no quieren hacer así la fila, sino que son de esas personas que les fastidia hacerse detrás de alguien. Y uno los ve como a 50 centímetros fuera de la línea de esfera. No importa. Cuando llegan al servidor, les toca tomar la decisión de quién de los dos.
+Pasa primero.
+Entonces es ahí donde queda un usuario delante del otro, pero se puede simular ese caso.
+Por otra parte, esta cola también permite simular que lambda sea mayor que mu. Entonces, en el caso de los que tienen Airlance, podrían simular lambda mayor que K mu, que es cuando el sistema empieza a crecer y a crecer indefinidamente. En la teoría, ese caso no se puede calcular porque sí, porque recuerden que la sumatoria solo converge.
+En esa condición cuando A es menor que uno, en el caso verlan C cuando A es menor que K.
+Pues no tengo solución analítica para A mayor que K no existe porque según la serie, la serie diverge, pero tengo la herramienta de simulación que me puede dar el valor. Entonces la herramienta de simulación me dice sí, claro, deme Landa y deme mu. O sea, no me Landa y deme mu, deme los 2 vectores de tal manera que un vector.
+Sea de Lambda tal y el otro de un miu más chiquito.
+Y con los dos vectores yo le estimulo. ¿Qué es lo que va a suceder? Pues que seguramente la cola va a crecer y va a crecer y va a crecer en el caso de Erlan C, o sea que cada vez se van a dar cuenta que los tiempos de espera son más grandes. Y en el caso de MM1K y Erlan B, que va a haber mayor probabilidad de bloqueo.
+Yes.
+Pero bueno, ahí no acaba la validación. La validación que hemos hecho hasta el momento es de escritorio. Es una prueba de si la lógica que yo estoy implementando, si la logré precisamente implementar.
+Ahora va a ser una validación más seria. Entonces siempre, y esto no lo pueden olvidar. Las validaciones se deben hacer con un método distinto al usado. Siempre. Entonces es una de las premisas, una regla básica de la validación.
+¿Cómo así, profe? Sí, si yo les digo a ustedes, tengo un polinomio x cuadrado más 2 x más 3 igual a cero.
+Calculé las raíces y ustedes lo calculan como menos B más o menos raíz de B cuadrado menos cuatro a c todo sobre 2 a. Ese es el método. Y si yo les digo cómo sé que está bien, no se vale a profe porque reemplacé en la ecuación de la cuadrática y me dio eso, no.
+La variación de hacer por un método totalmente diferente.
+Entonces dicen y ahora qué hago? Pues tratemos de buscar dos números que sumados den el coeficiente de la X y que multiplicados de el último, el independiente. Eso es otro método. Entonces son métodos diferentes y de esa manera sí lo podría validar. Alguien puede decir no, pero eso no se puede hacer en todos los casos. Ah, bueno, entonces la fácil.
+evalúe su respuesta en el polinomio. Si el polinomio le da cero es porque es una raíz. Ah, sí, es método diferente para poder validar. ¿Eso qué quiere decir? Que esto que hice yo acá no es una validación. Esto es una prueba.
+Yo probé unos números, me dan unos números y los estoy comparando con lo que hice a mano, a ver si me da lo mismo, pero esto no es validación para validar. ¿Qué vamos a hacer? Pues vamos a comparar el resultado de la simulación con la medida de desempeño. Entonces aquí es donde cada uno piensa en su sistema e inserta.
+ETW para Air Lance, pero las la de ustedes, entonces David, probabilidad de espera sobre Newport, amenos a listo, David.
+
+DAVID STIVEN MUNOZ AMAYA   30:58
+Siempre lo que.
+
+HANS IGOR LOPEZ CHAVEZ   31:00
+Listo. Los que tienen Erlan B no calculan esto, ponen ahí su probabilidad de bloqueo. La teórica que usan el algoritmo iterativo es otro cuento, pero el valor teórico es el que deben usar ahí para comparar. Y la idea es que ojalá el valor de aquí me dé igualito.
+Al de acá, entonces aquí.
+Tengo yo la simulación. Ustedes pueden copiar este mismo código, solo que aquí deben colocar la función de ustedes en la línea 32. Entonces ahí va su función que simula la cola.
+La función de ustedes debe tener como argumentos de entrada te a tdsy el valor de K entonces K igual a 2, K igual a 3, el valor que consideremos ahorita necesario.
+En mi caso, yo tengo la función codificada para que cuando el tercer parámetro sea cero, no muestre los vectores. ¿Cuáles vectores? Los de la prueba.
+Imagínense que haga la prueba con 100000 valores, se me llena la pantalla matlab de todos esos números y eso no me sirve de nada. Entonces por eso me coloque ese argumento adicional.
+Entonces aquí está una prueba para 100000 usuarios, ya no nueve, 100000. ¿Qué estoy tratando de utilizar el famoso o la famosa ley de los grandes números? Recuerden es cuando el tamaño de la muestra, en este caso la cantidad de usuarios, tiende a infinito.
+Su medida de desempeño va a converger al valor teórico. Esa sería la idea. Entonces, mientras más usuarios tengamos, mi expectativa es que el error sea cada vez menor. Entonces, aquí hay una prueba inmediata, F 5.
+Y.
+Lo calculo muy rápido. 0,4924, dijo la simulación. 0,5 es el valor teórico cuando lambda vale uno y mu vale 2.
+Listo, entonces en mi caso yo tengo que probarlo con landa menor que mi. En el caso de ustedes ya ahorita haré las precisiones de qué valores les recomiendo.
+Entonces yo voy a colocar aquí ahora, por ejemplo, necesito números, ayúdenme, un número cualquiera que sea positivo.
+Más rápido.
+
+JUAN SEBASTIAN CASAS BARBOSA   33:25
+Siete.
+
+MIGUEL ANGEL RODRIGUEZ REYES   33:25
+Sith.
+
+HANS IGOR LOPEZ CHAVEZ   33:26
+Eso 7.
+Y ahora necesito un valor más grande y aquí hay que tener cuidado. Yo le recomendaría que siempre ese valor, que en este caso es más grande, sea cercano al valor de lambda.
+¿Para qué? Si Landa es cerquita a Mew, el sistema va a tener línea de espera. Va a haber muchos usuarios que esperan. Si Landa es muy pequeño comparado con Mew, muy pocos usuarios van a esperar y entonces la probabilidad de bloqueo les va a dar muy pequeña. Los que tienen probabilidad de espera.
+Les va a dar muy pequeño y de pronto el valor los hace engañar, porque si el resultado es 0,01 y usted les da 0,00 les dicen.
+Pues 0,01 es casi cero. Yo creo que eso está bien, ¿no? Entonces, en este caso no voy a poner MU de 20, sino voy a poner, por ejemplo, 8 esto para que sea un valor más significativo en la simulación.
+Listo ya lo calculó 0,8481 según la simulación y para Lambda 7 y mi 8, según mi valor teórico es 0,875. Ese es una pequeña validación. Es lo primero que deberían hacer luego de la prueba de escritorio.
+Comparar esos 2 y si les da algo cerca, están un poquito descansados, dicen, uy, vamos bien.
+Pero ojo, eso solo es para un lambda y un mu. O sea, eso solo sería para un valor de a un solo valor de a, en este caso 7/8. Su cola debería funcionar para todos los valores de a, desde la más pequeño, que es casi cero hasta la más grande, que según el caso cambia. De eso se encarga la actividad.
+3. Entonces, actividad uno, valor teórico, diagrama de transición de estados, cálculo de las probabilidades, cálculo de p sub cero, cálculo todo eso.
+Ya lo tiene actividad 2, la simulación de la cola, entonces generar el diagrama de flujo y el código detrás de.
+Ese diagrama de flujo, el que lo implementa, mejor dicho, y nos dice me dio tanto. Hasta ahí finaliza actividad dos. Ahora nos vamos para la tercera actividad. Entonces, si ustedes me regalan un momento, ya les muestro el enunciado de la actividad tres. Entonces, la actividad.
+
+Yina   35:52
+Profe.
+
+HANS IGOR LOPEZ CHAVEZ   35:53
+Sí.
+
+Yina   35:54
+¿Disculpa, me puedes repetir nuevamente, por favor, hasta dónde va la actividad 2?
+
+HANS IGOR LOPEZ CHAVEZ   35:59
+Sí, la actividad 2 es la simulación de la cola. Entonces debes incluir el diagrama de flujo. ¿Dónde está mi actividad 2? Debes incluir esto, pero para la cola de ustedes.
+Sí.
+Primer y segundo, deben hacer un código que muestre que sí está funcionando. Entonces yo colocaría, por ejemplo, esto. Es más, en el trabajo yo colocaría las flechitas, esto, o sea, yo colocaría un caso muy diciente.
+En donde estoy mostrando un ejemplo de que la cola sí está funcionando.
+Y finaliza la actividad con esta prueba.
+Listo con lo que aquí yo llamo validación.
+Esa prueba deben colocarla.
+¿Listo, quién quién me habló fue Gina?
+
+Yina   37:01
+Gracias, profe. Sí, señor, gracias.
+
+HANS IGOR LOPEZ CHAVEZ   37:02
+Sí, listo, Jim, entonces ahí acaba la actividad 2.
+Bien, entonces ahora sí y vamos a revisar el trago grupal aquí en Herramientas Trabajo 2.
+Listo.
+Trabajo 2
+Activa 3, entonces la activa 3 dice que necesitan.
+realizar la simulación de la cola que se les asignó variando A. Entonces, ojo, no es cambiar landa y cambiar MU, lo importante es cambiar A, porque si landa y las cambian en las mismas proporciones, lo están probando para el mismo A. Si ponen landa de 5 y MU de 5 es lo mismo que landa de 1000 y MU de 1000.
+O sea, es la misma simulación, entonces tienen que cambiar ese cociente variando a.
+Entonces dicen necesariamente los elementos del vector de tiempo ya no van a ser números enteros, van a ser números distribuidos exponencialmente. O sea, eso lo van a resolver con un XP Rand como lo tenemos aquí.
+Van a usar este x perrato.
+Si usan random normal, si hundan random uniforme no les va a dar porque el valor teórico solo aplica para la distribución exponencial.
+En el caso de los tiempos de servicio, también es un XP random, pero con otro parámetro mío. ¿Qué se les pide en la actividad? 3 que muestren una gráfica. Entonces dice, la gráfica es de su medida de desempeño, llámese probabilidad de bloqueo para los primeros 2 sistemas o tiempo promedio de espera para el lance.
+Versus a, o sea, en el eje X están los valores de a.
+Veamos cuál es la sugerencia para la actividad tres. Entonces aquí puedo hacer muy claros con ustedes la actividad tres, cuatro y cinco. Yo se las voy a mostrar hoy. El código lo van a tener ustedes, o sea, solo es que hagan los cambios donde están los comentarios, no se pongan a inventar otro código.
+Por favor, no se pongan a hacer otra cosa que no se les pidió.
+Cojan el código que yo les comparto hoy, ya les muestro el de la actividad tres cuál es y solo reemplacen lo que se les pide y obtengan la gráfica. Y una vez tenga la gráfica, lo que sí se les pide en el trabajo es que la analicen, que digan bueno, eso qué significa. Entonces yo les voy a mostrar cuál es la gráfica para la MM1. Listo, estamos claros, actividad tres.
+Cuatro y 5.
+Yo les comparto el código que genere esas 3 actividades, estamos.
+
+Yina   39:49
+Sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   39:51
+Listo, entonces nos fuimos, señor.
+
+MIGUEL ANGEL RODRIGUEZ REYES   39:51
+Bueno.
+
+HANS IGOR LOPEZ CHAVEZ   39:55
+Señor.
+
+MIGUEL ANGEL RODRIGUEZ REYES   39:55
+Okey, chokey, chokey.
+
+HANS IGOR LOPEZ CHAVEZ   39:57
+Ah, perfecto. Entonces vea, hasta les puse titulito y todo. Actividad tres. Entonces ustedes van a copiar esto y lo van a ejecutar. Entonces, revisemos qué es lo que dice la actividad tres, o sea, el código que está detrás de la actividad tres. Entonces dice, generan o proponen una cantidad de usuarios.
+Yo para que esto corra rápido, lo voy a probar con 100.000 usuarios. Pero la recomendación es que aumenten esa cantidad de usuarios, ya saben, por la ley de los grandes números, para que los resultados que obtengan sean cada vez más cercanos a los valores teóricos. Por ahora lo dejo ahí.
+Proponen un valor de lambda el que quieran, porque recuerden, es que la idea es que lo que se modifica es el valor de a. Entonces, si yo dejo lambda fijo en un número, pues sabiendo cuánto vale a despejo, a es lambda sobre mu.
+Despejo MU, o sea que MU debe ser, debería ser landa dividido entre a y así para un landa siempre de uno calculo los MU que voy a usar en mi simulación.
+Entonces eso también déjenlo y quiero. Cantidad de simulaciones es la resolución de su gráfica. Entonces yo les dije ahorita tengo solo para un valor de A que es siete octavos, pero lo quiero hacer para todos. Entonces igual no lo pueden hacer para todos porque son infinitos valores. Toca escoger una resolución. Ahorita mis resolución son 20 simulaciones.
+O sea, voy a obtener 20 valores de a escogidos igualmente espaciados desde una chiquito hasta la más grande. ¿Entonces, cómo lo tengo yo ahorita? Lo tengo con a que empieza desde 0,05 hasta 0,95 para mi sistema.
+¿Por qué no lo empecé desde cero y no lo terminé en uno? Porque a igual a cero significaría que no llegan usuarios. a igual a cero solo ocurre cuando Landa vale cero. O sea, no llegarían usuarios, no tendría un vector válido. Entonces no tiene sentido calcularlo con a igual a cero en el caso teórico.
+Entonces escogí un valor pequeñito, 0,05, o sea un 5% menos y lo mismo para el valor final. No escogí uno, porque recuerden que el lambda no puede ser mayor que MU, ni siquiera puede ser igual a MU. Entonces escogí un 5% por debajo y aquí escogí 10000 puntos y para tener una calidad tremenda en la gráfica.
+Porque esto es para el teórico. Entonces voy a hacer 20 simulaciones que voy a comparar con un teórico que tiene 10000 valores. O sea, me va a salir una curva y sobre esa curva voy a mirar si hay 20 punticos que coinciden.
+Entonces empezamos. Primer comentario, dice cambiar el cero 95 por el a sugerido en clase. Listo, entonces empezamos al revés. ¿Dónde están los de Erlan C?
+
+Yina   42:59
+Thank you.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   42:59
+Presente, profe.
+
+HANS IGOR LOPEZ CHAVEZ   43:01
+Listo, uy Jason ya se conectó, que más Jason.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   43:04
+Bien, profe, qué pena consumerse, pero llegué lavadito.
+
+HANS IGOR LOPEZ CHAVEZ   43:07
+No, Jason, sea serio, pues sí, usted me envió un correo, o sea, por culpa suya estamos acá. Yo estaba todo contento porque nos habían prestado el 501. Cuando llega el mensaje de Jason, mañana la clase toca hacerla virtual porque a partir de las 4:00 son virtuales.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   43:26
+Sí, correcto.
+
+HANS IGOR LOPEZ CHAVEZ   43:28
+¿Y usted no lo dejaron ir para su casa desde las 4:00 y Jason o hablar con su jefe?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   43:32
+En realidad es que tenía una pequeña reunión y me tocó salir a las 4:30.
+
+HANS IGOR LOPEZ CHAVEZ   43:36
+listo, fresco, no fresco, no me expliques solo por molestarlo.
+Pero menos mal me explicó, si no hubiera hablado con José Guillermo y yo le dije a Jason que se fuera para la casa.
+Listo.
+Oiga, el profesor José Guillermo, aquí él es yo, o sea, como le digo, no soy así amigo, amigo, pero sí lo conozco desde hace mucho tiempo, pero hay veces que se ve como bravo.
+Es de mal genio.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   44:03
+Aparenta, Aparenta ser bravo, pero no, sí, correcto, se parece a mi hermano.
+
+HANS IGOR LOPEZ CHAVEZ   44:05
+Aparenta no más, cierto.
+Bueno, sí, yo sí dije porque yo nunca le había visto esa faceta así de mal genio, una razón más para que yo no sea coordinador. Imagínese el profesor Hans de mal genio.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   44:10
+Tas, pues.
+
+HANS IGOR LOPEZ CHAVEZ   44:18
+¿Qué peligro?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   44:19
+Profesa que lo han postulado varias veces.
+
+HANS IGOR LOPEZ CHAVEZ   44:22
+Sí, yo estoy ahí en el top de los que no quiere ser. Entonces me ponen en el top de los candidatos. Sé que son malvados, pero bueno, listo. Gracias, Jason. Entonces íbamos en que.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   44:29
+Epa, epa, epa.
+
+HANS IGOR LOPEZ CHAVEZ   44:37
+Erlance y Jason dijo presente, ustedes van a poner 0,95 por K.
+Listo, Jason.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   44:48
+Sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   44:52
+De manera tal que si K vale uno, ustedes van a simular el mismo que del profe.
+Pero si K vale 2, van a simular hasta 1,9 da eso.
+Creo que a 1,9.
+Si K vale 3 van a simularlo hasta uno coma 995.
+Sí.
+Jason.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   45:23
+Says name.
+
+HANS IGOR LOPEZ CHAVEZ   45:24
+¿Eso es por qué? Porque en el caso de ustedes la restricción es que lambda debe ser menor que K por 1000.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   45:31
+Correcto, si se alcanza a llegar a esa parte.
+
+HANS IGOR LOPEZ CHAVEZ   45:32
+Entonces si Landa es menor que K por MU y usted despeja, le da Landa sobre MU es menor que K, o sea, A debe ser menor que K.
+Y por eso lo pongo hasta 0.95 k y nunca me voy a pasar de K.
+Pero sí voy a simular casos interesantes, listo Jason.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   45:53
+Perfect.
+
+HANS IGOR LOPEZ CHAVEZ   45:54
+Listo, ahora los otros quienes tienen MM uno K, el primer sistema, el de un servidor, pero que tiene hasta K menos uno en la línea de espera.
+
+MIGUEL ANGEL MOLINA NOVA   46:03
+Aquí todo.
+
+JISSEDT ANDREA PACHECO CASTRO   46:04
+Nosotros, profe.
+
+HANS IGOR LOPEZ CHAVEZ   46:05
+Listo, Giseth Miguel Ángel también. Listo. Entonces, en el caso de ustedes, tienen que ser un poquito más exagerados. ¿Cómo así un poquito más exagerados? Pues que si ustedes simulan, por ejemplo, solo hasta cero 95 o hasta cero 95 K como los que tienen Air Lance, pues seguramente las probabilidades de bloqueo les van a dar muy pequeñas.
+
+MIGUEL ANGEL MOLINA NOVA   46:09
+Sí, Daniel.
+
+HANS IGOR LOPEZ CHAVEZ   46:29
+O sea, están probando el sistema ligero.
+Suave cuando el sistema está trabajando chévere y se bloquea el 5%, el 10, el 20%.
+Pero no, aquí la idea es simularlo a lo que dé y recuerden que las probabilidades pueden ir desde cero hasta uno. Entonces mi recomendación es que aquí se pasen de calidad.
+Por ejemplo, 20 por K, 10 por K, cosas así.
+Listo.
+Entonces en su gráfica les van a aparecer tanto los casos de probabilidades pequeñas como los más grandecitos más grandecitos sugerencia.
+Intenten con 20 por k y vean la gráfica.
+Si la gráfica llega a uno muy rápido es porque nos pasamos de chéveres, entonces le reducen el valor, por ejemplo, a 10 por k.
+Si en 20 por K todavía no han llegado al 90%, aumenten ese número 30 veces K, 40 veces K. La recomendación, eso es lo que cambia en ese parámetro.
+Listos.
+Esto aplica para MM uno ky Airland B, ambos casos.
+Entonces los de Erlan B creo que era aquí en el grupo de Natalia.
+De Juan.
+
+NATALIA LOPEZ BLANQUICET   47:50
+Sí, profe.
+
+HANS IGOR LOPEZ CHAVEZ   47:51
+Listo, entonces ya saben, empiecen con 20 por acá y miran cómo les da la gráfica. Entonces yo no soy ninguno de esos casos. Mi simulación va hasta 0.95.
+Listo.
+Esta línea la dejan quieta.
+¿Van a cambiar es lo que tiene comentario, entonces línea 42 van a cambiar esto?
+Dice usar el valor teórico según la cola asignada. Entonces los que tienen erlan C, David, Víctor, van a colocar ahí.
+El cálculo de la probabilidad de espera.
+Sobre Newport Caminos.
+Listo, ya llegó Víctor.
+No, todavía está por ahí, David.
+
+JISSEDT ANDREA PACHECO CASTRO   48:40
+Ahí está conectado Víctor Manuel, está.
+
+HANS IGOR LOPEZ CHAVEZ   48:42
+Uy, lo echaron mal agua, Víctor.
+Juepucha.
+
+DAVID STIVEN MUNOZ AMAYA   48:48
+Mi profe es de conecta.
+
+HANS IGOR LOPEZ CHAVEZ   48:50
+Ahí está, hola Víctor.
+
+DAVID STIVEN MUNOZ AMAYA   48:53
+David.
+
+HANS IGOR LOPEZ CHAVEZ   48:55
+Pero David está aquí David, entonces póngale cuidado que usted aquí tiene que colocar el de ETW, pero.
+Observe que en mi caso, esto es un vector. O sea, esto no es un solo número. Estos son tantos valores teóricos como mu existan. ¿Y cuántos mu hay? Tantos como aes. ¿Y cuántas aes hay? Diez mil. Sí.
+Entonces, como en el caso de usted y de todos los compañeros que tienen el lancé, ustedes tienen un cálculo de probabilidad de espera. Ese es un solo valor. O se le toca calcular 10000 veces esa probabilidad de espera. O sea, en realidad va a ser un for que usa la función de esa probabilidad de espera y llena los 10000 elementos.
+O sea, su teórico va a ser un vector de 10000. Entonces cuidado con esto. La línea 42, en el caso de ustedes de pronto no es una sola línea, son varias para calcular los 10000 valores del teórico. Al final deben tener un vector de 10000 valores llamado teórico con esas tiempos de espera. Listo, David.
+
+DAVID STIVEN MUNOZ AMAYA   50:06
+Para profe.
+
+HANS IGOR LOPEZ CHAVEZ   50:07
+Bien, de igual manera, para los que tienen Airland by MM uno K, ustedes aquí en teórico van a usar el cálculo de la probabilidad de bloqueo, la P sub K.
+La P sub K que tenía un if en el caso de Miguel Ángel, que me mostró que cuando a era diferente, uno da una cosa y cuando a vale uno da otra.
+Y los de Erlan B que van a usar el algoritmo recursivo.
+O sea, el algoritmo que se le aprobó a Natalie. Lo mismo, eso calcula un solo valor. Ustedes necesitan los 10.000 valores teóricos. Entonces también tienen que reemplazar la línea 42 con todas esas líneas, con el for desde uno hasta 10.000 y empiezan a calcular todos los las probabilidades de bloqueo.
+Estamos claros, todos es un vector de 10000 valores, no es un solo valor.
+Listo.
+
+Yina   51:04
+Nothing.
+
+HANS IGOR LOPEZ CHAVEZ   51:06
+Sí, dime.
+
+Yina   51:07
+Profe, qué pena. ¿Será que es que no me quedó tan claro en esa parte? ¿Cuál es la fórmula que deberíamos aplicar los de Air Lance?
+
+HANS IGOR LOPEZ CHAVEZ   51:15
+¿Listo, tú tienes cuál, Gina, es la C?
+
+Yina   51:19
+Sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   51:20
+Listo, entonces ya les muestro. Entonces nos vamos a Teams, pero el otro Teams donde está el otro Teams este Teams, entonces en la tarea de ustedes.
+Tarea, creo que era la décimo tercera.
+Yo les compartí unas ecuaciones.
+Cierto, Gina, aquí está.
+
+Yina   51:44
+Sí, señor, mhm.
+
+HANS IGOR LOPEZ CHAVEZ   51:47
+Y yo ahorita le mostré a David, le dije, David, pilas porque usted hasta ahora tiene solo probabilidad de espera.
+O sea, usted solo tiene este pedacito, la p, mejor dicho.
+Le falta dividirlo entre miu por caminos a.
+Este es el valor teórico de ustedes, Gina.
+Pero lo tienen que calcular las 10000 veces, o sea, para el ejemplo de ahorita a es un vector de 10000 valores, mu es un vector de 10000 valores.
+Entonces deben calcular la probabilidad de espera para cada valor de a respectivo.
+Listo.
+Mejor o igual.
+
+Yina   52:37
+Sí, señor, mejor sí, es que estaba acabando de anotar, pero sí, mejor sí, señor, gracias.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   52:38
+Mhm.
+
+HANS IGOR LOPEZ CHAVEZ   52:40
+Listo, listo, bien.
+Volvo.
+Bien, en mi caso es muy fácil, yo no tengo que hacer un for porque en Matlab yo puedo hacer las operaciones con los elementos de un vector. Entonces, en vez de hacer uno sobre mi menos lambda, le coloqué un puntico antes del dividido y de esa manera Matlab entiende que no voy a dividir 2 números, sino que voy a dividir uno entre.
+Cada elemento de New Intland.
+Entonces si mu tiene 10000 valores, me va a hacer un vector de 10000 valores y lo mismo después. Luego hago uno punto dividido mu y así me divide los 10000 elementos. O sea que sí teórico va a ser de dimensión 10000 1.
+Bueno, el resto lo dejan quieto. Esto es para hacer la gráfica del teórico. Esto es para hacer la simulación. Entonces revisemos los comentarios otra vez cambiar el cero 95 por el la sugerido en clase es el mismo A de la línea 40, entonces cero coma 95 por K
+Para el sistema.
+¿En eso?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   53:50
+El lanzam.
+
+HANS IGOR LOPEZ CHAVEZ   53:51
+El lance.
+Y.
+10 veces K, 20 veces K para los que tienen los demás sistemas MM uno K o el sistema Erlanb también listo.
+Se tiene que ser el mismo, porque si no el teórico queda en un pedacito y la simulación queda con un rango de valores mayor.
+Listo, esto lo dejan quieto.
+Aquí es donde se generan los números exponencialmente distribuidos. Lo dejan quieto, ya todo está cuadrado. Lo único que tienen que hacer es reemplazar la línea 54.
+¿Con la función de ustedes?
+Entonces la función de ustedes se va a llamar, no sé, XX uno K listo, entonces Xx uno KT a coma TDS coma K, ahí va el valor de K.
+Los que tienen erland B, le de pronto le ponen erland B a la cola, listo erland B coma te a coma ts coma K.
+Los que tienen erlan C le pusieron erlan C a la cola, listo erlan C T a TDS coma acá.
+Tienen que poner la función de ustedes.
+En mi caso, mi función tiene t a tdsy el coma cero. Recuerden, es para que no imprima en la ventana de comandos los vectores.
+Solo van a cambiar ese pedazo lo que está sombreado. El resto lo dejan quieto, sino el código que yo les comparto, pues no les va a servir.
+Te hace aquí una gráfica y se compara. Entonces les voy a mostrar la ejecución de mi resultado. Oh, qué emoción.
+Entonces, en azul está el valor teórico, que en mi caso es uno sobre miu, menos landa menos 1 sobre miu.
+Ese es el que tiene los 10000 valorcitos.
+Y los 20 punticos que estoy probando son los que están aquí en naranja. Entonces, como pueden verificar, si quieren, le hacemos aquí un zoom a esto.
+Aquí está mejor. Hay valores que coinciden bastante bien y otros que, como diría mi suegra que está aquí, a ver si me escucha ni mucho.
+¿Cuáles?
+¿Cuáles y cuáles no?
+
+MIGUEL ANGEL RODRIGUEZ REYES   56:17
+Un punto 82 te difiere.
+
+HANS IGOR LOPEZ CHAVEZ   56:19
+Es el de punto 80 y vean de quimita pifiao.
+Es malo, hacer un zoom pa que se note así con ganas, que ese no.
+
+NATALIA LOPEZ BLANQUICET   56:33
+El de uno también profe.
+
+HANS IGOR LOPEZ CHAVEZ   56:35
+Vea, este acá no, este está prepiciado. Este está ahí cerquita. Bueno, más cerquita, pero este sí, no sin zoom se veía el de uno también.
+Este bueno, este peca por exceso, mientras que este peca por defecto, cierto, pero bien, Natalia se dio cuenta que el de uno también está bifido.
+Entonces uno llega y dice, ah, ¿será que no me dio? No. Uno se acuerda de la ley de los grandes números y dice, ah, claro. El profe se puso de atrevido a hacer la simulación rápida y la hizo para cuántos usuarios.
+En mí.
+Si le hubiera puesto más usuarios.
+Los promedios seguramente tendrían menos errores y los puntos de porotonto le coincidirían. Entonces, esa también es mi recomendación. Al principio, para que la estimulación les corra rapidísimo, déjenlo así en cien mil y ya cuando vean que los punticos si les están dando, entonces ah, coloquémosle más. Entonces, por ejemplo, ahorita tengo que ir de atrevido.
+Y lo va a poner 10000000.
+Profe, no lo haga porque si no cansamos a la clase, hoy se fue 10000000.
+10000, no de que queda de 1000000.
+Ustedes como van a tener más tiempo, le pueden poner un número grandecito, 100000000, por ejemplo, lo ponen a correr y se van.
+A comerse unas onces bien ricas, a tomarse un café, a desayunar, a almorzar, a cenar. Esa sería como la idea. Yo no sé si esto ya acabó.
+Alguien say.
+Ya cierto.
+Muy rápido.
+¿Cómo sabemos? Pues porque en uno no daba y en cero 80 y algo tampoco. Vean que ahora ya cuadra.
+El que se escachó ahora fue este, pero no tanto.
+Tito.
+Este el que ahora se escachó un poquito.
+Pero bueno, cuadra la cosa. Entonces esa sería la idea. La idea es que ustedes ya se pongan así atrevidos. No lo voy a hacer ahorita porque se va a demorar mucho, pero entonces hagan pruebas con todos, por favor, y ojalá mostraran todas las gráficas, por ejemplo, con 100000. Con.
+1000000 con 100000000 y con 100000000 y agréguenle eso a las grafiquitas para que el día de la presentación del trabajo grupal lo mencionen. Aquí está la prueba con 100000 usuarios, con 1000000, con 100000000 y con 100000000 ya los valores nos coinciden. Listo, esa sería la validación.
+Si se quieren poner con mayor exigencia, entonces ya no ponen 20 comparaciones, le ponen el número más grande, por ejemplo, va a poner con 50 comparaciones, pero entiendan que pues el tiempo de simulación va a aumentar. Entonces, si le ponen muchos usuarios y muchas simulaciones, pues eso se va a demorar toda la vida.
+Es más, cuando ya tenga muchos punticos podrían reemplazar esas barritas, que eso se hace con la función super stem que yo les puse por acá.
+Y entonces pueden cambiar super stent por superplot y entonces ya no pone puntos redondos, sino ponen otra línea y las 2 líneas deberían coincidir bastante bien, pero no es necesario. A mí me gustan más los puntos, porque es que los puntos resaltan mucho donde hay error, por ejemplo aquí y acá.
+¿Entonces lo vuelvo a dejar como estaba antes, estaba en 20, cierto?
+List.
+Ya no es más.
+Copian este código, hacen los cambios que les dije, lo ejecutan y obtienen sus gráficas.
+¿Qué quiero ver yo en el trabajo? Las gráficas, no el código, las.
+Que muestren que el resultado de su simulación sí coincide con el valor teórico.
+Preguntas hasta ahí.
+Todo bien.
+Quedó clara la actividad 3.
+Que no tienen que codificar nada, solo cambiar parámetros y correr la simulación.
+
+JISSEDT ANDREA PACHECO CASTRO   1:01:19
+Sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   1:01:21
+Listo. Un último detalle ya de fina coquetería es que cambia la variable, ¿no? Entonces los que tienen Airlance no tienen que cambiar nada. Está bien las etiquetas del eje Y y está bien el título de la gráfica.
+Porque ustedes tienen la misma medida de desempeño que el profe, tiempo promedio de espera, pero los que tienen Airland BYMM uno K, pues no me van a poner esto así. ¿Qué van a poner acá?
+
+MIGUEL ANGEL RODRIGUEZ REYES   1:01:52
+Probabilidad de bloqueo.
+
+HANS IGOR LOPEZ CHAVEZ   1:01:54
+Bien, probabilidad de bloqueo y aquí la anotación respectiva, p sub k, por ejemplo, para la probabilidad de bloqueo.
+Y la otra, como es la estimación, podrían poner un peso k con un acento circunflexo arriba con un gorrito con un back slash hat.
+Probabilidad local, listo, lo de teórico y simulación, sí, lo mismo.
+Ok, bueno, ahora vamos a revisar.
+La actividad cuatro, pero para revisar la actividad cuatro y cinco necesitamos hablar de esta función que es la función cuantil. Me gustaría hacer esa explicación en el tablero. Entonces regálame un momentico y hago aquí el cambio al tablero.
+Y aquí que le doy con audio sin audio, digámosle que con audio.
+Listo, creo que uno podía hacer algún truco así. Uf, qué trucazo si se dieron cuenta.
+Lo acabo de descubrir, me tocó buscar cómo cambiar eso rápido.
+Ya están viendo el tablero.
+Sí.
+
+JISSEDT ANDREA PACHECO CASTRO   1:03:17
+El tablero, estamos viendo la pantalla de.
+
+HANS IGOR LOPEZ CHAVEZ   1:03:18
+Sí.
+Entonces no, entonces no, ya entonces no se dieron cuenta del truco que hice Davis.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:03:22
+Madlab.
+
+HANS IGOR LOPEZ CHAVEZ   1:03:29
+Compartir pantalla.
+Compartir pantalla con audio.
+Ahora sí.
+
+JESUS ALFONSO ARIAS SANTOS   1:03:39
+No sigo siendo la pantalla de.
+
+JISSEDT ANDREA PACHECO CASTRO   1:03:41
+Sigue siendo la pantalla la que nos estabas mostrando, sí.
+
+HANS IGOR LOPEZ CHAVEZ   1:03:42
+¿Ay, por qué?
+¿Será que me toca quitarla de acá? Eso está loco.
+Wish.
+Internal number this.
+¿Por qué no me sale lo a dejar de compartir?
+Empezara compartir.
+Tampoco.
+
+JISSEDT ANDREA PACHECO CASTRO   1:04:19
+Parece que ya estamos viendo su pantalla de Teams.
+
+HANS IGOR LOPEZ CHAVEZ   1:04:24
+¿De tims y qué hago así? ¿Qué hago así? Pa allá, pa allá, tin y tin tin, sí.
+
+JISSEDT ANDREA PACHECO CASTRO   1:04:26
+Ajá.
+Sí.
+Sí se está, pues intenta moverse, sí.
+
+HANS IGOR LOPEZ CHAVEZ   1:04:32
+Sí.
+Estoy jugando, no estoy jugando ahí para ver si se cambia. Listo. Entonces ahora sí, ahora sí están viendo la pantalla del tablero. Gracias bien, muchas gracias. Entonces les comentaba que era mejor en el tablero hablar de la siguiente función. Se llama la función cuantil.
+
+JISSEDT ANDREA PACHECO CASTRO   1:04:43
+Ahora sí, Ahora sí.
+
+HANS IGOR LOPEZ CHAVEZ   1:04:55
+En otro idioma que desconozco, no sé si esto es, no sé si sea inglés o sea más bien de otro.
+El pronto es de otro, se escribe es así: quantile con q.
+La función cuantil para ustedes debería ser conocida en la medida de que uno cada rato habla de unas palabras parecidas a cuantiles. De pronto le suena los cuartiles.
+Si los han escuchado.
+El primer cuartil, segundo cuartil, tercer cuartil, ¿no?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:05:34
+Sí lo he escuchado, pero no recuerdo en que.
+
+HANS IGOR LOPEZ CHAVEZ   1:05:37
+Contexto, sí. Ok, bien, entonces eso es muy común, lo de los cuartiles cuando uno tiene una muestra estadística que de pronto obedece a una distribución normal a una campana de gauss. Y entonces, por ejemplo, esa muestra estadística es las notas de los estudiantes.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:05:38
+¿En qué contexto?
+
+HANS IGOR LOPEZ CHAVEZ   1:05:57
+Esa muestra estadística es los resultados del ICFES, intención de voto.
+¿Qué más puede ser en nuestro caso? Sí, tiempos de espera. Entonces tenemos los tiempos de espera y quiero saber cómo se distribuye. Entonces uno ya sabe que si se quiere poner serio, saca la función de densidad de probabilidad.
+Cierto, por ejemplo, con PDF CF continua, si no quieres poner tan serio, entonces usa un histograma.
+Bien, entonces la idea es que esos valores, esa muestra estadística, se divide en grupos. Entonces uno organiza del menor al mayor, entonces lo divide en una cantidad de grupos. Entonces, si lo divide en cuatro grupos, primer 25%, segundo, tercero y último 25%, hace la división en lo que se llaman.
+Cuartiles, entonces el primer cuartil me da como el primero, primer 25% de los datos. El segundo cuartil me da del 25 al 50, el tercero del 50 al 75 y el último el 75 al 100, y son bastante utilizados en estadística, como les digo para.
+Tratar de clasificar esos datos que no se distribuyen de manera homogénea. Por ejemplo, es muy común hablar de los cuartiles en las clasificaciones de las revistas indexadas, revistas científicas.
+Entonces a los profesores les pregunta. ¿Usted ha publicado en revistas? Sí, poquito, pero sí, listo. ¿Y en qué cuartil ha publicado? ¿Cómo así? Sí, su revista está indexada. Sí. Ah, bueno, dígame en qué cuartil. Entonces el cuento es que se han encargado de establecer una serie de métricas.
+Para la clasificación de esas revistas, entonces esas métricas incluyen quién publica. O sea, es una de las importantes. Entonces ellos se encargan de ser muy selectivos. De hecho, hay una anécdota por ahí, no es mía, yo no sé si sea verdad y es de unos profes.
+que son, bueno, uno de los profesores es primo de mi esposa y entonces él nos contaba que él había hecho un artículo que él creía que era bastante interesante, que había hecho un aporte significativo, pero que el compañero decía que no se lo iban a publicar en esa revista particular.
+Y la razón era los apellidos.
+Dice como así y su apellido cuál es? Rodríguez como Miguel Ángel y el suyo Gómez. No los va a publicar. Ahí no publica nadie de apellido Gómez y como así en serio? Digo sí, si uno de los apellidos no es tal, tal y tal, no se los van a publicar. O sea que así de exigentes son en algunas revistas.
+O sea, son súper discriminatorias. Sí, o sea, uno de los autores debe ser alguien, por decirlo así, de renombre, un investigador aceptado. Imagínense eso. Otro criterio, ¿quién evalúa los productos? ¿Quién revisa las revistas? Entonces, así como.
+Hay unos nombres que dicen, no, esos no los pongo. Hay otros que dicen, bueno, es que en esta revista evalúa un miembro y triple D senior.
+Listo, a bueno, eso le sube el caché a la revista. En esta otra revista está el gurú de esa temática, el que mejor dicho, el que originó la línea de investigación. No, esa revista es de alta calidad.
+Otro criterio es el impacto, el impacto como se mide normalmente con las citaciones. Entonces, si los artículos de esa revista no son citados, se va al piso. Pero si los artículos de esa revista empiezan a ser citados por muchas personas, ya ese es un criterio súper importante de la calidad.
+Y así como es, hay muchas más métricas. Entonces se encargan de evaluar todas esas métricas y al final le dan un puntaje a esa revista. Ese puntaje y con todos los demás puntajes se organizan del menor al mayor y se dividen en los cuatro grupos. Y de esa manera aparecen las revistas Q uno son las demás.
+como decir prestigio. Luego viene Q2, luego Q3 y Q4. Ojo, todas son importantes, todos los resultados son válidos, todos. O sea, no porque estar en Q4 es la más mala, no.
+Solo por estar clasificado en Q Cuatro, la revista es bueno.
+Si no está indexada, es que el pues si no, o sea, hay revistas que no tienen indexación, que ni siquiera son Q Cuatro.
+Ustedes seguramente van a estar invitados a publicar sus resultados de sus tesis.
+Y entonces yo esperaría que por lo menos su artículo esté en Q3, en el tercer cuartil, por lo menos. Digo por lo menos porque seguramente van a ser resultados interesantes. De pronto alguno de ustedes puede conseguir una publicación en Q2. Ojalá varios de ustedes también tengan una publicación de las Q1.
+¿Qué tan difícil es publicar en cada uno de sus cuartiles? También depende, como les digo, del impacto que tenga la investigación, del resultado que se dé. Hay revistas que son tan exigentes que es muy difícil publicar, por ejemplo, en Q uno, bastante complicado. Hay otras que no son tanto, entonces uno dice no, pues es que para publicar en Q uno está como difícil me voy para Q 2.
+Y se logra. Se logra. Se puede. Tranquilos que se puede. Se los digo por experiencia. Yo tengo muy poquitas publicaciones. Se cuentan con los dedos de las manos. Poquitas. Pueden revisar mi CBLAC y se van a dar cuenta que hay muy poquitas. Pero algunitas de ellas. Yo me he encargado o me he preocupado.
+Porque sean de los cuartiles más altos. O sea, a mí no me interesa publicar mucho, o sea, no me interesa ser prolífico. Me interesa que ojalá que lo que yo publique haga algún aporte y en ese orden de ideas, pues algunos de mis publicaciones son Q Cuatro, luego pasé a.
+Q3, las más recientes, una que otra Q 2 y tengo uno o 2 artículos en Q uno y me siento muy orgulloso de esos 2 articulitos. Son pequeñitos, son solo 2, pero para mí son un gran logro. ¿Y por qué son un gran logro? Porque tengo entendido que, por ejemplo, las personas que hacen doctorado les piden ese tipo de.
+Criterio entonces para graduarse usted tiene que tener un artículo en Q uno.
+Entonces, para mí es el motivo de orgullo saber que sin haber hecho el doctorado ya tengo 2 publicaciones en Q uno, o sea, ya tengo como ese nivel de referencia, o sea, ya puedo comparar con, o sea, cuando me toca hacer mi ejercicio, digo, listo, los artículos que me piden allá son de esta calidad, debe tener este aporte.
+Y ya.
+Entonces, por eso les digo que ustedes están invitados a publicar en eso. Bueno, esos son los cuartiles, pero también hay deciles. Entonces ahora organizo el menor a mayor y lo vivo en 10 grupos. O también hay, ¿cómo se llama el otro?
+Percentiles, los dividencia en grupos.
+Si ustedes siguen esa lógica de dividir en cuatro, dividir en 10, dividir en 100, dividir en 1000, dividir infinitesimalmente, aparece cuantiles. La función cuantil es ese mismo ejercicio, pero llevado al nivel infinitesimal. O sea, es la solución matemática. La función cuantil yo la puedo dividir con toda la calidad que ustedes quieran.
+Si la función cuantil la parto en cuatro pedazos, se me vuelven cuartiles. Si lo parto en diez, se me vuelven deciles. Si lo parto en mil y así sucesivamente. ¿Cómo se obtiene la función cuantil? Pues les cuento que la definición de la función cuantil es así de sencilla. Entonces vamos a anotarla como una Q, como la Q de allá.
+Vamos a colocar en el subíndice la variable aleatoria x.
+Y la variable que se va a evaluar la vamos a llamar p porque nos vamos a dar cuenta que representa los valores de probabilidad. Entonces, a diferencia de las variables que hemos visto, como la pdf o la cdf, cuya x es la variable aleatoria, la función cuantil tiene como x.
+Probabilidades desde cero hasta uno.
+Y la razón es que se define como la inversa.
+De la función acumulativo.
+¿Listos?
+¿La inversa, se acuerdan de la función inversa?
+Cualquier inverse.
+Ejemplo.
+Vamos a hacer aquí un paréntesis.
+Cuando ustedes en el colegio vieron, por ejemplo, tengo la función.
+2 x más 3.
+Y les decían, calcule la inversa de la función y igual a 2 x 3 que hacían.
+
+MIGUEL ANGEL RODRIGUEZ REYES   1:15:32
+We had X.
+
+HANS IGOR LOPEZ CHAVEZ   1:15:34
+Despejar X bien, Miguel Ángel. Entonces uno decía sí, esta es la función mi inversa es Y menos 3 igual a 2 X, o sea, X igual a Y menos 3 sobre 2. Sí, despeje bien.
+Sí.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:15:56
+Disney.
+
+HANS IGOR LOPEZ CHAVEZ   1:15:57
+Listo, entonces esta es la función.
+
+MIGUEL ANGEL MOLINA NOVA   1:15:57
+She's any.
+
+HANS IGOR LOPEZ CHAVEZ   1:16:01
+Esa sería la acumulativa.
+Y al despejar esta es la función cuantil. Entonces por eso cambia la variable, si ven aquí la variable era x.
+Aquí es J.
+En el caso de las acumulativas, esta era x y al despejar la y se llama es probabilidad, por eso depende de P. Entonces veamos un ejemplo ya concreto aterrizando esto a ver si es verdad tanta belleza. Entonces, ejemplo concreto de cómo calcular una función con til. Entonces supongamos que tenemos.
+¿T 2 puntos Omega flechita R, se acuerdan cómo se lee eso?
+No.
+T 2 puntos Omega flechita R.
+We know.
+
+MIGUEL ANGEL RODRIGUEZ REYES   1:16:59
+Este este, bueno, este está compuesto por el espacio muestral, el cual está en el domingo.
+
+HANS IGOR LOPEZ CHAVEZ   1:17:01
+No.
+T es una bien.
+Más fácil, más fácil. Miguel Ángel, sí, o sea, sí, le entiendo. Este es el conjunto dominio.
+
+MIGUEL ANGEL RODRIGUEZ REYES   1:17:14
+Sí.
+
+HANS IGOR LOPEZ CHAVEZ   1:17:14
+¿Y este es el conjunto codominio, bien, pero todo esto significa algo que te es qué?
+
+JUAN SEBASTIAN CASAS BARBOSA   1:17:22
+Variable aleatorio.
+
+HANS IGOR LOPEZ CHAVEZ   1:17:23
+Exacto, muy bien, entonces esto se lee como t es una variable aleatoria.
+
+MIGUEL ANGEL RODRIGUEZ REYES   1:17:25
+Yes.
+No.
+
+HANS IGOR LOPEZ CHAVEZ   1:17:29
+Listo Miguel Ángel.
+
+MIGUEL ANGEL RODRIGUEZ REYES   1:17:30
+Do.
+
+HANS IGOR LOPEZ CHAVEZ   1:17:31
+Listo, entonces t es una variable aleatoria y para más piedra quiero que t se distribuya.
+Exponencial.
+Con parámetro lambda, así para que coincida con nuestros ejercicios de las colas.
+Entonces, si eso pasa, la función de distribución acumulativa exponencial, que en este caso ya no es FX, sino F sub t porque hoy se me dio por cambiar x por t.
+Entonces, si ustedes recuerdan, eran 2 valores, la función valía ser para los negativos.
+Y valía creo que uno menos e a la menos lambda x, pero el profe hoy se le dio por escribir t cuando t es mayor, igual que cero. Si era esa la acumulativa de la exponencial.
+Revisen sus apuntes a ver si sí, por favor.
+Están revisando los apuntes.
+
+MIGUEL ANGEL RODRIGUEZ REYES   1:19:01
+Sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   1:19:02
+Sí.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:19:02
+Sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   1:19:03
+Y si es esa.
+Pero en vez de ts y a x.
+
+MIGUEL ANGEL RODRIGUEZ REYES   1:19:10
+Exacto, lo que cambió.
+
+HANS IGOR LOPEZ CHAVEZ   1:19:12
+Listo, listo, bien.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:19:13
+Esa está bien, sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   1:19:14
+Listo, entonces esa es la función. ¿Entonces, cuál es el truco para hallar la inversa? Pues me toca escribirla de la forma ye igual a algo, pero no yp. Entonces, como ustedes recuerdan, la función acumulativa me da directamente la información de la probabilidad de los menores o iguales que cualquier número real.
+Y esa probabilidad es un número entre 0 y uno. Entonces lo que voy a hacer es convertir.
+Esa F en una Pp igual.
+Y para calcular la inversa no me sirve el valor de cero porque cuál es el inverso. Sí, o sea, yo no puedo despejar. Entonces voy a coger el valor que es diferente de cero, el que depende de t.
+Y mi tarea es despejarte. Cuando despejete, esa va a ser la función cuantil. Ese es el ejercicio. Entonces los invito a que me ayuden a despejarte, ustedes que son así súper rápidos para despejar.
+
+MIGUEL ANGEL RODRIGUEZ REYES   1:20:08
+Sí.
+
+HANS IGOR LOPEZ CHAVEZ   1:20:13
+Háganlo con calma y me cuenta cuánto da te te da.
+Listos.
+Todavía no, okey.
+Alguien ya le te di.
+Y se conectó Víctor, mientras tanto saludemos, qué más Víctor.
+
+VICTOR MANUEL TORRES BELTRAN   1:21:10
+¿Qué más, profe, cómo está sigue esperando, profe?
+
+HANS IGOR LOPEZ CHAVEZ   1:21:11
+Todo bien.
+Aquí que le que le manda decir el profe que usted llega tarde también a las clases asistidas por TIC y que también le manda decir al profe que le quedó bien la tarea.
+
+VICTOR MANUEL TORRES BELTRAN   1:21:14
+Solo sé.
+No, profe sí.
+Gracias, profe, no, profe, es que tengo reuniones en el trabajo y es por eso.
+
+HANS IGOR LOPEZ CHAVEZ   1:21:26
+Listo.
+Um.
+Esa excusa ya me la dijo Jason. Ya Jason. No, es que es que me mandaron a una reunión, profe. Y yo no nos expliqué nada. No, sí, profe, es que tengo una reunión. Y por eso llegué lavadito, dijo así. También llegó lavado también. Sí, estaba yo bien. Estaba bien.
+
+VICTOR MANUEL TORRES BELTRAN   1:21:43
+Claro, profe, la responsabilidad, profe.
+Llegué lavadito, sí.
+
+HANS IGOR LOPEZ CHAVEZ   1:21:50
+Okey, listo.
+Bien.
+
+VICTOR MANUEL TORRES BELTRAN   1:21:53
+Profe, pues según yo tendría entendido, se se aplica logaritmos, o sea, se pasa, se pasa ese uno al otro lado de restar.
+
+HANS IGOR LOPEZ CHAVEZ   1:21:57
+Steve.
+Sí.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:21:58
+Hmm, Tim.
+
+HANS IGOR LOPEZ CHAVEZ   1:22:00
+Exacto, hagámosle bien entonces el uno del otro lado, entonces si quiere dejamos la exponencial a la izquierda.
+
+VICTOR MANUEL TORRES BELTRAN   1:22:06
+Correcto.
+
+HANS IGOR LOPEZ CHAVEZ   1:22:07
+Y aquí la P a la derecha, listo y después logaritmo.
+
+VICTOR MANUEL TORRES BELTRAN   1:22:09
+Sí, de una vez ese menos también lo paso así, profe, se aplican logaritmos a ambos lados.
+
+HANS IGOR LOPEZ CHAVEZ   1:22:13
+Entonces quedaría el logaritmo de y el logaritmo a tocar logaritmo natural, ¿no?
+
+VICTOR MANUEL TORRES BELTRAN   1:22:19
+Sí.
+
+HANS IGOR LOPEZ CHAVEZ   1:22:20
+Listo, logaritmo natural de uno menos p.
+
+VICTOR MANUEL TORRES BELTRAN   1:22:24
+Correcto y ya divide entre ese menos landa.
+
+HANS IGOR LOPEZ CHAVEZ   1:22:29
+Exacto, entonces queda menos 1 sobre Landa, logaritmo natural de uno menos p.
+Eso.
+Sí.
+
+VICTOR MANUEL TORRES BELTRAN   1:22:39
+Sí, profe, sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   1:22:40
+Esa es la función cuantil, o sea que ya quedó despejado la t, o sea que si quiere le quitan esta ty la t es q, entonces la función cuantil.
+Que depende de P, como habíamos anticipado.
+Es igual.
+A ti.
+Listo, despeja ante y esa es la función cuantil. Entonces ya tenemos o acabamos de calcular la función cuantil de la exponencial. Pues les cuento que ya con eso hacen muchas cosas. Con eso pueden hacer 3 cosas. O sea, como dicen por ahí, sirve para 3 cosas.
+La función cuantil.
+¿Entonces, para qué sirve la función cuantil que acabamos de calcular entonces número uno?
+La función cuantil describe una variable aleatoria. ¿Cómo así? Sí, recuerden que uno necesita uno de 2 cosas originalmente, o saber la PDF o saber la CDF.
+Porque ambas se pueden encontrar. Hay una relación matemática entre las 2. Recuerden que la PDF es la derivada de la acumulativa, ¿cierto?
+Sí.
+
+VICTOR MANUEL TORRES BELTRAN   1:23:58
+Sí, pero fue correcto.
+
+HANS IGOR LOPEZ CHAVEZ   1:24:00
+Listo. ¿Y por qué necesito la PDF? Porque la PDF es el núcleo de las esperanzas matemáticas. Yo siempre calculo el producto punto de una función con la PDF.
+Entonces, saber la PDF es todo en variables aleatorias. Entonces, ¿cómo describo la variable aleatoria? Con la PDF o con la CDF, porque de ahí la puedo derivar y tengo la p y con la cuantil puedo hacer toda la vuelta. Entonces, si ustedes tienen la función cuantil, le hacen la inversa.
+Tendrían la acumulativa, la derivan y tienen la PDF. Entonces, con alguna de las tres pueden describir una valoratoria con la PDF, con la CDF, con la cuantil. Es la primera razón por la cual esta función es importante. Pero bueno, no se lee mucha aplicación.
+La segunda aplicación la vamos a ver inmediatamente. Entonces voy a tratar de hacer esta gráfica en la siguiente parte del tablero. Ustedes me van a ayudar a hacer el bosquejo de esa gráfica.
+¿Cómo sería la gráfica de lo voy a poner por aquí ahorita lo borro?
+Listo, entonces grafiquita.
+¿Entonces, cómo creen ustedes que es la gráfica?
+Estando en el eje XPY en el eje YQDT.
+De la función menos 1 sobre lambda, logaritmo natural de uno menos p.
+Empecemos cuando p vale cero, cuando p vale cero da logaritmo de uno.
+¿Y logaritmo, independientemente de la base de uno, es igual a cuánto?
+
+VICTOR MANUEL TORRES BELTRAN   1:25:44
+A cero.
+
+HANS IGOR LOPEZ CHAVEZ   1:25:45
+A cero, recuerden que la idea del logaritmo es que tengo una base y la elevo un exponente.
+¿Sí te la pregunta es a qué exponente lo debo elevar para que me de uno?
+Hacer cualquier número real elevado a la cero, tú da cero, bueno, real diferente de cero.
+O sea que empieza el cero la gráfica aquí en el origen.
+Y luego, cuando Pp siempre va a ser menor que uno. O sea, que este logaritmo siempre va a ser de un número menor que uno. Los logaritmos de números menores que uno siempre son.
+
+VICTOR MANUEL TORRES BELTRAN   1:26:24
+Fraccionarios.
+
+HANS IGOR LOPEZ CHAVEZ   1:26:25
+No son exacto, son menores que uno y uno, y no solo menores que uno, son incluso menores que.
+
+VICTOR MANUEL TORRES BELTRAN   1:26:26
+Menores que uno.
+
+HANS IGOR LOPEZ CHAVEZ   1:26:38
+Hagan la prueba con la calculadora logaritmo natural de 0.5.
+
+MIGUEL ANGEL RODRIGUEZ REYES   1:26:44
+Negativos.
+
+HANS IGOR LOPEZ CHAVEZ   1:26:45
+Negativos con el menos de afuera, el resultado va a ser positivo, o sea, que esta función cuantil da por acá arriba.
+¿Ahora, cómo sería la forma? Entonces, um, pregunta, ¿será que la gráfica es recta?
+O será cóncava hacia arriba o será cóncava hacia abajo.
+¿Ustedes qué creen?
+
+VICTOR MANUEL TORRES BELTRAN   1:27:12
+No sé si está mal, pero por el por el por el negativo será con cava hacia abajo.
+
+HANS IGOR LOPEZ CHAVEZ   1:27:17
+Y.
+Bien, sí.
+La verdadera razón es que cuando se deriva la función, uno mira si el resultado da positivo o negativo y sí.
+Tiene toda la razón al derivar, le va negativo y toma tú.
+Concava hacia arriba.
+Más o menos así entonces les va a quedar bien bonita. De hecho, esta gráfica tiene una asíntota aquí vertical justo en uno.
+O sea que esta es ya para borrar la gráfica de.
+Menos 1 sobre el anda, logaritmo de uno menos 3.
+Acá aprovechando el 2 horas.
+Si escucharon el pitido del carro.
+
+VICTOR MANUEL TORRES BELTRAN   1:28:08
+Sí.
+
+HANS IGOR LOPEZ CHAVEZ   1:28:10
+Okay, listo, ahí está. Esa es la gráfica. Bueno, ustedes dicen, bueno, ¿y cuál era la segunda aplicación? La primera hora para escribir una hora aleatoria. La segunda, como dicen los vídeos de YouTube, les va a sorprender.
+¿Entonces Jason me copia?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:28:28
+Perfecto.
+
+HANS IGOR LOPEZ CHAVEZ   1:28:30
+Lo veo escogiendo un número al azar entre cero y uno.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:28:35
+Punto 5.
+
+HANS IGOR LOPEZ CHAVEZ   1:28:37
+Listo, entonces Jason escogió al azar punto 5 pin.
+Ese punto 5, ustedes lo evalúan en la función cuantil, o sea, lo ubican aquí en la gráfica.
+Y ese número, no me van a creer, se distribuye exponencialmente. O sea, acabo de generar un número exponencial aleatorio, Jason.
+Y son en serio.
+Y eso que está sorprendido, quedó mudo.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:29:12
+Pero o sea, cualquier número me va a dar.
+
+HANS IGOR LOPEZ CHAVEZ   1:29:13
+Deme otro número, Jason, cualquier número, deme otro, deme otro.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:29:15
+Punto 8.
+
+HANS IGOR LOPEZ CHAVEZ   1:29:18
+Listo, entonces el punto 8 lo evalúa en la función cuantil, o sea, reemplaza aquí punto 8 y lo que le dé es un número exponencialmente distribuido. O sea, es un número que obedece a la distribución exponencial, esa que no tiene memoria.
+Así de fácil es, pues les cuento que eso que acabamos de hacer es lo que llamamos el método de la transformación inversa.
+Entonces escríbanlo ahí.
+La razón más importante de que hoy estuvemos hablando de la función cuantil es por el método de la transformación inversa.
+Ya lo habíamos.
+Usado.
+Con las variables aleatorias discretas, la función B a usa ese método.
+No transforma, no transformación, perdón.
+Tiene 2 pasos, paso uno, se genera un número p distribuido uniforme.
+Con parámetros cero y uno.
+Alias.
+Alias lo voy a poner en verde, viste verde será que se puede poner verde tipo matlab. ¿Cuál es el verde matlab, el clarito o el oscuro? El de los comentarios.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:30:39
+Clarito.
+
+HANS IGOR LOPEZ CHAVEZ   1:30:41
+Clarito, listo.
+Este es el primer paso, p igual a randa.
+La función RAN recuerden que es una algoritmo pseudo aleatorio que tiene distribución uniforme con parámetros cero y uno. O sea, que ese es el primer paso y el segundo paso Jason es evaluar SP en la función cuantil ya.
+Ya se acabó.
+Es el método de la transformación.
+Súper simple y poderoso. ¿Eso qué quiere decir? Que yo si quiero generar números aleatorios, solo necesito saber cuál es la función cuantil y tener un generador de números uniformes. Se acabó.
+Es más.
+Pero ustedes no me creen, yo ya los vi que no me creen. Cierto, Jason, que no me creen.
+Quizás no me creen, no me creen. Entonces, como no me creen, nos vamos pa.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:31:48
+I was.
+
+HANS IGOR LOPEZ CHAVEZ   1:31:55
+¿Entonces ya están viendo la pantalla, el computador?
+Aquí que estoy cambiando entre aplicaciones, listo. Entonces, como no me creen, vamos a hacer el siguiente truco.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:32:00
+Sí, señor.
+
+VICTOR MANUEL TORRES BELTRAN   1:32:01
+Sí, señor.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:32:05
+Yo te remembers el primer paso.
+
+HANS IGOR LOPEZ CHAVEZ   1:32:07
+En un nuevo archivo en blanco van a escribir extrnd.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:32:10
+Segundo paso.
+
+HANS IGOR LOPEZ CHAVEZ   1:32:15
+¿Ese es la Esa es la función de Matlab que genera números pseudo aleatorios exponenciales, cierto?
+Sí.
+Si es esa.
+Digo que sí.
+Digan que, por favor, ayúdenme porque si no el profe se que aquí esperando a que alguien diga que sí, y por eso es que me demoro más en las clases virtuales. En cambio, cuando estoy en la presencia yo los veo y no he perdido. Entonces trato de explicar o cuando los veo que están prestando atención y hacen sí, sí, fue muy más rápido. Entonces esa es.
+
+MIGUEL ANGEL RODRIGUEZ REYES   1:32:39
+sí.
+
+HANS IGOR LOPEZ CHAVEZ   1:32:57
+Clic derecho sobre la palabrita que escribieron y dentro de todas las opciones observen la primera, dice abra el archivo.
+Open EXPRND.
+La vamos a abrir.
+Entonces MATLAB abre el archivo que utiliza para esa función. Entonces dice R es igual a EXP random, devuelve el número R que debe ser un número, es una matriz con parámetro MU y con otro que es el número de argumentos.
+Y entonces aquí viene la ayuda. Dice, genero arreglos aleatorios de la distribución exponencial. Y está ahí los diferentes casos. Es más, fue así como yo me enteré de cómo Matlab escribía los textos de ayuda. Entonces yo, ah, si es que lo hace, entonces me lo voy a copiar. Entonces, en las funciones que yo veo que uso con bastante frecuencia,
+Como por ejemplo PDF CF continua. Le coloco este texto así con comentarios. Solo después de la función uno escribe el texto y ya queda la ayuda. El nombre de la función, si se pone en mayúsculas, cuando se ejecute el comando help, va a quedar, no en mayúsculas, sino va a quedar en negrilla.
+La lógica que usa Manla para los textos de ayuda, listo.
+No, que no.
+Jason.
+Ya dice XP Random usa el método de inversión, o sea, el método de la transformación inversa. Pero eso no es suficiente, Jason, póngale cuidado.
+Ay.
+Línea 33, Jason, lo voy a achicar para que vean todo lo que dice ahí. Dice línea 33. Se generan valores aleatorios uniformes. Primer paso del método, ¿cierto?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:34:45
+Uniformes.
+
+HANS IGOR LOPEZ CHAVEZ   1:34:56
+Y se aplica la acumulativa inversa exponencial.
+Recuerden que la inversa de la acumulativa es la cuantil, o sea, y aplico la función cuantil.
+Y por si acaso, pues después del comentario ponen la ecuación. Entonces dice R es igual a menos, el menos que nos dio de menos uno sobre lambda. Mu. Recuerden que en para Matlab el parámetro es el valor promedio y el valor promedio es uno dividido entre lambda en la distribución exponencial.
+Para ellos es smooth.
+Luego lo multiplican por logaritmo, es más lab log es el logaritmo.
+Neperian no es el logaritmo en base 10. La función para el logaritmo en base 10 es log 10. O sea, este es LN y RAND es el que genera números uniformes. Entonces ustedes van y miren dice, profe, pero era uno menos p, no importa. Uno menos p si p es un número aleatorio entre cero y uno.
+va a tener resultados equivalentes o similares a los de solo p. O sea, si p es un número entre cero y uno, uno menos p también lo es. Entonces, más la app se ahorra esa operación, no es necesaria. Ahí está. Más la app utiliza el método de la transformación inversa para generar números exponenciales.
+¿Cómo la vio Jason?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:36:20
+Perfect.
+
+HANS IGOR LOPEZ CHAVEZ   1:36:22
+Se pasa, sí o no, muy ásperos, que se inventó eso ya listo. Entonces, ah, listo, nos vamos a hacer la prueba. Entonces, aquí en los apuntes de clase está el ejemplo de la función exponencial, tal cual como está en el tablero. Hice la gráfica para que la veamos todos hoy.
+Y entonces veámoslo el texto de la gráfica. Escogí un lambda de uno, voy a hacer la gráfica desde cero hasta cero nueve nueve, porque si ustedes se dan cuenta cuando esto se acerca al valor de cero, pues el logaritmo se acerca al valor de infinito. Entonces hay que tener cuidado.
+No se puede poner uno porque entonces logaritmo de cero le va a dar inf en mal lado, entonces voy a colocar 0,999.
+Evalúa la función menos 1 sobre lambda, o sea, el mu logaritmo de uno menos p. Les coloqué el comentario que el log es logaritmo natural y lo 10 es logaritmo en base 10 y hago la gráfica.
+Veanla, sí era cóncava.
+Hacia abajo.
+Hacia abajo, perdón, cóncava hacia arriba, si es cóncava hacia arriba.
+
+VICTOR MANUEL TORRES BELTRAN   1:37:36
+Lo ve, o sea que sí se.
+
+HANS IGOR LOPEZ CHAVEZ   1:37:37
+Ahí se conectó Jesús.
+
+VICTOR MANUEL TORRES BELTRAN   1:37:39
+Profe, eso quiere decir que si se derivara, bueno, y obviamente era un resultado positivo sería con casi abajo, sí.
+
+HANS IGOR LOPEZ CHAVEZ   1:37:40
+Señor.
+Sí, claro, es que venga, hacemos la derivada, la derivada del logaritmo, si se acuerda cómo da.
+
+VICTOR MANUEL TORRES BELTRAN   1:37:53
+no me acuerdo, la verdad no era uno.
+
+HANS IGOR LOPEZ CHAVEZ   1:37:54
+La de un uno sobre X.
+
+VICTOR MANUEL TORRES BELTRAN   1:37:56
+Uno sobre X, sí, es.
+
+HANS IGOR LOPEZ CHAVEZ   1:37:57
+Entonces le va a dar menos uno sobre Landa y en el denominador al Lambda lo acompaña por uno menos p y por la derivada interna y la derivada interna es menos uno. ¿Eso qué quiere decir? Que el menos del menos uno sobre Landa se le va a cancelar con el menos de la interna. O sea que la derivada solo le queda
+
+VICTOR MANUEL TORRES BELTRAN   1:38:04
+Ya.
+Mhm.
+Qué positivo.
+
+HANS IGOR LOPEZ CHAVEZ   1:38:17
+Uno sobre Landa por uno menos p.
+
+VICTOR MANUEL TORRES BELTRAN   1:38:22
+Ya.
+
+HANS IGOR LOPEZ CHAVEZ   1:38:23
+Y Landa sobre 1 1 menos P es positivo, o sea que sí está bien la concava hacia arriba.
+
+VICTOR MANUEL TORRES BELTRAN   1:38:26
+Claro, o sea que ya, o sea, se había concado hacia abajo, entonces si fuera negativa.
+
+HANS IGOR LOPEZ CHAVEZ   1:38:32
+Exact.
+
+VICTOR MANUEL TORRES BELTRAN   1:38:33
+Ya listo, profe, gracias.
+
+HANS IGOR LOPEZ CHAVEZ   1:38:34
+Ajá, listo, bien, con gusto. o K, entonces ahí está la gráfica. Entonces vamos a proponer un número entre 0 y uno cualquiera y team lo que den la gráfica ya es el número aleatorio exponencial.
+Observaciones, es la primera, ya se los dije, ¿para qué sirve? Para tres cosas, la primera, para escribir la barrera aleatoria, la segunda, para generar números con la transforma inversa, me falta la tercera y la tercera es otra aplicación muy importante.
+Uno puede usar la función cuantil para saber si una muestra aleatoria tiene una distribución particular. O sea, alguien me dice, estos números son normalmente distribuidos. Entonces lo primero que ustedes tienen que hacer es dudar de ello. Entonces, ¿qué harían? Pueden usar una herramienta.
+que ya vamos a ver cómo funciona. Se llama la función cucuplot o gráfica cuantil cuantil. Y con esa gráfica yo puedo decir sí, sí, sí, no me engañaron, sus datos se distribuyen normales o decir no, está loco. Esos datos que usted dice que eran normales no lo son. Y eso es un detalle importantísimo. Eso es lo que se le llama en estadística las famosas pruebas de ajustes de bondad.
+Entonces, uno normalmente necesita algún tipo de distribución para calcular algunos estadísticos, algunos estimadores. La mayoría, vamos a ver más adelante en el curso, requieren que la muestra sea normal, pero para que eso se dé, lo primero que hay que hacer es verificar que los datos son normales.
+¿Y cómo lo hago? Por ejemplo, con la cucuplot. Entonces veamos cómo funciona la cucuplot.
+Esto después lo ven la cucu plot, aquí está.
+Esto que me salté es solo la comparación del valor teórico y de datos generados con la exponencial. Entonces luego lo me interesa ahorita revisar es la cucuplot. Entonces se llama así un nombre muy bien puesto porque es una gráfica que tiene en el eje y los cuantiles de.
+sus datos, o sea, un método numérico que trata de obtener la función cuantil. ¿Ya saben cuál es la idea? Organizar los números de menor a mayor y los intervalitos. Entonces eso es lo que hace ese método numérico.
+Y en el eje X, los cuantiles de una referencia.
+Cuando no se indica la referencia, los cuantiles.
+Se asumen que son normal estándar. Entonces creo que esto es más chévere que lo hagamos entre todos. Entonces los invito a que en el archivo nuevo que abrieron de Matlab.
+Le pongan, lo salven como prueba.
+Cucu.
+Vamos a probar esa función ya existe.
+Bien, entonces primer ejemplo.
+Muestra normal.
+No.
+O bueno, pongámoslo así, cucuplot.
+Para muéstralo.
+El ejemplo de ahorita me dicen, estos datos son normales y ustedes no creen, no están totalmente satisfechos con que les digan que son así y necesitan hacer la prueba. Por ejemplo, están probando algún algoritmo de inteligencia computacional y el algoritmo dice, si los datos son normales, tienen.
+Los podemos clasificar correctamente. Uy, hay que hacer primero esta prueba. Entonces empecemos con la muestra normal.
+¿Entonces, qué voy a hacer? Voy a generar números aleatorios normalmente distribuidos con cierto mu y cierto sigma.
+Les pregunto como no estamos en Biobin, sino en los computadores de sus casas, cierto que se ve muy grande. ¿Le puedo cambiar un poquito el tamaño o alguno está viendo esto en el celular?
+
+VICTOR MANUEL TORRES BELTRAN   1:42:37
+No, pues como su mercequiera, profe.
+
+HANS IGOR LOPEZ CHAVEZ   1:42:41
+No hay problema, es que ustedes, o sea, ustedes tienen de sus como monitores gamer, cierto que son así extra amplios así.
+
+VICTOR MANUEL TORRES BELTRAN   1:42:41
+Mi parte yo lo veo bien.
+A veces sabe.
+Obviamente, profe.
+
+HANS IGOR LOPEZ CHAVEZ   1:42:52
+O K O, K, entonces como usted, ustedes a ver, es que está muy grande y tampoco. De hecho, ahí lo veo muy grande.
+
+VICTOR MANUEL TORRES BELTRAN   1:42:54
+No mentiras.
+
+HANS IGOR LOPEZ CHAVEZ   1:43:02
+Pero ahí lo ven bien. Si alguno dice no, ya está muy chiquito, tranquilo, yo no pongo más.
+
+VICTOR MANUEL TORRES BELTRAN   1:43:09
+Porque por mi parte yo considero que está bien.
+
+HANS IGOR LOPEZ CHAVEZ   1:43:11
+Perfecto, listo. Entonces MU y Sigma y tamaño de la muestra. Voy a empezar la prueba con tan solo diez mil valores. Entonces voy a proponer un MU. Entonces ahí ya Víctor que estaba en la jugada. Víctor un número real.
+El que se le ocurre.
+
+VICTOR MANUEL TORRES BELTRAN   1:43:32
+Yeah.
+
+HANS IGOR LOPEZ CHAVEZ   1:43:33
+Sí.
+
+VICTOR MANUEL TORRES BELTRAN   1:43:35
+3 medios.
+
+HANS IGOR LOPEZ CHAVEZ   1:43:37
+3 medios, listo, 3 medios.
+Y ahora necesito sigma. Sigma es la desviación estándar. Entonces ahora necesito un valor de desviación. Ese tiene que ser un número real, pero positivo.
+Si lo pone muy grande, pues nuestra distribución normal va a quedar muy dispersa y si lo pone muy chiquitico, muy chiquitico va a quedar súper angostica y puntuita. Entonces un número así que tampoco, tampoco sea tan exagerado. Eso, por ejemplo, un dos me gusta. Entonces sin más dos.
+
+VICTOR MANUEL TORRES BELTRAN   1:43:58
+Claro.
+No problem 2.
+
+HANS IGOR LOPEZ CHAVEZ   1:44:13
+Listo, entonces mi sospecha. Bueno, nosotros ahorita estamos haciendo el ejercicio con trampa. Sabemos que es una normal, ahí vean.
+Smart Lab nos está espiando solo porque el comentario decía cucuplot ya me pone la sugerencia, pero pues no lo voy a hacer así, lo va a hacer cucuplot.
+Muestra.
+Ya.
+Eso es F 5, por favor.
+Tal esta gráfica, voy a achicarla un poquito para que los que están haciendo el ejercicio conmigo.
+Vean el código.
+No.
+A todos les dio eso.
+Algo parecido.
+Yep.
+
+MIGUEL ANGEL MOLINA NOVA   1:45:19
+A mí me da igual.
+
+HANS IGOR LOPEZ CHAVEZ   1:45:20
+Listo, perfecto, igual de pronto no, yo creo que muy parecido.
+¿Por qué? Porque estamos generando números aleatorios y yo ya he ejecutado varias instancias de random, ¿cierto? Entonces es posible que mis numeritos aleatorios sean diferentes a los de ustedes. Si todos es la primera vez que ejecutan la función norm RND, pues a todos sí les va a dar la misma gráfica.
+Bien importante, entonces título de la gráfica dice, esta es la gráfica cucuplot de la muestra de los datos de muestra versus.
+Normal estándar, recuerden que la normal estándar es aquella que tiene media cero y desviación uno.
+Entonces en el eje Y se hace la gráfica de los cuantiles de la muestra y en el eje X los cuantiles de la referencia. Entonces esa es la idea. Estoy tratando de sacar los cuantiles, la grafiquita esa que teníamos ahorita parametrizada para P.
+la que era cóncava hacia arriba, que empezaba en cero versus algo que tiene la misma gráfica. Entonces, si ambas tienen la misma gráfica, la expectativa es que cuando elimine el parámetro p u me de una línea recta.
+Entonces, por eso es tan poderoso este método, porque visualmente uno ya puede descartar que sus datos obedecen o perdón, no obedecen a lo que le dicen. Si me da una línea recta,
+Sus datos sí tienen la distribución de referencia. Si los puntos no quedan sobre la línea recta, si se escachan totalmente, es otra distribución. Así de sencillo es el ejercicio.
+En este caso MATLAP nos ayuda colocando la línea recta punteada en rojo. Si la alcanzan a notar, está muy tenue acá. De pronto en la transmisión se ve aún peor, pero yo creo que la mayoría alcanza a ver que debajo hay una línea roja.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:47:18
+No, y se alcanza a ver, profe.
+Did you?
+
+HANS IGOR LOPEZ CHAVEZ   1:47:23
+Y así uno sabe si estás, si la distribución es o no es, los puntos deberían quedar sobre la línea roja.
+Importante, observen que los puntos la mayoría están sobre la línea roja aquí en toda esta mitad, pero en los extremos al inicio y al final los punticos se escacharon, ya no están sobre la línea roja, por ejemplo, estos.
+Se alcanzan a ver unos 3 puntos que son como unas cruces. Entonces, como yo creo que ya todos ejecutaron el código, lo va a poner tamaño familiar. Vean estos punticos de acá.
+Y lo mismo al comienzo.
+Eso está bien.
+¿Y como así profe, no que tenían que dar sobre la línea? Sí, pero entonces la idea es interpretar esta gráfica. Esta gráfica son de los cuantiles de una distribución normal. ¿Esto qué quiere decir? Recuerden que la distribución normal, todos los números están de menos infinito a infinito, pero la mayoría, la gran mayoría están alrededor de la media.
+Eso quiere decir que muy pocos valores están por allá en la colita inicial y por allá en la colita final. Cuando yo comparo esas muestras estadísticas va a haber valores que coincidan. Entonces es posible que en mi muestra aleatoria haya un número de esa colita.
+Pero también es posible que no esté, que no exista. Y cuando eso pase, pues entonces no van a coincidir perfecto los puntos de mi referencia con los puntos de la muestra. Por eso es que en los bordes de la distribución normal se pueden dar esos puntos que no cuadran.
+Los que les deben preocupar son los del medio, porque los del medio son los de más alta probabilidad. Si esos no coinciden, definitivamente los resultados, su muestra, perdón, nos obedece a una distribución normal.
+Entonces hay 2 conclusiones, la primera es que cuando los puntos están más tupiditos, más unidos, más concentrados, cuando la gráfica es más densa, es cuando hay más probabilidad.
+Cuando los puntos están más dispersos, estos de acá a mí me representa números de baja probabilidad de ocurrencia, devolviéndome la gráfica de la PDF que estoy en el principio de la cola izquierda y al final de la cola derecha, área bajo la curva pequeñita.
+Entonces, repito, ojo, porque estos análisis son los que yo quiero ver en la actividad cuatro que aún no hemos mencionado. ¿Cuál es la actividad cuatro? Van a ser unas funciones y las funciones las van a verificar con esta cucuplot. Entonces la gráfica sale en Matlab. Yo les paso el código para que salga la gráfica.
+Lo que me interesa a mí es que ustedes hagan el ejercicio y logren interpretar los resultados de esas gráficas y parte de los análisis tienen eso. Entonces repito esa parte, yo creo que es importante donde la gráfica esté más densa, donde la densidad de cruces sea más alta, o sea, donde esté más tupido, por decirlo así, en palabras coloquiales.
+Es donde hay más probabilidad de ocurrencia, o sea, donde la PDF tiene mayor área.
+Y en los puntos que están muy dispersos, donde se alcanzan a ver las cruces, son regiones de baja probabilidad. Entonces, en este caso, observen la normal estándar. ¿Qué dice esto? Que la normal tiene alta probabilidad, más o menos entre menos tres y tres. Y sí, tiene sentido.
+Cuando uno hace una gráfica normal estándar entre menos 3 y 3 está la mayor parte de la campana, pero ya cuando me estoy alejando del 3, por ejemplo, de 3 a cuatro o de menos 4 a 3, la campanita ya está en las colitas.
+Ahora, si nos vamos por el eje Y, que es nuestra muestra aleatoria, aquí lo que me dice es que las colas están como entre menos 6 y menos 4 y la otra cola va como desde 8 hasta 10 más o menos.
+Y la mayoría está por aquí en la mitad. Entonces observen que esa observación, perdón por la redundancia, me permite identificar un parámetro de la distribución normal.
+¿Cómo harían ustedes para saber cuál es el promedio de sus datos? ¿Cuál es el mío de sus datos normales? ¿Qué harían en esta gráfica para decir a pues el mío es cuando si hay?
+A ver si alguien se la pilló.
+El mío es cuando sí, claro, cuando.
+Cuando uno llega ahí, sí.
+Y.
+Y entonces llega uno y toma tu mew.
+¿Cierto, y alguien te la pilló?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:52:23
+No proving.
+
+HANS IGOR LOPEZ CHAVEZ   1:52:25
+Vale, vale, vale.
+¿Están viendo el bocaillo?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:52:30
+To you.
+
+HANS IGOR LOPEZ CHAVEZ   1:52:32
+Malo ahí está ya.
+En una cucuplot de datos normales, Jason, usted ubica el valor de cero.
+Y el valor de cero que aquí en la y es 1,48.
+Es su valor de miu de su muestra. O sea, que yo con la cucuplot puedo estimar cuánto vale más o menos el miu de mi muestra estadística y pues en este caso nos dio porque se acuerda que Víctor se inventó que miu era 3 medios. Miu es 1,5, o sea, en teoría.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:53:07
+sí, señor, sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   1:53:08
+Me tendría que dar exactamente 1,5 como son números aleatorios, pues no me va a dar exactamente ese número.
+Pero vean, entonces, segunda ventaja de la kukuplot. La primera, si están perfectamente alineados, los datos tienen la distribución, que es en este caso normal. Segundo, donde esté más denso es donde hay mayor probabilidad y donde estén las cruces dispersas, poquita probabilidad. Tercero.
+El valor en cero me estima miu, o sea, yo miro en cero cuánto vale y me dice 1,48. Listo, toma tu miu. Alguien puede sospechar si con la gráfica yo puedo estimar la desviación estándar. Sigma.
+Vean la gráfica y digan, pues yo creo que el sigma sale con.
+Yo les ayudo, es un sustantivo femenino.
+Empieza con esfero en inglés.
+Y termina con tooth en español.
+¿Tan serios, con qué?
+No se la pillaron, no este sí están conectados a la clase.
+O me están grabando.
+Jason, me están grabando.
+
+MIGUEL ANGEL RODRIGUEZ REYES   1:54:49
+Is it good?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:54:49
+No, sí, la verdad.
+
+HANS IGOR LOPEZ CHAVEZ   1:54:50
+¿Alguien inició la grabación?
+
+MIGUEL ANGEL RODRIGUEZ REYES   1:54:53
+No.
+Oh, no sé.
+
+HANS IGOR LOPEZ CHAVEZ   1:54:56
+A bueno, y entonces porque es que normalmente cuando ponen a grabar la clase se van y ya y dicen está grabada la clase, luego miramos.
+
+MIGUEL ANGEL RODRIGUEZ REYES   1:55:02
+No.
+New.
+
+HANS IGOR LOPEZ CHAVEZ   1:55:05
+¿Están comiendo?
+Ay, la pendiente, entonces vamos a ver.
+
+MIGUEL ANGEL RODRIGUEZ REYES   1:55:17
+Hmm.
+
+HANS IGOR LOPEZ CHAVEZ   1:55:19
+Pendiente, empieza con el cero.
+En inglés.
+Y termina con tu en no es de si no.
+No los veis mal listo, entonces voy a tratar de estimar la pendiente entre menos 2 y 2, que es cuando los punticos están como bien sólidos.
+A ver si sí.
+Hay más o menos. Entonces, por favor, calculen el deltalle porque el Delta X iría de menos 2 a 2, el Delta X es cuatro. ¿Entonces, cuánto es 5,393 menos menos 2,5129?
+
+VICTOR MANUEL TORRES BELTRAN   1:56:08
+Como 7,90 y algo.
+
+HANS IGOR LOPEZ CHAVEZ   1:56:11
+Como 7,90 y algo, o sea, casi 8.
+
+VICTOR MANUEL TORRES BELTRAN   1:56:15
+Más o menos sí.
+
+HANS IGOR LOPEZ CHAVEZ   1:56:16
+Sí, y 8 sobre cuatro.
+
+VICTOR MANUEL TORRES BELTRAN   1:56:21
+2.
+
+HANS IGOR LOPEZ CHAVEZ   1:56:21
+Que es la pendiente 2 y usted dijo 2. Ay, sí, véalo.
+
+MIGUEL ANGEL RODRIGUEZ REYES   1:56:22
+Bus.
+
+HANS IGOR LOPEZ CHAVEZ   1:56:28
+If it's.
+Perfecto, entonces en las cucuplot puedo saber si los datos son normales. Puedo saber cuál es una muy buena estimación de la media y cuál es una muy buena estimación de la desviación estándar. La media busco el valor en cero.
+La desviación estándar, calculo la pendiente.
+¿Y eso por qué es importante? Porque estadísticamente existen herramientas para estimar la pendiente y el corte de puntos. ¿Alguno seguramente recuerda las técnicas de regresión lineal, cierto?
+Me has escuchado.
+¿O la han usado alguna vez?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:57:10
+Sí, señor.
+
+VICTOR MANUEL TORRES BELTRAN   1:57:11
+Sí, pero no me acuerdo, profe.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:57:12
+Sí, señor.
+
+JISSEDT ANDREA PACHECO CASTRO   1:57:13
+Sí, profesor, a partir de unos valores conocidos se proyecta lo que puede pasar es.
+
+HANS IGOR LOPEZ CHAVEZ   1:57:14
+Listo.
+No necesariamente es que se proyecte lo que puede pasar. Lo que se hace es calcular unos errores entre cada uno de los punticos que tú tienes en tu observación, o sea, todos estos punticos y una línea. Y la idea o el ejercicio consiste detrás del concepto.
+De hecho, le vamos a dedicar un ratico a la clase, no hoy, sino en otra para hacer esa regresión. Y entonces se minimiza un error y de todos los errores vamos a encontrar que la mejor opción es la suma de los errores al cuadrado. Entonces se suman todos esos del talles.
+pequeñitos y se elevan al cuadrado. La recta que cumple con esa condición es la regresión lineal. Entonces uno puede saber cuánto vale la pendiente y cuánto vale B con unos cálculos. Y nos vamos a dar cuenta que esos cálculos no son más que productos, puntos y multiplicaciones de un vector por la transpuesta del otro y una multiplicación y una división. Son operaciones muy sencillas.
+Entonces, con la regresión lineal yo puedo fácilmente saber cuánto vale el corte.
+Puedo saber cuánto vale la función en cero y, por supuesto, la pendiente, entonces cucuplot.
+O cuantil, cuantil más regresión lineal. Se me convierte en un excelente estimador de mu y de Sigma en lo que llamamos una un ajuste de bondad. Estas son las pruebas de ajuste de bondad. No sé por qué les ponen esos nombres tan raros, pero la idea es saber cuánto valen los parámetros de una distribución.
+Listo.
+Se la pillaron.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:59:05
+Listo, profe.
+
+HANS IGOR LOPEZ CHAVEZ   1:59:06
+Entonces vamos a hacer un ejercicio y entonces para que el ejercicio tenga sentido, yo voy a hacer lo siguiente, me voy a inventar un miu, me voy a inventar un sigma, pero ustedes no lo van a ver. O sea, no voy a compartir esa pantalla. Voy a ejecutar la cucuplot y voy a poner unos punticos y ustedes me dicen quién es quién.
+Les parece bien.
+¿Quién es mío y quién es Sigma?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   1:59:30
+Perfect.
+
+HANS IGOR LOPEZ CHAVEZ   1:59:30
+Thomas.
+
+JISSEDT ANDREA PACHECO CASTRO   1:59:34
+List.
+
+YAN SEBASTIAN MUNOZ GAMBA   1:59:34
+Listo.
+
+HANS IGOR LOPEZ CHAVEZ   1:59:35
+Listo, entonces chao la compartida, espero que no estén viendo.
+Entonces yo llego a Cam, true, me inventó, me un.
+Sí, claro, pues es.
+El mío y un sigma, por ejemplo, si este.
+Listo y le doy F 5 tun.
+Miro que la gráfica haya dado sí y ya les puedo compartir pantalla.
+Listo.
+Y entonces yo les ayudo.
+¿Qué es lo que tengo que hacer? Buscar el valor de.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:00:19
+De cero.
+
+HANS IGOR LOPEZ CHAVEZ   2:00:19
+El de uy casi le pego y donde estén la mayoría de puntos, creo que otra vez entre menos 2 y 2 me gusta listo.
+Y ustedes solo calculan pendiente y el otro día me dicen cuenta.
+Dónde está el menos 2 acá que no lo veo y casi más o menos ahí.
+¿Y el 2 por acá?
+Y nos.
+Ya casi.
+Y listo, listo, ayúdenme con ese cálculo de pendiente y me dice nada, profe, usted puso miude tanto y sigma de tanto.
+
+JUAN SEBASTIAN CASAS BARBOSA   2:01:25
+Mide 5 y 53.
+
+HANS IGOR LOPEZ CHAVEZ   2:01:30
+¿Quién dijo eso?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:01:30
+Correcto.
+
+JUAN SEBASTIAN CASAS BARBOSA   2:01:32
+Y bueno.
+
+HANS IGOR LOPEZ CHAVEZ   2:01:33
+Juan Sebastián.
+
+JUAN SEBASTIAN CASAS BARBOSA   2:01:35
+Sí, sí.
+
+HANS IGOR LOPEZ CHAVEZ   2:01:37
+Como los magos, sí.
+¿Use miue 5 y si metes confirmado entonces en cero la función dio casi 5, vea 4,9918 y cuando hizo el delta y solo el delta X, cuánto le dio exactamente Juan?
+
+JUAN SEBASTIAN CASAS BARBOSA   2:01:55
+Y 3.02.
+
+HANS IGOR LOPEZ CHAVEZ   2:01:58
+3.01 listo, dice bien, entonces perfecto.
+Bueno, ¿qué sucede si mis datos no son normales? Eso es lo otro que hay que hacer.
+Entonces, siguiente ejercicio, porque pues uno si siempre le sale así, pues chévere, pero cuando no, por ejemplo, si ahora la muestra no es normal, sino es exponencial.
+Entonces voy a poner en vez de nord RND, voy a poner XPRND.
+Y aquí coloco mu solo mu y recuerden que para más lab, mu es uno sobre la.
+Y Lambda.
+vamos a inventar por ahora porque sea rapidito le voy a poner dos
+Listo, entonces cucuplot para muestra exponencial con referencia, importante eso.
+normal estándar
+No.
+Se fue.
+F 5.
+A ver cómo quedó mi
+Ahí sí ven cómoda cuando no es.
+O sea, me tendría quedar sobre la línea recta.
+tienes los punticos que estén bien concentrados o sea donde esté esa mancha azul y aquí se nota que la mancha azul aquí chao y aquí chao. Entonces este es un ejemplo cuando le sale algo así de una vez ustedes dicen no no no esos datos no son normales son otros todavía no sé cuáles son.
+Pero no son normales, listo.
+
+JUAN SEBASTIAN CASAS BARBOSA   2:03:54
+Chizen.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:03:54
+Disney.
+
+HANS IGOR LOPEZ CHAVEZ   2:03:56
+Bien, ¿qué pasa en eso? Entonces uno primero hace esta prueba, uno ejecuta la QCPlot con sus datos. Entonces me dijeron que eran normales y uno, no, eso es normal, no, no, no son normales. Entonces toca empezar a probar con las otras. Entonces, uno puede cambiar la referencia cuando no le indica.
+La muestra es la referencia normal estándar.
+Entonces ahora les voy a hacer el mismo ejemplo, pero colocando la muestra que uno sospecha. Entonces ahora cucuplot para muestra exponencial con referencia exponencial.
+O sea, para que me dé una línea recta, entonces para agregarle la referencia a la cucuplot.
+Lo agregan como otra variable.
+¿Listo y entonces?
+Esa referencia debería ser una exponencial también del mismo tamaño.
+Pero con un detalle importante, parámetro uno.
+Stop.
+Desde aquí.
+La referencia tiene.
+Lambda.
+Yeah.
+Y F 5.
+Ahora sí.
+Se la voy a poner así para que vean el código aquellos que están haciendo el ejercicio en sus casas.
+Listo.
+Entonces, de esa manera yo puedo cambiar la referencia que por defecto es normal estándar por la que yo quiera. Entonces sospecho que son exponenciales. No puedo probar con un XP random. Aquí estoy inventándome datos artificiales, pero la idea es que esta muestra sean datos de verdad, por ejemplo.
+los datos que vimos en la clase antepasada de los ritmos cardiacos o los de los laboratorios de velco, los tiempos entre picos R, perdón, los tiempos entre paquetes los podría colocar ahí y el que es XP random es la referencia. ¿Cómo van a quedar?
+Pues alineados, si los datos sí obedecen a esa distribución que yo propongo, lo interesante es lo que ya habíamos revisado.
+¿Te pueden? ¿Me pueden decir dónde están la mayor cantidad de datos, o sea, dónde está concentrada la probabilidad? ¿Entre qué valores más o menos?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:06:26
+Cero 2.2 2.5.
+
+HANS IGOR LOPEZ CHAVEZ   2:06:30
+Exacto, más o menos como de cero a 2, de cero a 2,5 de pronto yo lo incluiría listo, Jason.
+De cero a 2.5 está la mayoría de los datos, porque recuerden que cuando están bien concentrados, cuando hay mayor densidad de cruces, es cuando hay.
+cuando estamos en la mayor área, la mayor probabilidad. O sea, que todos estos puntos de acá que se descacharon no me deberían preocupar porque al ser cruces aisladitas son las de más baja probabilidad de ocurrencia. Entonces, les repito, eso es total normal en una cucuplot. Los puntos que se deben salir de la gráfica o que podrían salirse de la línea roja.
+Son aquellos que están dispersos, si eso pasa bien, pero si los que se descachan de la línea roja es cuando están bien concentrados, ahí si no como en el ejemplo de ahorita.
+Entonces eso que me dice que la mayoría de la probabilidad está entre 0 y 2,5 y que de ahí para adelante los números tienen poca probabilidad de ocurrencia y tiene sentido en una exponencial. La mayoría de valores están en los primeros. Recuerden que la exponencial va decreciendo, o sea que a partir de cierto número ya el área bajo la curva es muy pequeña.
+Son estos puntos, entonces bien.
+¿Alguien puede sospechar cómo se puede estimar Lambda de esta gráfica viendo los valores así por encima?
+¿Será que se puede estimar Lambda?
+Mhm.
+Chin.
+You can.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:08:21
+No sé, profe.
+
+HANS IGOR LOPEZ CHAVEZ   2:08:23
+No sospecha, ahí se ve clarísimo. Es más, le voy a poner así un punto, así como cuando uno pone un punto, por ejemplo.
+Plim, plim, plim.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:08:33
+¿Cuando es un no?
+
+HANS IGOR LOPEZ CHAVEZ   2:08:37
+FC.
+What's going is that mean?
+Sí, lo que usted dice es cierto cuando es uno.
+El valor es 2 y 2 es lambda. En realidad lambda es la pendiente otra vez. Entonces, en el caso de la distribución normal, la pendiente me da el sigma. En el caso de la distribución exponencial, exponencial versus exponencial, la pendiente es lambda. Por eso es importante que la referencia tenga parámetro uno.
+Para que la pendiente coincida exactamente con ese valor de lambda, si le cambian eso, pues va a quedar proporcional y no nos sirve la raneta.
+Listo, entonces en exponenciales la pendiente es blanda.
+Es coco plato.
+Hasta ahí como vamos.
+¿Todo bien?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:09:34
+bien, bien.
+
+HANS IGOR LOPEZ CHAVEZ   2:09:36
+Sí, okay.
+Entonces nos vamos a los apuntes para que vean que tenemos acá de chévere esto ahora se ve muy chiquito.
+Y bien fácil.
+Más o menos ahí, entonces íbamos en la exponencial trans, método la inversa, la comparación para que vean que sí, la cuplot, entonces los mismos ejemplos que les mencioné ahorita se los puse acá, antes aquí está la de la normal estándar, está la de la exponencial.
+Pero me falta el más chévere, entonces, supuestamente el método de la transformación inversa se envía para 3 cosas.
+Para.
+caracterizar o describir una variable aleatoria. Con la función cuantil puedo calcular la PDF y con la PDF ya lo tengo todo para calcular esperanzas. Sirve para generar números aleatorios. Entonces necesito un número uniforme y lo evalúo en la función cuantil. Entonces eso
+me lleva a mí a la siguiente idea. Si yo tuviese la cuantil de cualquier muestra real, pues ya puedo generar números que reemplacen esa muestra real y no me limito a las de siempre. Entonces uno siempre usa la normal, la uniforme y la exponencial.
+Esas son las más básicas.
+La uniforme, porque es la más sencilla, la normal, porque es la más probable que ocurra si obedece a una suma de variables aleatorias por el teorema límite central que veremos muy pronto. Hoy no, pero muy pronto lo veremos. Y la exponencial, porque la exponencial normalmente es aquella que como no tiene memoria.
+Podría significar un caso muy especial, el caso de la independencia.
+Entonces uno prueba con esas 3, pero hemos visto en los ejercicios en clase que los casos reales no son ni uniformes, ni normales ni exponenciales. Si se acuerdan esas distribuciones todas locas que vimos que eran multimodales.
+Lo vimos hace como 15 días, creo.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:11:41
+Cuando nos mostraste las gráficas del corazón de las personas, sí.
+
+HANS IGOR LOPEZ CHAVEZ   2:11:41
+¿Si recuerdan esas?
+Exacto, del ritmo cardíaco, de cómo era la distribución del ritmo cardíaco. Esa no era ninguna de ellas. Entonces, la pregunta es, y profe, ¿y ahí cómo despejo la inversa? No se puede. Entonces, ¿qué se hace? Se hace un método numérico que calcula los cuantiles organizando los números de menor a mayor. o.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:11:48
+Mhm.
+
+HANS IGOR LOPEZ CHAVEZ   2:12:05
+Calculando la CDF con con su e invirtiendo las variables. La inversa es cambiar y con x. Eso es todo. Entonces, así como se puede hacer la CDF, como hicimos nosotros en clase el cálculo de la CDF, calculando probabilidades por intervalos y con su, pues se puede hacer un método numérico para hacerla.
+Función cuantil y ya una vez tenga la cuantil en discreto, evaluó. Matlab ya tiene una función bastante buena para hacer la función cuantil y de hecho se llama así la función cuantil. O sea, ustedes escriben cuantil con q y les calcula.
+Entonces les voy a mostrar el código de ejemplo.
+Entonces código base.
+Propongo unos valores de P entre 0 y uno. ¿Cuántos 10000? Voy a hacer la prueba de datos sintéticos. Entonces genero números exponencialmente distribuidos.
+¿Cuántos 10000 valores? Esa es mi muestra y uso la función cuantil de matlab. Como les comenté, el nombre de la función es literal cuantil.
+Que hay que darle la muestra aleatoria y en qué intervalos, o sea, en qué valores de py ya con eso más lab obtiene la función cuantil.
+Para que el ejercicio tenga sentido, voy a comparar con la teórica que hicimos nosotros, la que despejó Víctor, la de menos 1 sobre lambda, logaritmo natural de uno menos p.
+Yeah.
+Con esa gran ustedes no me van a creer, pero debajo de la roja está la azul.
+No, usted no se sorprenden con nada, tienen que decir mala, es muy áspero para calcular funciones cuantiles.
+Es asterrimo para eso.
+Ve, no le dieron la gracia, no, pero entonces como no, pero es que es que es que vean y si no se nota.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:14:02
+No sé si es.
+
+VICTOR MANUEL TORRES BELTRAN   2:14:03
+Espérrimo.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:14:07
+No se ve ni diferencia.
+
+HANS IGOR LOPEZ CHAVEZ   2:14:08
+No se ve, es que no tocó hacer zoom porque usted no.
+Dicen, profe, me está engañando, claro, y ahí no es esa diferencia.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:14:17
+A.
+
+HANS IGOR LOPEZ CHAVEZ   2:14:21
+La azulita.
+Entonces, cuando uno ve este resultado, dice no más la tiene la tiene clara para sacar la función continua.
+Listo, ya tengo valores numéricos de la cuantil, deme un número entre 0 y uno y yo le genero su respectivo número aleatorio con esa distribución. En este caso el ejemplo está con exponencial, pero yo puedo hacer eso mismo con los datos reales cuantile de la muestra real. Ya tengo la función cuantile.
+Y ahora evalúo el p de cero y uno y tengo números aleatorios con distribuciones empíricas. Entonces ese ejercicio yo lo codifiqué en una función que tiene poderes, pero le puse súper función. Entonces, ¿qué hace súper función? Super función es una función de Matlab.
+que genera funciones de Matlab. O sea, hace el código. O sea, super función es una versión arcaica de los chats de inteligencia artificial que ustedes usan actualmente. ¿Cierto? Uno en un chat de inteligencia artificial le puede decir necesito una función de Matlab que me haga tal cosa y le genera el código.
+Eso hace superfunción. Entonces superfunción coge una muestra, una matriz y le genera un código en Matlab que tiene encabezado, función tal y tiene todos los valores de la cuantil y luego se escoge al azar uno de esos valores y vuelvo un número.
+O sea, yo que aquí puedo hacer todos los random que quiera con datos empíricos. Entonces aquí les muestro el código que codifiqué. Entonces en Matlab, no sé si ya les conté que la función type hace eso.
+Imprime la ventana de comandos, el contenido de un archivo de Matlab.
+Bueno, si no se lo dije, aquí está. Entonces, eso es lo que tiene adentro. Tiene un switch case de dos casos. Si yo no le pongo la segunda variable, le pone como nombre al archivo aleatorio. Así se llama aleatorio.m. Si le quiero dar el nombre, se lo doy aquí después. Entonces yo quiero que mi función random se llame random uno.
+Andon uno así se va a llamar el archivo Matlab.
+Genero los p, calculo los datos, estos de materia de investigación de una vez se los cuento, es algo que todavía no he resuelto.
+La idea es la siguiente, si se pueden dar cuenta, esta línea coloca todos los datos de la matriz de entrada, o sea, la muestra aleatoria y las multiplica por 1,00000001 o sea, los datos ligeramente se modifican, pero.
+Ni mucho.
+¿Cierto?
+Si yo no hago eso.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:17:11
+Good.
+
+HANS IGOR LOPEZ CHAVEZ   2:17:12
+Los resultados finales que voy a imprimir en punto flotante no me quedan bien.
+Entonces fue algo que me di cuenta cuando estaba generando los números, que para que me quedaran en punto flotante necesitaba multiplicarlos por algo. Y pues los multiplicó por uno, pero no me dio, se los multipliqué por casi uno y ahí sí. Entonces yo dije, ¿por qué? No sé todavía. Entonces, si alguno alguna vez tiene tiempito y revisa o le puede pasar este código a chatico y digo, oiga chatico.
+¿Por qué tengo que multiplicar eso para que me generen bien los números en punto flotante? Y de pronto dicen, ah, no, es que si usted no le pone eso, los números enteros no los escribe como punto flotante. Para escribirlos como punto flotante es necesario que los números tengan tantos decimales. Algo así debe ser la razón. Entonces, por ahora.
+Ustedes no la van a modificar, déjenlo ahí quieto. Se calculan los cuantiles y luego se arma todo el archivo. Entonces vean, encabezado, empieza con función y igual a nombre del archivo m command. Luego coloco todos los números de la función cuantil y después abro el archivo con f open.
+Y coloco las cadenas de caracteres para que imprima todos los números. El porcentaje S es carácter para que las n es.
+Salte.
+Este 10.8 F es el número de formato flotante y así entonces dice encabezado primer encabezado función enter cuerpo cuerpo es número igual a abre paréntesis listo enter. Luego vienen los números en punto flotante.
+Todos los números los escribe como texto.
+Y luego final, que es final, termine con if mdf igual a uno, haga la transpuesta de tal y sin nota.
+Y así van a quedar todos los archivos. Bueno, ustedes quieren ver cómo se codificó, quieren ver para qué sirve. Entonces, ejemplo, voy a hacer una función que se llame exponencial RND. Y para que el truco del mago funcione, voy a buscar exponencial.
+¿RND acá es esta, cierto?
+Yep, it's at you.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:19:34
+Sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   2:19:34
+Sí alcanza a ver listo chao se fue, ya no está.
+
+MIGUEL ANGEL MOLINA NOVA   2:19:35
+Sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   2:19:38
+No está. Chao. Ya lo borré, profe, pero lo borré. ¿Por qué lo borré? Porque se supone que si yo ejecuto estas dos líneas de código, se genera un archivo llamado exponencial RND en mi carpeta de Matlab.
+Entonces.
+Preparados apareció, véalo, exponenciales RND.
+Y de ahora en adelante, exponencial RND la puedo ejecutar como un random de toda la vida.
+Por ejemplo, exponencial RND de 4,5.
+Me generó esta matriz de cuatro filas, cinco columnas, y todos los números utilizaron el método de la inversa. O sea, todos los números se distribuyen exponencialmente. Y como ustedes no me creen, lo puedo probar con una cucuplot. Entonces vea, cucuplot de mi generador de números aleatorios.
+Los que hace super función versus la exponencial de parámetro uno.
+Expectativa.
+¿Que nos de qué?
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:20:51
+2 pendientes iguales.
+
+HANS IGOR LOPEZ CHAVEZ   2:20:53
+Una línea recta, así bien bonita.
+Ay.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:21:00
+Mhm.
+
+HANS IGOR LOPEZ CHAVEZ   2:21:03
+¿Ustedes que ya tienen ojo para las cucuplot?
+Si me dio, no me dio.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:21:10
+Sí.
+
+JUAN SEBASTIAN CASAS BARBOSA   2:21:10
+Says Kachum Book.
+
+HANS IGOR LOPEZ CHAVEZ   2:21:12
+Sí, se se escacha, pero recuerden que se escacha cuando los puntos ya están más dispersos. O sea, no importa, donde no se debe escachar es acá. O sea, si estos de acá están fuera de la línea roja, chao, nada que hacer ahí, si no digo.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:21:28
+Sí.
+
+HANS IGOR LOPEZ CHAVEZ   2:21:30
+¿O K, con este contexto podemos hablar de la actividad cuatro. ¿Están preparados?
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:21:32
+London.
+Si.
+
+HANS IGOR LOPEZ CHAVEZ   2:21:43
+están preparados
+Están preparados ahora sí.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:21:48
+De una broma.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:21:48
+And.
+
+HANS IGOR LOPEZ CHAVEZ   2:21:49
+Sí, ahora sí, listo. Bien, entonces vámonos a buscar la actividad cuatro, ¿dónde está? Actividad cuatro, dice, utilicen la super función que hará parte de una tarea futura. Me disculpa, no se las dejé tareas, se las iba a poner de tarea, pero debido a que la clase pasada tuvimos clase virtual y el profe
+Se demora mucho en las clases asistidas por TICs. Entonces no nos rindió como yo esperaba. Entonces dije no, porque les pongo la tarea. Entonces tranquilos. Entonces no fue una tarea. Yo les comparto super función, el archivo. Lo voy a subir ya a la carpeta de Teams para que no se me olvide. Entonces, ¿dónde?
+Teams, pero Teams carpeta.
+¿Oiga, dónde hago para? ¿Cómo hago para ver teams? Pero no esto, sino teams.
+Alguien da.
+¿Ta cómo veo mis mis grupos de teens?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:22:50
+Probé una pestaña con Steams.
+
+VICTOR MANUEL TORRES BELTRAN   2:22:53
+No debería haber otra.
+
+HANS IGOR LOPEZ CHAVEZ   2:22:53
+No, pero ya estoy en Teams, ya estoy en Teams porque no se ve los grupos de Teams.
+
+JUAN SEBASTIAN CASAS BARBOSA   2:22:58
+¿Por qué por eso están los archivos de la del trabajo, no?
+
+HANS IGOR LOPEZ CHAVEZ   2:23:02
+Ya se lo subí en los archivos de trabajo.
+
+JUAN SEBASTIAN CASAS BARBOSA   2:23:04
+Sí, ahí aparece super función.
+
+HANS IGOR LOPEZ CHAVEZ   2:23:06
+Listo, sí, ya está ahí, listo. Entonces ahí está igual. Entonces, cuando finalice la clase y ya pueda ver la carpeta de tip, la encontré.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:23:06
+Me parece que sí.
+
+HANS IGOR LOPEZ CHAVEZ   2:23:15
+Ya se la subo y o sea, va a haber duplicado. Es el mismo archivo, tranquilos, pero es que no quiero que se vayan sin eso. Entonces archivos de Matlab, sí.
+Cargar, por favor, la función que te puedes.
+Y para que me rinda, pongámosla por nombre.
+Acá, súper, súper.
+Súper, súper, también van a necesitar super stem, entonces por si acaso se la subo.
+Porque las gráficas de la actividad 3 usan super stem, super función, super stem, listo.
+Un elemento no se cargó, ya había subido super estem entonces.
+Veamos que subió esto.
+Súper función, entonces si super stem ya debe estar por ahí, entonces vea, busquémosla a ver si sí por nombre descendente para que empecemos por super stem, super este, si ya estaba listo, entonces ya están. OK, entonces ahora sí, actividad cuatro, entonces utilicen la función para generar.
+cuatro funciones asociadas al conjunto de datos suministrados en clase. Los datos yo los cargué en la tarea del trabajo grupal, entonces en el trabajo grupal debe haber cuatro archivos, todos todos los que terminan en punto TL, BCP a UG 89TL.
+BCP o CT de octubre 89 TL octubre cuatro octubre extendido octubre extendido cuatro. Creo que se llaman. Podrían verificar que están.
+En la tarea de teams.
+
+JUAN SEBASTIAN CASAS BARBOSA   2:25:03
+She's in the raise them.
+
+HANS IGOR LOPEZ CHAVEZ   2:25:05
+Si sal listo.
+¿Entonces la idea cuál es que de cada uno de esos archivos van a ser un generador de números aleatorios?
+O sea, así como yo hice ahorita XP random, van a ser agosto random.
+Octubre random, octubre extendido random.
+Y la idea de la actividad cuatro es que con las cucuplot ustedes digan sí pudimos hacer esos generadores. Entonces ya les muestro el código, al igual que la actividad 3, yo les paso el código, ustedes solo reemplacen el archivo.
+Pues ahí está, no se vayan a perder, les puse el titulito de naranja y todo entonces activa cuatro.
+Entonces cargan el archivo. Voy a hacer el ejemplo con agosto 89. La idea es que repitan esto con los otros 3 también. O sea, al final tienen que hacer cuatro ejercicios en esta actividad.
+Es con agosto 89 no le van a cambiar nada del resto. ¿Aquí qué se hace? Se obtiene la primera columna, que es la de los tiempos, y se hace la resta de valores consecutivos para obtener los tiempos entre arribos.
+Luego hago PDF CF continua aquí sí hay que hacer un cambio, entonces empezamos.
+Cuando no tenía esto, nada poner así.
+Y así deberían empezar ustedes el ejercicio.
+Van a hacer la gráfica de la función densidad y la gráfica de la acumulativa y les va a dar esto o algo así parecido para los cuatro archivos. Entonces recuerden que el objetivo es ver el detalle de dónde está la mayor cantidad de probabilidad. Entonces viendo esta gráfica, lo que uno se da cuenta es que es posible que haya tiempos tan grande como 0,4.
+Pero que son poco probables porque el área bajo la curva es casi cero.
+La mayoría de valores está aquí en este intervalo, es la razón por la cual yo tenía aquí ya cuadrado el intervalo que para este ejemplo es el interesante.
+Desde menos 0,01 hasta 0,01.
+Cuando escojan ya ese intervalo, lo ejecutan varias veces hasta que usted diga ya estoy viendo el área que necesito.
+¿Cómo van a saber que es así es el área? Porque la gráfica debe empezar en cero y terminar en uno en la acumulativa. Si todavía no ha llegado a uno es porque están cogiendo un intervalo menor. O sea, hay área interesante que están dejando por pasar. Y si llega muy rápido a uno es porque pues están haciendo la gráfica en el zoom que no es.
+Porque la idea es ver el detalle de esto. Es más, yo creo que aquí le podemos aumentar un poquito al detalle, cierto, por ejemplo, hacer la gráfica como hasta 6, les parece hasta 6 miles.
+Entonces 0,06 hasta 6 milisegundos venga a ver cómo queda hasta 0,06.
+Sí, yo creo que ahí ya está mejor.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:28:15
+Todavía se mantienen uno como la tía.
+
+HANS IGOR LOPEZ CHAVEZ   2:28:18
+Exacto, ya llegó a uno aquí y ya tengo un mejor acercamiento de la gráfica. Entonces, ¿por qué necesito ese intervalo? Porque la idea es que van a ser la PDF CDF de los datos reales y luego la PDF CDF de el generador de números aleatorios. Entonces eso es lo que sigue acá.
+Entonces codifican la función que deben cambiar el nombre del archivo. Entonces voy a poner aquí.
+Enviar.
+El nombre.
+Del archivo porque si no la van a embarrar, lo van a hacer cuatro veces y todas se van en llamar a gusto random un solo archivo. Entonces para cada una le ponen el nombre que quiera. Entonces a este le puse agosto random.
+Luego ese mismo nombre lo van a usar acá.
+Mhm.
+¿Dónde está el porcentaje?
+De acá se utiliza.
+El archivo.
+Generado por súper función.
+Listo.
+No le van a cambiar esto de la cantidad. Lo que sí van a hacer es escoger el mismo intervalo de observación. Entonces el intervalo que yo había escogido era este.
+Japón.
+Listo.
+Team.
+Esto son o lo que va a aparecer acá es la distribución de los datos aproximados. Entonces vean, estos de acá son los reales.
+Y estos de acá son los que genera.
+Superfunción con el método de la transformación inversa.
+Yo les recomendaría que como paso adicional, si pueden coloquen una gráfica encima de la otra, o sea, la superpongan con un holdón es para que la comparación sea más chévere, porque así uno como que mira, cierto, uno como que dice esto sube acá y luego bajo.
+Sí, y luego llega y también, pero si está uno encima de la otra, ya se notan las pequeñas diferencias entre ambos casos.
+Esa es la primera parte de la actividad, comparar las PDFs. Listo, anoten ahí comparar las PDFs.
+Segunda parte de la actividad, pues hacer la cucu plot. Entonces lo mismo cambian aquí por el archivo de ustedes. Yo el mío se llama agosto random.
+Y ya ejecutan el código. No es más, pues necesito un valiente que me analice esa gráfica y me diga, profe, lo que yo veo en la gráfica de la cucuplot es.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:31:12
+Un landa de uno.
+
+HANS IGOR LOPEZ CHAVEZ   2:31:15
+¿Entonces, quién está por ahí, quién dijo?
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:31:18
+You good.
+
+HANS IGOR LOPEZ CHAVEZ   2:31:20
+Miguel, listo, entonces Miguel, suponga que usted ya hizo las gráficas que quiero ver yo en la actividad cuatro, la gráfica de PDF CF continua y la gráfica de la cucuplot.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:31:31
+Mhm.
+
+HANS IGOR LOPEZ CHAVEZ   2:31:31
+Listo, 2 grafiquitas por cada uno de los archivos, o sea, salen al final 8 gráficas, pero además de la gráfica, lo que me interesa es el análisis que usted haga esa gráfica. ¿Entonces, qué texto colocaría usted? ¿Cuál sería su análisis? Lo escucho.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:31:51
+Dice que entre 0 y 0,1 tenemos la zona de mayor densidad de probabilidad lo primero.
+
+HANS IGOR LOPEZ CHAVEZ   2:32:01
+Bien, y de hecho, eso que usted acaba de mencionar no solo está bien, sino que yo puedo verificarlo de cero a cero uno.
+Me voy a la gráfica de cero a cero uno. ¿Dónde estaría aquí cero uno? Si esto está en milisegundos.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:32:20
+Más adelante.
+
+HANS IGOR LOPEZ CHAVEZ   2:32:22
+Más adelante y ahí se ve que está toda la probabilidad, casi el 100%.
+Listo.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:32:29
+Entonces está bien ajustado el primer.
+
+HANS IGOR LOPEZ CHAVEZ   2:32:31
+O sea que está súper bien ajustada porque aquí hicimos el zoom hasta 6 milisegundos, 6 milisegundos es como por acá.
+Cero coma.
+0606 no 0,006, o sea, es por aquí, o sea que esto quedó súper bien ajustado.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:32:43
+I see.
+Sweet please.
+Mhm.
+
+HANS IGOR LOPEZ CHAVEZ   2:32:52
+O sea, ni mandado a hacer.
+Listo, pero lo que usted dice es cierto, de 001 hay un muy buen ajuste y al verificar el zoom de la gráfica de función de densidad, se observa que la mayor probabilidad está incluso desde cero hasta tan solo 6 milisegundos.
+Continúe.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:33:11
+Sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   2:33:14
+¿Estos punticos de acá, qué cómo los va a incluir en su análisis?
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:33:20
+Yes.
+
+HANS IGOR LOPEZ CHAVEZ   2:33:25
+Yo lo colocaría algo como así, aunque se evidencian algunos puntos muy alejados de la regresión lineal o de la línea recta, perdón.
+¿Por ejemplo, en los valores cercanos a 0,34, cierto?
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:33:45
+Sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   2:33:48
+Estos valores tienen muy baja probabilidad de ocurrencia y no va a afectar.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:33:51
+Product.
+
+HANS IGOR LOPEZ CHAVEZ   2:33:54
+La aproximación que se obtiene de la función de densidad, algo así colocaría yo en el texto.
+Ya eso es todo, entonces estoy tratando de colocar con argumentos que sí me dio.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:34:04
+No.
+
+HANS IGOR LOPEZ CHAVEZ   2:34:10
+Entonces, como dijo Miguel Ángel de cero cero uno, el ajuste es muy bueno.
+Cuando se revisa en la PDF, la PDF tiene la casi todo el 100% de probabilidad de cero a 0,006, o sea que quedó genial y los puntos que están por ahí dispersos, aunque están lejos, como están dispersos, son puntos de muy baja probabilidad.
+O sea, si la mayoría estaba de 006, esto debe tener probabilidad de 0,0001 algo así. Entonces no hay problema. Listo, Miguel Ángel.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:34:48
+Sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   2:34:50
+¿Listo, entonces va a ser eso mismo para los otros 3 archivos?
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:34:51
+De pronto, profe, me queda, me queda la duda es por el salto que veo ahí entre entre cero cero 34 y cero dos, porque está totalmente estoble.
+
+HANS IGOR LOPEZ CHAVEZ   2:34:54
+Sí.
+¿O sea, eso qué quiere decir que no existe en la muestra aleatoria ningunos valores por aquí?
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:35:06
+Y.
+It's a...
+Y.
+Sí.
+
+HANS IGOR LOPEZ CHAVEZ   2:35:16
+Ya.
+O sea, no hay ninguno, o sea, no existe ningún número que sea cero 25, ningún número que sea cero 3. Esa es la idea.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:35:24
+Ningún resultado toma esos valores o k.
+
+HANS IGOR LOPEZ CHAVEZ   2:35:28
+Exacto.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:35:32
+Viste preferas, gracias.
+
+HANS IGOR LOPEZ CHAVEZ   2:35:32
+You so?
+
+MIGUEL ANGEL MOLINA NOVA   2:35:33
+Profe, una duda.
+
+HANS IGOR LOPEZ CHAVEZ   2:35:34
+No gracias a usted por hacer la pregunta, sí.
+
+MIGUEL ANGEL MOLINA NOVA   2:35:36
+¿Cómo es la estructura de ese archivo inicial del punto TL? Sí, me quedó esa duda al principio.
+
+HANS IGOR LOPEZ CHAVEZ   2:35:43
+Ah listo, el archivo original punto TL es tiene dos columnas. La primera columna es los tiempos absolutos y la segunda columna es el tamaño en bytes de cada paquete. Esa es la estructura del archivo punto TL, así viene armado. Por eso es que al principio, cuando usted
+Le hace aquí el cargue el archivo.
+Y lo graba en datos, datos va a ser una matriz de 2 columnas y 1000000 de filas. Entonces yo tomo únicamente la primera columna para calcular los tiempos entre los.
+Listo.
+
+MIGUEL ANGEL MOLINA NOVA   2:36:23
+Listo profe, gracias.
+
+HANS IGOR LOPEZ CHAVEZ   2:36:25
+Sí era, perdón, sí contesté su pregunta, o sea, sí era.
+¿Eso es lo que usted se refería con cómo es la estructura o qué?
+
+MIGUEL ANGEL MOLINA NOVA   2:36:30
+sí, es que no, si es que no conocía esa extensión, entonces tenía la duda de cómo funcionaba.
+
+HANS IGOR LOPEZ CHAVEZ   2:36:38
+listo, perfecto.
+Bien, entonces, ¿qué quiero ver en la actividad cuatro? Las grafiquitas y los textos que analizan las gráficas, expectativa que todas les den. O sea, la idea de esa actividad es simplemente verificar con la herramienta Cucuplot que tienen cuatro muy buenos generadores de números aleatorios.
+Pero cuya distribución proviene de distribuciones empíricas de datos reales, esa es la idea.
+Bueno, activa 5.
+¿Entonces para qué hicimos los cuatro generadores para usarlos en la actividad 5?
+Según la actividad 5 dice, realicen la simulación de la cola variando el valor de a.
+Consideren que los tiempos entre arribos se obtienen con cada una de las funciones de la actividad cuatro. O sea, que por primera vez no vamos a hacer prueba de exponencial en llegadas y exponencial en servidores. Vamos a dejar la exponencial en servidores, pero vamos a cambiar la entrada por los.
+Cuatro generadores de números aleatorios.
+Dice, consideren que el parámetro lambda se estima con el inverso de la media aritmética y aquí está la ecuación. Tranquilos, que eso está en el código ya implementado.
+Los tiempos de servicio los dejan en exponencial. ¿Qué se pide? Hacer cuatro gráficas de su media de desempeño versus a.
+Entonces veamos el ejemplo de esa actividad. Igual ustedes van a copiar este código y van a hacerle caso a las a los comentarios. Entonces primer comentario dice, deben hacer la prueba con las cuatro funciones.
+O sea, ahorita la pruebo con agosto random, ya tienen una de las pruebas, pero cuando tengan los otros 3 archivos de la actividad cuatro cambian agosto RND por los otros por octubre, por octubre extendido RND no le van a cambiar la cantidad de numeritos, nada, dejenlo y quieto. Esto de Landa igual a uno solo el promedio era lo que decía el enunciado.
+El mínimo y el máximo tienen que cambiarlo por el sugerido en clase. Ya saben cuáles son los sugeridos. Entonces son los mismos de la actividad 3. Entonces los que tienen MM.
+¿Uno k ya saben que pueden colocar como hasta 20 por K, cierto?
+Los que tienen erland B también saben que pueden colocarlo hasta 20 por k y los que tienen erland C.
+Esto va multiplicado por.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:39:24
+No.
+
+HANS IGOR LOPEZ CHAVEZ   2:39:24
+¿K cierto, se acuerdan del 0,05 y el cero 95?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:39:31
+No, I found it.
+
+HANS IGOR LOPEZ CHAVEZ   2:39:33
+List.
+Cantidad de simulaciones, dejelo y quieto, todo eso lo dejan quieto. Entonces vean qué es lo que pasa, que antes aquí decía XP random, ahora van a usar el random generado con superfunción. Entonces yo estoy haciendo aquí la prueba con agosto. Ustedes van a replicar esto y luego lo cambian. Ya no es agosto, eso
+Octubre, listo ponen ahí octubre, el resto lo dejan quieto.
+El otro comentario dice la función de la cola asignada a su grupo. Igual yo voy a hacer la prueba con la MM uno, ustedes lo van a probar con la de ustedes, con la que hicieron en la actividad 2.
+Cambia en el teórico, el mismo teórico que usaron en la actividad dos con un for, generaron todos los valores. En este caso son exactamente 1000 valores, generan los 1000 valores con su teórico dos y el resto lo dejan quieto. Aquí está el ejemplo para agosto.
+Entonces, en azul, lo que dice la teoría para datos exponencialmente distribuidos, si los tiempos entre arribos fuesen exponenciales, los resultados debería ser como el azul.
+Como estoy cambiando los datos exponenciales por datos reales que no son exponenciales, me está dando la roja. Entonces, en este ejercicio la idea es que no se superponga.
+O sea, no tiene sentido que si los datos no son exponenciales, les den los valores teóricos que son únicamente para exponenciales. Les tiene que dar diferente, le tiene que dar dispar como me está dando ahorita. No obstante, se puede analizar cosas interesantes. Les voy a decir mi análisis a ver ustedes qué opinan del ejercicio.
+Pues luego de realizar la simulación para los datos que provienen de la muestra llamada agosto 89 y aquí se muestra en Naraka, cierto.
+Se puede observar que pese a que los datos no se distribuyen exponencialmente, como evidentemente se muestra al que dar las gráficas dispares, sí se observa que para valores de a menores a 0,5.
+No importa que los datos no sean exponenciales.
+A partir de punto 5 ya se alcanzan a notar diferencias significativas.
+¿La mayor diferencia ocurre para el valor de a de el máximo cuánto era?
+0,9 en donde el tiempo de espera.
+Prácticamente duplica al valor que predice el valor teórico de la exponencial, ese sería mi análisis.
+¿Cómo la vieron?
+¿Jason, cómo me vio ahí?
+
+JUAN SEBASTIAN CASAS BARBOSA   2:42:25
+Voy a repetir, por favor.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:42:26
+Muy visual, o sea, literal, se observa de la gráfica.
+
+HANS IGOR LOPEZ CHAVEZ   2:42:29
+Exacto, exacto, es pura estadística descriptiva. Juan, repito, Juan, pero me esforcé mucho haciendo la explicación, un poco hacerle otra vez, ya así toda tramadora, como si lo hubiera hecho chatico.
+
+JUAN SEBASTIAN CASAS BARBOSA   2:42:36
+Sí, señor.
+Es que me hizo así un reto.
+
+HANS IGOR LOPEZ CHAVEZ   2:42:44
+No, mentiras, desde ya otra vez, otra vez 3 en la gráfica.
+Se observan los resultados de utilizar como tiempos entre arribos.
+Un generador de números aleatorios que proviene de la muestra de agosto en la gráfica se ve de color naranja.
+Los resultados son diferentes a los que tendría una muestra exponencial, como se muestra de manera evidente a partir de punto 5.
+Para valores menores que punto 5, sorpresivamente los resultados son bastante similares. Eso significaría que para valores de tráfico menor a punto 5, no importa que los datos no sean de tipo exponencial en esta cola. Eso debe tener alguna razón, eso no lo dije ahorita.
+Ustedes podrían sospechar porque para a menor que punto 5, como que no importa que los datos sean sin memoria.
+¿Qué significa que hace a punto 5 o menos de punto 5?
+¿Se acuerdan que indicaba el valor a en las colas?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:44:00
+I'm that.
+¿Cómo?
+
+HANS IGOR LOPEZ CHAVEZ   2:44:04
+¿Qué eres el anda sobre mí? ¿Cuál era la interpretación que yo tenía para la cola MM uno?
+
+JUAN SEBASTIAN CASAS BARBOSA   2:44:10
+La intensidad de tráfico.
+
+HANS IGOR LOPEZ CHAVEZ   2:44:12
+¿Sí, pero qué significaba? La intensidad de tráfico tenía un significado, eso era tal cosa.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:44:12
+Mhm.
+
+HANS IGOR LOPEZ CHAVEZ   2:44:24
+No.
+¿No se acuerdan cuando colocamos el a y lo despejamos y nos dio a igual a uno menos p cero?
+Entonces yo les decía si p cero es la probabilidad de que el sistema esté vacío.
+Pues.
+Uno menos pesero es la probabilidad de que el servidor esté ocupado.
+La conclusión que sacamos ese día es que eso fue hace rato, era que el valor de a significaba el porcentaje de ocupación del servidor. Entonces, valores por menores que el punto 5 significa que el servidor dura mucho tiempo, más de la mitad del tiempo desocupado.
+¿Eso qué significa? Que los usuarios llegan y la cola está vacía y van donde el servidor directamente. Entonces yo creo que por eso es que aquí los valores me dan casi iguales, no hay cola. Llega un usuario y dice venga, lo atiendo de una vez. ¿Cuánto tiempo se demora? Pues el tiempo que hice la exponencial de salida.
+Otro usuario llega y no hay nadie, lo atienden de una vez, todo eso va a ocurrir al principio.
+Para valores más grandes de a ya va a haber usuarios que esperan y entonces esos usuarios que esperan.
+Van a generar, por supuesto, la línea de espera y ahí sí tiene sentido que se evalúe cómo es la distribución de llegada. Entonces yo creo que es por eso que para valores pequeñitos me da igual.
+Bueno, ustedes hacen el análisis para terminar lo que le estaba contando a Juan, porque estaba haciendo la repetición de mi análisis, era que para menores que punto 5, no importaba que la distribución no fuese exponencial, pero destaqué un detalle y es que para mayor, para los valores mayores de punto 5, la diferencia ya es notoria.
+Y que para el máximo valor evaluado, que era como 0,9 el tiempo de espera.
+De los datos reales duplica el tiempo de espera de los valores que predice la exponencial. Ese fue el último pedazo que dije, Juan, listo.
+
+JUAN SEBASTIAN CASAS BARBOSA   2:46:32
+Sí, señor.
+
+HANS IGOR LOPEZ CHAVEZ   2:46:34
+Listo, ustedes van a hacer lo mismo para los cuatro archivos. Entonces cambian lo que dice en verde, ejecutan y le salen cuatro grafiquitas. Yo que quiero ver el análisis de las cuatro grafiquitas. Entonces en algunos la diferencia va a ser mucha. En otros va a ser parecido en un pedazo y diferente. En otro cada caso es distinto.
+pero me gustaría que lo revisaran cada uno por aparte y si pueden de alguna manera encontrar algún patrón entre los cuatro. Por ejemplo, eso que les dije que para pequeñitos no había línea de espera, pues yo creo que aplica en todos los casos. Entonces lo más seguro es que al principio
+Les da igual si esa conjetura es cierto.
+¿Qué tal que no? Entonces uno no es por eso. Debe haber otra razón detrás de. Entonces eso es lo que quiero. Quiero análisis, quiero inferencias, quiero que busquen causas, que averigüen, que investiguen, que le pregunten a la inteligencia. Vea, yo creo que pasa esto. ¿Usted qué opina?
+
+JUAN SEBASTIAN CASAS BARBOSA   2:47:19
+Así que.
+
+HANS IGOR LOPEZ CHAVEZ   2:47:36
+¿Que me ¿Qué prueba puedo hacer para saber si mi conjetura es válida? Es cierta, prueba tal cosa. Listo, por ahí va el ejercicio. ¿Qué pido mínimo? Gráficas y análisis de eso, nada más estamos.
+Preguntas de la actividad 5.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:47:56
+Por el momento, no.
+
+JUAN SEBASTIAN CASAS BARBOSA   2:47:56
+Written now line.
+
+HANS IGOR LOPEZ CHAVEZ   2:47:58
+Sí, cuénteme.
+
+JUAN SEBASTIAN CASAS BARBOSA   2:47:58
+Creo que Summer se lo dijo, pero en los cuatro archivos en los que dicen BS o y entonces que dicen BSP. ¿Qué diferencia había entre los archivos? Es que no me acuerdo de la otra.
+
+HANS IGOR LOPEZ CHAVEZ   2:48:11
+Ya los miramos, entonces a ver, todos vamos aquí a la tarea.
+Y buscamos en la tarea trabajo.
+Y vista del estudiante.
+Entonces sí estaba súper función.
+BCP o BC listo. Entonces, la verdad, no sé cuál es la diferencia de la P. O sea, no sé por qué les pusieron py el otro no le pusieron p.
+Eso sí, no sé. Lo que sé es que los archivos sí obedecen al tiempo en el cual hicieron la prueba y como hicieron varias pruebas en octubre, entonces les tocó hacer una distinción adicional. Si usted quiere saber el detalle de dónde salieron los archivos.
+¿Cuál le recomendaría que revisara el artículo original, el artículo seminal? Yo creo que ya se los comenté cómo se llamaba o todavía no.
+
+JUAN SEBASTIAN CASAS BARBOSA   2:49:13
+Okay no más.
+
+HANS IGOR LOPEZ CHAVEZ   2:49:15
+No, listo, entonces ya lo vamos a buscar. Entonces vamos a ir a B digital.
+Para revisar la base de datos de la universidad, entonces B digital, digital, unidad de bibliotecas, sí.
+Buscan en la i.
+De I triple.
+E ingresan ahí triple 3 B digital primer.
+Resultado de búsqueda.
+Y buscan y triple si les aparece acceso proporcionado por Universidad Distrital, listo, ya podemos descargar los artículos completos. Si no les sale eso es porque no están logueados. O sea, yo creo que ahorita el logueo se hace con el correo. Entonces, si no tienen abierto su correo en ese navegador, pues.
+Tiene cabildo antes.
+Y aquí voy a buscar con The Selfsimilar.
+Que se llama así nature.
+Oh.
+Algo así.
+Um.
+No, pero sí, así sí la encontré y sí.
+De Internet Traffic versión este día, este es el artículo seminal, ese artículo es tan cuando hablamos ahorita de los cuartiles.
+Un artículo que ha sido citado 3762 veces. Eso es algo exagerado. O sea, este artículo es súper importante.
+Entonces, si uno quiere saber si su investigación en realidad tuvo impacto, tienen que medirlo con cuánta gente usó su artículo como alguna referencia en el de ellos.
+Sí, o sea, si ustedes miran mis artículos, no, eso no tiene ni 10 citaciones y para mí eso es mucho. Ahora 3762. Este es el propio. Entonces es este Juan.
+Entonces vamos a descargarlo con mucho gusto y aquí les dice, vean los archivos agosto 1989, octubre, luego en enero, tal periodo de medición y los datasets. Entonces ustedes tienen el de agosto, tienen el de octubre y proyecten en el de octubre extendido.
+
+JUAN SEBASTIAN CASAS BARBOSA   2:51:14
+Listo bueno fe gracias.
+
+HANS IGOR LOPEZ CHAVEZ   2:51:34
+Entonces yo creo que donde hablan de la tabla uno mencionas.
+Y cuáles eran las características de los archivos y de pronto dicen porque le pusieron la p o de pronto no.
+Pero aquí puede tener mayor información para eso, listo.
+
+JUAN SEBASTIAN CASAS BARBOSA   2:51:54
+Is.
+
+HANS IGOR LOPEZ CHAVEZ   2:51:56
+Perfecto.
+Yo creo que es muy pertinente su pregunta, la verdad.
+En.
+Listo, esa era la actividad 5.
+Luego viene la actividad más chévere, la actividad 6, la final, la definitiva.
+La que todo el mundo va a querer ver en la presentación de ese trabajo grupo.
+Entonces usted ya hicieron todo el ejercicio, eso es lo que yo le llamo una pequeña tesis, una tesis enana.
+Ustedes tienen un modelo matemático.
+Hicieron todo el procedimiento del modelo y tienen una referencia que dice, eso solo sirve para exponencial.
+Luego construyeron una herramienta de simulación y esa herramienta de simulación la validaron, la aprobaron con datos exponenciales y les dio lo mismo. Bien. Y luego hicieron lo más interesante. Como ese resultado teórico solo funciona con datos exponenciales, pusieron datos que no eran exponenciales.
+y son datos de la realidad, y les dieron resultados diferentes. Todo eso es lo que uno debería hacer en una tesis de maestría de la maestría en ciencias de la información. No hay que tener algún referente, debería tener alguna aplicación, en este caso es la simulación, y luego de eso,
+Pues tienen que hacer una validación, o sea, tesis de maestría sin validación tiene sentido.
+¿Cómo lo vamos a aterrizar con la actividad 6? Entonces, una vez ustedes hacen todo esa parte, todo ese entrenamiento, como le llamo yo, ahora quiero que busquen un ejemplo real. Entonces ya habíamos hablado de eso, pero me gustaría saber si ya los encontraron. Entonces ustedes, que han estado juiciosos, ya encontraron datos de.
+De la realidad, por ejemplo, Jason al fin cuál escogió.
+¿Ya tiene algún dataset sugerido?
+¿Algún escenario?
+¿Lo opuesto o todavía no han revisado la actividad 6?
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:53:55
+No profe, todavía no, al menos por mi parte no.
+
+HANS IGOR LOPEZ CHAVEZ   2:53:57
+Ok, porque ojo, a mí me gustaría validar ese dataset. O sea, que ustedes me dijeran profe, ya tengo los siguientes datos. ¿Usted qué opina? ¿Por qué razón? Porque a mí lo que más me preocupa es que apliquen la cola que es. Ustedes pueden conseguir datos reales todos y después hacen la prueba y yo cuando veo yo no, pero.
+¿Quién es K? No profe K es la cantidad de servidores, yo bien.
+¿Quién es Lambda? A Lambda lo calculamos así bien. ¿Quién es mío? Tal perfecto. ¿Pero sabe cuál es el problema? ¿Cuál profe que ustedes están simulando Erlanb y los datos?
+En realidad, o el escenario real, parece ser más bien un Airlance E. Entonces ahí estamos mal. Entonces, ojalá eso lo puedan hacer con tiempo. Por esa razón, tengo que darles un anuncio. El trabajo grupal es para de hoy en ocho, pero no alcanzamos. Yo creo que queda muy, muy cruel.
+Que siendo hoy el día en donde terminamos de presentar cada actividad, solo tengan ocho días para hacer ese trabajo. ¿Les parece bien si aplazamos la entrega una semana para que así de hoy en ocho ya presencial con todos me muestren todos los avances que tengan?
+Me muestren si ya tienen el escenario real, si ya tienen el conjunto de datos a probar, que me muestren la cola. O sea, a mí me gustaría tener como avances previos a esa presentación final que sugiero que sea dentro de 15 días. ¿Qué opinan?
+
+JISSEDT ANDREA PACHECO CASTRO   2:55:37
+Profe, de acuerdo, la verdad es que está bien largo y sí sería bueno poderle presentar antes parte del avance.
+
+HANS IGOR LOPEZ CHAVEZ   2:55:44
+¿Ok, listo, los demás qué opinan?
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:55:45
+Me sumo, me sumo también.
+
+VICTOR MANUEL TORRES BELTRAN   2:55:47
+Sí, profe de mi parte también estoy de acuerdo.
+
+HILDO NORBEY ROJAS CASTILLO   2:55:48
+Yeah.
+
+MIGUEL ANGEL MOLINA NOVA   2:55:48
+Sí, bro, estaría super bien, estaría muy bien.
+
+Yina   2:55:50
+Sí, profe, muchas gracias.
+
+HANS IGOR LOPEZ CHAVEZ   2:55:50
+Perfecto, listo, no me tienen que agradecer nada. En realidad, yo cuando vi que la clase pasada no alcancé a ver todo lo que quería, yo no. O sea, no tiene ningún sentido que yo les presenté en la otra lo que falta y en 8 días ya todo, no, eso no es procedente para nada.
+Listo, entonces ya mismo voy a cambiar acá que se presenta.
+Ante funciones, aquí se acaba el LiveScript de hoy, voy a poner acá. Uy, Jesús se acaba de conectar.
+Entonces, fecha de entrega.
+Del segundo trabajo.
+Oh.
+¿Se se cambió por?
+¿Qué fecha estamos pa que quedemos ahí en la jugada ustedes que tienen calendario?
+
+MIGUEL ANGEL MOLINA NOVA   2:56:51
+¿Para el 2, qué sería profe?
+
+HANS IGOR LOPEZ CHAVEZ   2:56:53
+12 de noviembre.
+
+MIGUEL ANGEL MOLINA NOVA   2:56:57
+Disney.
+
+HANS IGOR LOPEZ CHAVEZ   2:56:58
+Listo, entonces, 12 de novia.
+Listo.
+¿Y para qué?
+No se me olvide.
+Y por si hay alguno que no se ha conectado o no se pudo conectar hoy y ustedes le van a hacer la broma, le van a decir es para hoy en ocho, entonces les voy a dañar el caminado.
+Porque ya mismo voy a cambiar la fecha.
+Editar tarea.
+Entonces ya no es el jueves 5, sino el jueves 12.
+Listo.
+Actualízate.
+Perfecto, entonces quedamos con ese compromiso. Lo más importante es que tengan la función, o sea, que tengan la actividad 2 listo.
+
+JUAN SEBASTIAN CASAS BARBOSA   2:57:48
+Okay.
+Yes.
+
+HANS IGOR LOPEZ CHAVEZ   2:57:58
+Yo creo que eso es lo más importante.
+Las otras, como les mostré hoy, es reemplazar en el código y ya.
+Pero no, o sea, no puede haber excusa para que hoy en 8 no tengan lista la simulación, esta parte del código de sus cola. Si eso no está, o sea, si no lograron que el valor teórico les diera el valor que es, no, ahí ya empezamos mal.
+¿Qué me gustaría? Pues que también hicieran la actividad tres, porque esa es una muestra más diciente. La actividad tres ya me dice si me dio la cola está funcionando. Si logra tener la actividad tres ya funcionando para hoy en ocho, el resto sale rápido.
+Sí, pueden avanzar más mejor.
+Y lo otro, lo que no pueden dejar tampoco para hoy en 8, así como al aire, es el escenario final. A veces vayan buscándolo de una vez para que yo les pueda decir si esos datos le sirven o el ejemplo sí aplica para la cola que ustedes tienen asignada. Por favor, les pido eso las otras, la cuatro, las 5.
+Tranquilos, que eso se puede hacer independiente, listo.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:59:10
+Vale, profe.
+
+MIGUEL ANGEL MOLINA NOVA   2:59:10
+Cistola.
+
+JISSEDT ANDREA PACHECO CASTRO   2:59:10
+Listo, profe.
+
+HANS IGOR LOPEZ CHAVEZ   2:59:11
+Bueno, perfecto, yo creo que ahí sí, ahí acabamos, creo que ahí ya decía funciones.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:59:12
+¿Listo, profe?
+
+HANS IGOR LOPEZ CHAVEZ   2:59:19
+Sí, ahí acabas. Entonces, si quieres. Apenas. Yo creo que hoy podríamos dejar por ahí. Y me quedo con Miguel Ángel, que me dijo que ya está en el sistema de gestión para que registremos sus notas, pero los demás ya yo creo que pueden descansar. Y entonces nos vemos el jueves. Ojalá.
+El juez sea presencial y como les escribí en el correo inicial, en el 501 nos veríamos listo.
+
+YAN SEBASTIAN MUNOZ GAMBA   2:59:48
+Lista de opción.
+
+JISSEDT ANDREA PACHECO CASTRO   2:59:48
+Listo, pues.
+
+VICTOR MANUEL TORRES BELTRAN   2:59:49
+Listo, profe, perfecto, muchas gracias.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:59:49
+Dice Profe, muchas gracias, muy amable.
+
+JESUS ALFONSO ARIAS SANTOS   2:59:50
+Yes.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:59:50
+Listo, pues muchas gracias.
+
+HANS IGOR LOPEZ CHAVEZ   2:59:52
+Muchísimas gracias a ustedes, que estén muy bien.
+
+MIGUEL ANGEL RODRIGUEZ REYES   2:59:52
+Feliz noche a todos.
+
+VICTOR MANUEL TORRES BELTRAN   2:59:55
+Que descanse, profe, gracias.
+
+JESUS ALFONSO ARIAS SANTOS   2:59:55
+Bueno, no sé.
+
+HILDO NORBEY ROJAS CASTILLO   2:59:55
+Pero.
+
+HANS IGOR LOPEZ CHAVEZ   2:59:57
+Gracias.
+
+DAVID STIVEN MUNOZ AMAYA   2:59:57
+Chao profe, gracias.
+
+YEISON ESTEVEN GUTIERREZ MOLANO   2:59:57
+Feliz noche.
+
+HANS IGOR LOPEZ CHAVEZ   2:59:59
+Chao, que les vaya muy bien.
+Listo, Miguel Ángel, no se vaya.
+
+MIGUEL ANGEL MOLINA NOVA   3:00:09
+Listo, yo acá digo todo.
+
+HANS IGOR LOPEZ CHAVEZ   3:00:11
+Listo, perfecto. Entonces nuestra tarea es pasar las notas. Entonces no sé por qué dejé de compartir. Sí, vamos a hacerlo de las notas. Ah, ya me acuerdo porque salen los datos sensibles y entonces Miguel Ángel va a llamar y va a decir que hubo profe está es que ya me la han hecho, es que fue por eso.
+
+MIGUEL ANGEL MOLINA NOVA   3:00:18
+Mhm.
+List.
+Ay, profe, yo no lo voy a llamar.
+
+HANS IGOR LOPEZ CHAVEZ   3:00:33
+No lo conté en clase porque no me gusta contar anécdotas virtuales, pero imagínense que una vez.
+
+MIGUEL ANGEL MOLINA NOVA   3:00:33
+Listo, bebé, tranquilo.
+
+HANS IGOR LOPEZ CHAVEZ   3:00:40
+Me sonó el WhatsApp como a las 3:00 de la madrugada.
+
+MIGUEL ANGEL MOLINA NOVA   3:00:40
+Then yeah.
+
+HANS IGOR LOPEZ CHAVEZ   3:00:44
+Y yo me asusté porque yo pensaba que le había pasado algo a mi mamá, sí. Entonces de una vez miré el celular de una vez, sí, y una vez me desperté, así todo asustado cuando veo el celular, un estudiante con un mensaje que decía, profe, no se le olvide llevar mañana el libro.
+
+MIGUEL ANGEL MOLINA NOVA   3:00:49
+¿No ves que es eso?
+Yeah.
+
+HANS IGOR LOPEZ CHAVEZ   3:01:01
+Huh?
+
+MIGUEL ANGEL MOLINA NOVA   3:01:02
+¿Qué tal eso?
+No.
+
+HANS IGOR LOPEZ CHAVEZ   3:01:13
+Ingenieros.
+
+MIGUEL ANGEL MOLINA NOVA   3:01:15
+¿Qué tal?
+
+HANS IGOR LOPEZ CHAVEZ   3:01:17
+¿Qué tal? Y yo no, pero yo le dije yo sí soy ingeniero, pero yo a esa hora normalmente estoy durmiendo. Y la mayoría de gente duerme. Sí, y la mayoría de gente duerme.
+
+MIGUEL ANGEL MOLINA NOVA   3:01:24
+O sea, lo normal, digo yo, normalmente, o sea, lo sí, digo yo.
+
+HANS IGOR LOPEZ CHAVEZ   3:01:31
+No se pasó de chévere.
+
+MIGUEL ANGEL MOLINA NOVA   3:01:34
+Está muy pasado.
+
+HANS IGOR LOPEZ CHAVEZ   3:01:35
+Sí, muy pasado, muy pasado. Listo, entonces ahora sí puedo compartir para que Miguel Ángel no me llame a las 3:00 de la madrugada.
+
+MIGUEL ANGEL MOLINA NOVA   3:01:44
+List.
+
+HANS IGOR LOPEZ CHAVEZ   3:01:45
+Listo, entonces nos vamos aquí. Herramientas y la idea es poner sus notas acá. Entonces recuerde que la primera es la de las tareas. Entonces veamos el archivo de tareas.
+
+MIGUEL ANGEL MOLINA NOVA   3:01:46
+Está listo.
+Mhm.
+Ya estaré así.
+
+HANS IGOR LOPEZ CHAVEZ   3:01:57
+Pero tareas no se llama tareas, yo le creo que notas 2026 13.
+
+MIGUEL ANGEL MOLINA NOVA   3:02:03
+Listo.
+
+HANS IGOR LOPEZ CHAVEZ   3:02:05
+¿Y Herramientas, y dónde está aquí Miguel Ángel?
+
+MIGUEL ANGEL MOLINA NOVA   3:02:10
+Por allá abajo.
+
+HANS IGOR LOPEZ CHAVEZ   3:02:10
+Apellido Molina, me recuerda su código para ya colocarlo aquí entre los súper oficiales.
+
+MIGUEL ANGEL MOLINA NOVA   3:02:12
+Molina, sí, año.
+Sí.
+2026.
+
+HANS IGOR LOPEZ CHAVEZ   3:02:19
+2026.
+
+MIGUEL ANGEL MOLINA NOVA   3:02:21
+26.
+
+HANS IGOR LOPEZ CHAVEZ   3:02:23
+Otra vez 26.
+
+MIGUEL ANGEL MOLINA NOVA   3:02:25
+95008.
+
+HANS IGOR LOPEZ CHAVEZ   3:02:28
+4500.
+Listo, entonces vamos a orden ascendente.
+Pasó.
+orden ascendente ya se la incluyo aquí entre los Molina Miguel Ángel Nova, entonces eso es lo primero. Entonces vamos a verificar que sea el promedio de las primeras cinco está 20% porque sacó tres, usted no hizo una tarea.
+
+MIGUEL ANGEL MOLINA NOVA   3:02:44
+Listo.
+No.
+Yo no hice la última y la primera era porque yo no estaba en las en la materia todavía.
+
+HANS IGOR LOPEZ CHAVEZ   3:03:02
+Bueno, la primera, el trato era que no hacía la primera porque yo le iba a evaluar desde la segunda hasta la sexta y no hizo la última.
+
+MIGUEL ANGEL MOLINA NOVA   3:03:09
+No.
+No, la sexta no hay.
+
+HANS IGOR LOPEZ CHAVEZ   3:03:13
+Bueno, entonces la nota de las tareas es 3, listo.
+
+MIGUEL ANGEL MOLINA NOVA   3:03:15
+Yes.
+Listo, bro, perfecto.
+
+HANS IGOR LOPEZ CHAVEZ   3:03:19
+¿Entonces 3 team y esta de acá es la nota del trabajo grupal, entonces usted con quién está en los equipos de teams?
+
+MIGUEL ANGEL MOLINA NOVA   3:03:25
+Mhm.
+Con Andrea.
+
+HANS IGOR LOPEZ CHAVEZ   3:03:34
+Entonces nos vamos en devuelto.
+
+MIGUEL ANGEL MOLINA NOVA   3:03:34
+Estoy en el equipo Face.
+
+HANS IGOR LOPEZ CHAVEZ   3:03:39
+Trabajo uno.
+
+MIGUEL ANGEL MOLINA NOVA   3:03:41
+Mhm.
+
+HANS IGOR LOPEZ CHAVEZ   3:03:44
+¿Y usted está en el 3?
+
+MIGUEL ANGEL MOLINA NOVA   3:03:47
+96.
+
+HANS IGOR LOPEZ CHAVEZ   3:03:48
+En el 6 listo, entonces el 6 de acá su Merced sacaron cuatro 85, o sea, cuatro 9.
+
+MIGUEL ANGEL MOLINA NOVA   3:03:59
+Es.
+
+HANS IGOR LOPEZ CHAVEZ   3:04:00
+Listo, que yo lo pongo acá, 49 tiki tiki.
+Le doy grabar.
+y vamos al reporte para validar que usted tiene la misma nota de giset Ahí está cuatro nueve
+
+MIGUEL ANGEL MOLINA NOVA   3:04:19
+Listo, profe, ahí está, listo, ahí está perfecto. Muchísimas gracias, profe.
+
+HANS IGOR LOPEZ CHAVEZ   3:04:19
+Y el 3 listo, ya estamos al día.
+No a usted, muchas gracias, Miguel Ángel, entonces nos vemos el jueves.
+
+MIGUEL ANGEL MOLINA NOVA   3:04:25
+K.
+Listo, profe, de una.
+
+HANS IGOR LOPEZ CHAVEZ   3:04:29
+Vale que esté muy bien.
+
+MIGUEL ANGEL MOLINA NOVA   3:04:30
+Hasta luego, buena noche.
+
+HANS IGOR LOPEZ CHAVEZ   3:04:32
+Hasta luego, gracias.
+
+JULIAN SANTIAGO LOPEZ CORREA ha detenido la transcripción
