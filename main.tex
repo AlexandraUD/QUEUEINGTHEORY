@@ -1,3 +1,15 @@
+\begin{filecontents*}[overwrite]{referencias.bib}
+@article{leland1994,
+  author  = {Leland, Will E. and Taqqu, Murad S. and Willinger, Walter and Wilson, Daniel V.},
+  title   = {On the Self-Similar Nature of {Ethernet} Traffic (Extended Version)},
+  journal = {IEEE/ACM Transactions on Networking},
+  volume  = {2},
+  number  = {1},
+  pages   = {1--15},
+  year    = {1994},
+  doi     = {10.1109/90.282603}
+}
+\end{filecontents*}
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
@@ -34,9 +46,7 @@
 \usepackage{titletoc}
 \usepackage[style=apa,backend=biber,sorting=none]{biblatex}
 \addbibresource{export.bib}
-\addbibresource{export(1).bib}
-\addbibresource{export(2).bib}
-\addbibresource{export.bib}
+\addbibresource{referencias.bib}
 \usepackage{listings}
 \usepackage{xcolor}
 
@@ -764,7 +774,7 @@ Hay un resultado que no depende de la distribución de los arribos. En el largo 
 \[
 \lambda(1-P_K)\leq\mu\;\Rightarrow\;P_K\geq 1-\frac{1}{A}.
 \]
-Para $A=20$, cualquier cola de este tipo bloquea al menos el $95\,\%$ de los usuarios, y la curva exponencial queda justo en esa cota. Por lo tanto, para $A$ grande las cuatro simulaciones tienen que quedar pegadas a la curva teórica sin importar los datos; las diferencias deben aparecer en tráfico bajo y moderado.
+Para $A=20$, cualquier cola de este tipo bloquea al menos el 95\% de los usuarios, y la curva exponencial queda justo en esa cota. Por lo tanto, para $A$ grande las cuatro simulaciones tienen que quedar pegadas a la curva teórica sin importar los datos; las diferencias deben aparecer en tráfico bajo y moderado.
  
 \subsection{Resultados}
  
@@ -773,7 +783,7 @@ Las Figuras~\ref{fig:a5agostornd} a~\ref{fig:a5octubreext4rnd} muestran, para ca
 \newcommand{\figuraactividadcinco}[2]{%
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.72\linewidth]{actividad5_#1.png}
+\IfFileExists{figuras/actividad5_#1.png}{\includegraphics[width=0.72\linewidth]{actividad5_#1.png}}{\fbox{\parbox{0.6\linewidth}{\centering Falta la figura \texttt{figuras/actividad5\_#1.png}}}}
 \caption{Probabilidad de bloqueo con $K=5$ versus $A=\lambda/\mu$, con arribos generados por \texttt{#1} (a partir de \texttt{#2}): valor teórico para arribos exponenciales (línea) y simulación (puntos).}
 \label{fig:a5#1}
 \end{figure}}
@@ -811,12 +821,6 @@ Función & $\hat{\lambda}$ (paquetes/s) & $\sigma/\text{media}$ & $\max\left|\ha
     \item \textbf{Efecto de $K$.} [Opcional: comparar con la Actividad 3 ($K=2$): con más capacidad el bloqueo teórico en tráfico bajo es mucho menor, y la separación entre simulación y teoría se nota más en términos relativos.]
 \end{itemize}
  
-% ---- Pegar en el apéndice, junto con los demás anexos ----
-\section{Código de la simulación de la Actividad 5}\label{anexo:actividad5}
- 
-\IfFileExists{codigos/actividad5.m}{%
-\lstinputlisting[caption={Simulación de la cola con arribos generados por las cuatro funciones de la Actividad 4.}]{codigos/actividad5.m}%
-}{\textbf{Falta subir el archivo codigos/actividad5.m al proyecto.}} 
 
 \section{Conclusiones}
 
@@ -863,5 +867,11 @@ Pkteorico = (1-A)*A^K/(1-A^(K+1))
 \IfFileExists{codigos/actividad4.m}{%
 \lstinputlisting[caption={Generación y validación de las cuatro funciones con \texttt{superfuncion}.}]{codigos/actividad4.m}%
 }{\textbf{Falta subir el archivo codigos/actividad4.m al proyecto.}}
+
+\section{Código de la simulación de la Actividad 5}\label{anexo:actividad5}
+
+\IfFileExists{codigos/actividad5.m}{%
+\lstinputlisting[caption={Simulación de la cola con arribos generados por las cuatro funciones de la Actividad 4.}]{codigos/actividad5.m}%
+}{\textbf{Falta subir el archivo codigos/actividad5.m al proyecto.}}
 
 \end{document}
