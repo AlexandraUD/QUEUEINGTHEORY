@@ -36,6 +36,7 @@
 \addbibresource{export.bib}
 \addbibresource{export(1).bib}
 \addbibresource{export(2).bib}
+\addbibresource{referencias.bib}
 \usepackage{listings}
 \usepackage{xcolor}
 
@@ -575,6 +576,155 @@ $10^7$ & 0,00025 & 0,00009 \\
     \item \textbf{Simulación con $A\geq1$.} A diferencia de la M/M/1, cuya serie solo converge con $A<1$, la cola M/M/1/K se simuló sin problema hasta $A=20$. En lugar de que la línea de espera crezca sin límite, el exceso de usuarios se convierte en usuarios bloqueados.
 \end{itemize}
 
+\section{Actividad 4}
+
+Utilicen la función \texttt{superfuncion} (que hará parte de una tarea futura), para generar cuatro funciones asociadas al conjunto de datos suministrados en clase. Muestren evidencias de la validez de sus funciones (comparación de las gráficas de las distribuciones de los datos y gráficas qqplot, por ejemplo).
+
+\subsection{Datos}
+
+Los cuatro archivos corresponden a trazas de tráfico Ethernet medidas en los laboratorios de Bellcore en 1989 \autocite{leland1994}. Cada archivo tiene $10^6$ filas y dos columnas: el instante de llegada de cada paquete, en segundos, y su tamaño en bytes. Los tiempos entre arribos se obtienen como la diferencia entre instantes consecutivos de la primera columna, de modo que cada muestra tiene $999\,999$ valores. El Cuadro~\ref{tab:datos} resume cada muestra.
+
+\begin{table}[!htbp]
+\centering
+{\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{l l c c c c c}
+\hline
+Archivo & Función & Duración & Media & Mediana & $\sigma/\text{media}$ & $\hat{\lambda}=1/\text{media}$ \\
+ & & (h) & (ms) & (ms) & & (paquetes/s) \\
+\hline
+\texttt{BCpAug89.TL}    & \texttt{agostornd}      & 0,87 & 3,143 & 1,956 & 1,80 & 318,2 \\
+\texttt{BCpOct89.TL}    & \texttt{octubrernd}     & 0,49 & 1,760 & 1,032 & 1,82 & 568,3 \\
+\texttt{BCOct89Ext.TL}  & \texttt{octubreextrnd}  & 34,1 & 122,8 & 19,31 & 4,03 & 8,1 \\
+\texttt{BCOct89Ext4.TL} & \texttt{octubreext4rnd} & 21,1 & 75,94 & 5,168 & 3,90 & 13,2 \\
+\hline
+\end{tabular}}
+\caption{Tiempos entre arribos de los cuatro archivos de datos.}
+\label{tab:datos}
+\end{table}
+
+En una distribución exponencial la desviación estándar es igual a la media, es decir, $\sigma/\text{media}=1$, y la mediana vale $\ln 2/\lambda\approx 0{,}69$ veces la media. En las cuatro muestras la desviación es entre 1,8 y 4 veces la media, y la mediana es mucho menor que la media. Por lo tanto, los tiempos entre arribos reales no son exponenciales, y para generarlos no sirve \texttt{exprnd}: se necesita un generador construido a partir de los propios datos.
+
+\subsection{Fundamentos: pdf, CDF y función cuantil}
+
+\textbf{pdf y CDF.} Una variable aleatoria continua $X$ se describe con su función de densidad de probabilidad, $f_X(x)$, o con su función de distribución acumulativa,
+\[
+F_X(x)=P[X\leq x]=\int_{-\infty}^{x}f_X(u)\,du,\qquad f_X(x)=\frac{dF_X(x)}{dx}.
+\]
+$F_X$ es no decreciente, empieza en 0 y llega a 1.
+
+\textbf{Estimación a partir de una muestra.} La función \texttt{pdfcdfcontinua} divide el intervalo de observación $[a,b]$ con $m=\lfloor\sqrt{n}\rfloor$ puntos igualmente espaciados $x_1,\dots,x_m$, separados $\Delta x$, y cuenta cuántos de los $n$ datos caen en cada intervalo $[x_j,x_{j+1})$, digamos $n_j$. Las estimaciones son
+\[
+\hat{f}_X(x_j)=\frac{n_j}{n\,\Delta x},\qquad \hat{F}_X(x_j)=\sum_{i=1}^{j}\frac{n_i}{n}.
+\]
+Los datos mayores que $b$ no se cuentan, así que $\hat{F}_X(b)$ es la fracción de la muestra que queda dentro del intervalo. Por eso el intervalo se escoge de modo que la CDF estimada llegue cerca de 1 y, al mismo tiempo, se vea el detalle de la zona donde se concentra la probabilidad.
+
+\textbf{Función cuantil.} Es la inversa de la CDF:
+\[
+Q_X(p):=F_X^{-1}(p),\qquad 0\leq p\leq 1.
+\]
+Si $F_X$ tiene tramos planos, se toma $Q_X(p)=\min\{x: F_X(x)\geq p\}$.
+
+\textbf{Método de la transformación inversa.} Si $U\sim\mathcal{U}(0,1)$, entonces $X=Q_X(U)$ tiene CDF $F_X$, porque
+\[
+P[Q_X(U)\leq x]=P[U\leq F_X(x)]=F_X(x).
+\]
+Así, para generar números aleatorios con cualquier distribución basta un generador uniforme y la función cuantil.
+
+\textbf{Función cuantil empírica y \texttt{superfuncion}.} Los datos reales no tienen una función cuantil analítica, así que se estima numéricamente. \texttt{superfuncion} calcula con \texttt{quantile} los cuantiles de la muestra en $N=10^5$ probabilidades igualmente espaciadas entre 0 y 1, y escribe un archivo \texttt{.m} con una función que los guarda. Cada vez que se llama, la función escoge al azar, con \texttt{randi}, una de esas $N$ posiciones y retorna el cuantil correspondiente. Es el método de la transformación inversa con $p$ uniforme sobre una malla de $N$ puntos. Dos consecuencias: los números generados quedan entre el mínimo y el máximo de la muestra, y cada punto de la malla representa una probabilidad de $1/(N-1)\approx 10^{-5}$.
+
+\textbf{Gráfica Q-Q.} La función \texttt{qqplot(x,y)} grafica los cuantiles de una muestra contra los de la otra, $\bigl(\hat{Q}_x(p),\hat{Q}_y(p)\bigr)$, y traza en rojo la recta que une los puntos del primer y el tercer cuartil. Si las dos muestras tienen la misma distribución, los puntos quedan sobre la recta $y=x$. Donde los puntos están muy juntos hay mucha probabilidad; los puntos aislados corresponden a regiones de baja probabilidad, y es normal que en ellas se separen un poco de la recta.
+
+\subsection{Procedimiento}
+
+Se utilizó el código guía de la Actividad 4 presentado en clase, repetido para los cuatro archivos. Para cada uno:
+
+\begin{enumerate}
+    \item Se cargan los datos y se calculan los tiempos entre arribos con \texttt{diff}.
+    \item Se estiman la pdf y la CDF de la muestra con \texttt{pdfcdfcontinua}, en el intervalo de observación del Cuadro~\ref{tab:intervalos}.
+    \item Se codifica el generador con \texttt{superfuncion}, con un nombre distinto para cada archivo.
+    \item Se generan $10^6$ números con la función codificada y se estiman su pdf y su CDF en el mismo intervalo. Siguiendo la recomendación de clase, las estimaciones se superponen a las de la muestra para que las diferencias se noten.
+    \item Se grafica la Q-Q de los números generados (eje x) contra la muestra (eje y) con \texttt{qqplot}.
+    \item Se comparan la media, la mediana, la desviación estándar y la mayor diferencia entre las dos CDF estimadas,
+    \[
+    D=\max_j\bigl|\hat{F}_{\text{muestra}}(x_j)-\hat{F}_{\text{generada}}(x_j)\bigr|.
+    \]
+\end{enumerate}
+
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{l c c}
+\hline
+Archivo & Intervalo de observación (s) & $\hat{F}_X(b)$ \\
+\hline
+\texttt{BCpAug89.TL}    & $[-0{,}001;\ 0{,}006]$  & 0,931 \\
+\texttt{BCpOct89.TL}    & $[-0{,}0005;\ 0{,}005]$ & 0,955 \\
+\texttt{BCOct89Ext.TL}  & $[-0{,}05;\ 0{,}5]$     & 0,958 \\
+\texttt{BCOct89Ext4.TL} & $[-0{,}03;\ 0{,}3]$     & 0,950 \\
+\hline
+\end{tabular}
+\caption{Intervalos de observación. El de agosto es el usado en clase; los demás se escogieron con el mismo criterio.}
+\label{tab:intervalos}
+\end{table}
+
+El código completo se encuentra en el Anexo~\ref{anexo:actividad4}.
+
+\subsection{Resultados}
+
+Las Figuras~\ref{fig:a4agosto} a~\ref{fig:a4ext4} muestran, para cada archivo, la pdf y la CDF de la muestra y de la función codificada, y la gráfica Q-Q. El Cuadro~\ref{tab:comparacion} resume la comparación numérica.
+
+\newcommand{\figuraactividadcuatro}[3]{%
+\begin{figure}[!htbp]
+\centering
+\begin{subfigure}{0.52\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{actividad4_pdfcdf_#1.png}
+    \caption{pdf y CDF estimadas.}
+\end{subfigure}%
+\hfill
+\begin{subfigure}{0.44\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{actividad4_qq_#1.png}
+    \caption{Gráfica Q-Q: función (eje x) y muestra (eje y).}
+\end{subfigure}
+\caption{Validación de la función \texttt{#1}, generada a partir de \texttt{#2}.}
+\label{#3}
+\end{figure}}
+
+\figuraactividadcuatro{agostornd}{BCpAug89.TL}{fig:a4agosto}
+\figuraactividadcuatro{octubrernd}{BCpOct89.TL}{fig:a4octubre}
+\figuraactividadcuatro{octubreextrnd}{BCOct89Ext.TL}{fig:a4ext}
+\figuraactividadcuatro{octubreext4rnd}{BCOct89Ext4.TL}{fig:a4ext4}
+
+\begin{table}[!htbp]
+\centering
+{\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{l c c c c c c c}
+\hline
+ & \multicolumn{2}{c}{Media (ms)} & \multicolumn{2}{c}{Mediana (ms)} & \multicolumn{2}{c}{Desviación (ms)} & \\
+Función & Muestra & Generada & Muestra & Generada & Muestra & Generada & $D$ \\
+\hline
+\texttt{agostornd}      & 3,143 & 3,145 & 1,956 & 1,956 & 5,643 & 5,731 & 0,0010 \\
+\texttt{octubrernd}     & 1,760 & 1,760 & 1,032 & 1,032 & 3,199 & 3,223 & 0,0006 \\
+\texttt{octubreextrnd}  & 122,8 & 122,3 & 19,31 & 19,26 & 494,5 & 491,5 & 0,0007 \\
+\texttt{octubreext4rnd} & 75,94 & 75,31 & 5,168 & 5,160 & 295,9 & 293,7 & 0,0007 \\
+\hline
+\end{tabular}}
+\caption{Comparación entre cada muestra y $10^6$ números generados con su función.}
+\label{tab:comparacion}
+\end{table}
+
+\subsection{Análisis de los resultados}
+
+\begin{itemize}
+    \item \textbf{Agosto.} La pdf no se parece a la de una exponencial, que es decreciente desde $t=0$: tiene varios picos angostos, cerca de 0,07; 0,14; 0,9; 1,3 y 1,9~ms, y dos zonas más anchas alrededor de 3 y 4~ms. El 93\% de los tiempos es menor que 6~ms. Las curvas de la muestra y de \texttt{agostornd} se superponen, incluidos los picos. La gráfica Q-Q es una recta de pendiente 1 hasta unos 0,14~s; por encima de ese valor solo hay puntos aislados, pues apenas 7 de los $999\,999$ tiempos superan 0,2~s.
+    \item \textbf{Octubre.} La probabilidad está aún más concentrada: el 11,7\% de los tiempos está entre 0,90 y 0,93~ms, lo que produce el pico principal de la pdf y el salto de la CDF en ese valor. El 95,5\% de los datos es menor que 5~ms. Las curvas coinciden y la gráfica Q-Q es recta hasta unos 0,09~s.
+    \item \textbf{Octubre extendido y extendido 4.} Son mediciones mucho más largas, de 34 y 21 horas, con tiempos más largos y más variables: la desviación es unas 4 veces la media. La probabilidad se concentra cerca de cero, la mediana es de 19 y 5~ms, y la cola se extiende hasta 10 y 8~s. Las curvas coinciden; la gráfica Q-Q de \texttt{octubreextrnd} es recta en todo el rango, y la de \texttt{octubreext4rnd} hasta unos 5~s.
+    \item \textbf{Comparación numérica.} Las medianas coinciden casi exactamente, las medias difieren menos del 1\% y las desviaciones menos del 2\%. La mayor diferencia entre las CDF estimadas es de 0,001 o menos. Las diferencias en la media y la desviación se deben a la cola derecha, que es donde más pesa cada dato.
+    \item \textbf{Puntos que se separan de la recta.} En las cuatro gráficas Q-Q los puntos que se alejan de la recta están por encima del percentil 99,9, es decir, en el 0,1\% de los datos con menor probabilidad. La causa es la malla de \texttt{superfuncion}: en esa cola los cuantiles consecutivos de la malla están muy separados, y la función solo puede generar esos pocos valores, por lo que en la gráfica aparecen columnas verticales de puntos. Como esa región tiene muy baja probabilidad, no afecta la aproximación de la distribución.
+\end{itemize}
+
+En conclusión, las cuatro funciones reproducen la distribución de los tiempos entre arribos reales: las pdf y CDF estimadas se superponen, las gráficas Q-Q son rectas en la región donde se concentra la probabilidad y los estadísticos coinciden. Como estos tiempos no son exponenciales, en la Actividad 5 no se espera que la probabilidad de bloqueo simulada con estas funciones coincida con el valor teórico de la M/M/1/K.
+
 \section{Conclusiones}
 
 \printbibliography[title={Referencias}]
@@ -614,5 +764,11 @@ Pkteorico = (1-A)*A^K/(1-A^(K+1))
 \IfFileExists{codigos/actividad3.m}{%
 \lstinputlisting[caption={Simulación de la cola M/M/1/K variando $A=\lambda/\mu$.}]{codigos/actividad3.m}%
 }{\textbf{Falta subir el archivo codigos/actividad3.m al proyecto.}}
+
+\section{Código de la Actividad 4}\label{anexo:actividad4}
+
+\IfFileExists{codigos/actividad4.m}{%
+\lstinputlisting[caption={Generación y validación de las cuatro funciones con \texttt{superfuncion}.}]{codigos/actividad4.m}%
+}{\textbf{Falta subir el archivo codigos/actividad4.m al proyecto.}}
 
 \end{document}
