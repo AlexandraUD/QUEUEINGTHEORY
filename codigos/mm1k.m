@@ -1,11 +1,11 @@
 function [Pk] = mm1k(tea,tds,K,mostrar)
-% MM1K Simula una cola M/M/1/K y estima la probabilidad de bloqueo.
-%   Pk = mm1k(tea,tds,K,mostrar)
-%   tea: vector con los tiempos entre arribos consecutivos.
-%   tds: vector con los tiempos de servicio de cada usuario.
-%   K: capacidad del sistema (servidor + linea de espera), entero positivo.
-%   mostrar: si es 1 (valor por defecto) imprime los vectores de la simulacion.
-%   Pk: fraccion de usuarios que llegan y encuentran el sistema lleno.
+% Simula una cola M/M/1/K y estima la probabilidad de bloqueo
+% Ejemplo para correr:
+% tea = [1,2,3,7,2,3,8,0,5];
+% tds = [9,1,4,1,1,5,3,8,2];
+% Pk = mm1k(tea,tds,2)
+
+
     switch nargin
         case 3
             mostrar = 1;
@@ -32,7 +32,6 @@ function [Pk] = mm1k(tea,tds,K,mostrar)
         if a >= K && salida(admitidos(a-K+1)) > reloj(i)
             bloqueado(i) = true;
         else
-            % Disciplina FIFO, igual que en la cola X/X/1 (funcion xx1)
             if a > 0 && salida(admitidos(a)) > reloj(i)
                 inicio(i) = salida(admitidos(a));
             else
@@ -57,3 +56,4 @@ function [Pk] = mm1k(tea,tds,K,mostrar)
         bloqueado
     end
 end
+
