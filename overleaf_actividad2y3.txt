@@ -1,0 +1,296 @@
+\section{Actividad 2}
+
+Diseñen y codifiquen en MATLAB una función que permita simular la cola asignada. Los parámetros de entrada de la función deben ser: un vector con los tiempos entre arribos consecutivos y un vector con los tiempos de servicio. El resultado de la simulación debe ser la estimación de la medida de desempeño.
+
+\subsection{Medida de desempeño: probabilidad de bloqueo}
+
+En la cola M/M/1/K un usuario que llega cuando hay $K$ usuarios en el sistema (uno en servicio y $K-1$ en la línea de espera) no puede entrar y se pierde. La probabilidad de que esto ocurra es la probabilidad de que el sistema esté en el estado $K$, llamada probabilidad de bloqueo. Con los resultados de la Actividad 1, para $n=K$:
+\[
+\boxed{P_K=P[N=K]=\frac{(1-A)A^{K}}{1-A^{K+1}},\qquad A\neq 1}
+\qquad\qquad
+\boxed{P_K=\frac{1}{K+1},\qquad A=1}
+\]
+
+Como las llegadas son de Poisson, la fracción de usuarios que al llegar encuentran el sistema lleno es igual a la fracción de tiempo que el sistema pasa en el estado $K$ (propiedad PASTA, \emph{Poisson Arrivals See Time Averages}) \autocite{shortle2018}. Por eso, en la simulación, $P_K$ se estima contando los usuarios bloqueados:
+\[
+\hat{P}_K=\frac{\text{número de usuarios bloqueados}}{\text{número total de usuarios que llegan}} .
+\]
+
+\subsection{Lógica de la simulación de la cola M/M/1/K}
+
+La función \texttt{mm1k} agrega el control de la capacidad del sistema, como la probabilidad de bloqueo depende de $K$, la función recibe la capacidad como tercer parámetro de entrada:
+
+\begin{itemize}
+    \item \texttt{bloqueado}: indica si el usuario $n$ encontró el sistema lleno.
+    \item \texttt{dentro}: lista de los usuarios que sí entraron al sistema, en orden de llegada. Los usuarios bloqueados nunca entran, así que no ocupan lugar en la línea de espera ni en el servidor.
+\end{itemize}
+
+Para saber si el sistema está lleno no hace falta revisar a todos los usuarios. Como hay un solo servidor y se atiende en orden de llegada, los usuarios salen en el mismo orden en que entraron, entonces, cuando llega un usuario nuevo, basta con mirar al que entró K lugares atrás: si ese todavía no ha salido, los que entraron después de él tampoco, y el sistema tiene K usuarios, es decir, está lleno. Con K = 2, por ejemplo, se mira al penúltimo que entró.
+\[
+\text{sistema lleno}\iff \texttt{salida}[\text{$K$-ésimo último admitido}]>\texttt{reloj}[n].
+\]
+
+Cuando llega el usuario $n$, la simulación hace dos preguntas en orden: primero, si el usuario puede entrar al sistema, y segundo, si una vez adentro debe esperar o lo atienden de inmediato.
+
+\begin{enumerate}
+    \item Se mira al usuario que entró $K$ lugares atrás (con $K=2$, el penúltimo admitido). Si la salida de ese usuario es mayor que $\texttt{reloj}[n]$, es decir, si todavía no ha salido cuando llega el usuario $n$, entonces los que entraron después de él también siguen adentro, porque los usuarios salen en el mismo orden en que entraron. En ese caso hay $K$ usuarios en el sistema, está lleno, y el usuario $n$ se bloquea: se marca $\texttt{bloqueado}[n]=1$ y no se le asignan tiempos de inicio ni de salida. Si todavía no han entrado $K$ usuarios, el sistema no puede estar lleno y se pasa directamente al paso siguiente.
+
+    \item Si el usuario $n$ sí puede entrar, se compara con el último usuario que entró, si ese usuario todavía no ha salido, el usuario $n$ espera en la fila y su atención empieza cuando el otro sale; si ya salió, el servidor está libre y lo atienden en el instante en que llega:
+    \[
+    \texttt{inicio}[n]=
+    \begin{cases}
+    \texttt{salida}[\text{último admitido}], & \text{si } \texttt{salida}[\text{último admitido}]>\texttt{reloj}[n]\\
+    \texttt{reloj}[n], & \text{en otro caso}
+    \end{cases}
+    \]
+    Salida es el inicio de la atención más el tiempo de servicio,
+    \[
+    \texttt{salida}[n]=\texttt{inicio}[n]+\texttt{tds}[n],
+    \]
+    y el usuario $n$ se agrega a la lista \texttt{dentro}.
+\end{enumerate}
+
+Al terminar con todos los usuarios, la probabilidad de bloqueo se estima como la fracción de usuarios que encontraron el sistema lleno:
+\[
+\hat{P}_K=\frac{\text{número de usuarios bloqueados}}{\text{número total de usuarios}}.
+\]
+
+\subsection{Ejemplo de la simulación}
+
+Se toman los vectores del ejemplo de clase, ahora con capacidad $K=2$ (un usuario en servicio y como máximo uno en la línea de espera):
+\[
+\texttt{tea}=[1,\,2,\,3,\,7,\,2,\,3,\,8,\,0,\,5],\qquad
+\texttt{tds}=[9,\,1,\,4,\,1,\,1,\,5,\,3,\,8,\,2].
+\]
+
+\begin{center}
+\begin{tabular}{c c c c c c c}
+\hline
+$n$ & \texttt{reloj} & \texttt{tds} & \texttt{inicio} & \texttt{salida} & \texttt{espera} & \texttt{bloqueado} \\
+\hline
+1 & 1  & 9 & 1  & 10 & 0 & No \\
+2 & 3  & 1 & 10 & 11 & 7 & No \\
+3 & 6  & 4 & -- & -- & -- & Sí \\
+4 & 13 & 1 & 13 & 14 & 0 & No \\
+5 & 15 & 1 & 15 & 16 & 0 & No \\
+6 & 18 & 5 & 18 & 23 & 0 & No \\
+7 & 26 & 3 & 26 & 29 & 0 & No \\
+8 & 26 & 8 & 29 & 37 & 3 & No \\
+9 & 31 & 2 & 37 & 39 & 6 & No \\
+\hline
+\end{tabular}
+\end{center}
+
+El usuario 3 llega en $t=6$, cuando el usuario 1 está en servicio (sale en $t=10$) y el usuario 2 está en la línea de espera (sale en $t=11$). El penúltimo admitido, el usuario 1, todavía no ha salido, así que el sistema está lleno y el usuario 3 se bloquea. Como el usuario 3 nunca entra, no ocupa el servidor y los usuarios 4 y 5 encuentran el sistema vacío al llegar. Por lo tanto,
+\[
+\hat{P}_K=\frac{1}{9}\approx 0{,}1111 .
+\]
+Con los mismos vectores, $K=1$ da $\hat{P}_K=3/9\approx 0{,}3333$, porque solo cabe el usuario que está en servicio y se bloquean los usuarios 2, 3 y 8. Con $K\geq 3$ ningún usuario se bloquea, porque en ningún momento hay más de dos usuarios en el sistema.
+
+\subsection{Función en MATLAB}
+
+La lógica anterior se implementó en la función \texttt{mm1k}, que se llama así:
+\[
+\texttt{Pk = mm1k(tea,tds,K,mostrar)}
+\]
+Sus parámetros de entrada son el vector de tiempos entre arribos consecutivos, \texttt{tea}; el vector de tiempos de servicio, \texttt{tds}; y la capacidad del sistema, \texttt{K}. El resultado es la estimación de la probabilidad de bloqueo, $\hat{P}_K$. El código completo se encuentra en el Anexo~\ref{anexo:mm1k}.
+
+El parámetro \texttt{mostrar} es opcional y sirve para decidir si se imprimen los vectores de la simulación. Si se escribe \texttt{mostrar = 1}, o si la función se llama solo con \texttt{tea}, \texttt{tds} y \texttt{K}, se imprimen en la ventana de comandos \texttt{reloj}, \texttt{inicio}, \texttt{salida}, \texttt{espera} y \texttt{bloqueado}, lo que permite revisar la simulación paso a paso con pocos usuarios. Si se escribe \texttt{mostrar = 0}, no se imprime nada y la función solo retorna $\hat{P}_K$, lo que conviene cuando se simulan miles de usuarios.
+
+\subsection{Diagrama de flujo}
+
+\clearpage
+
+\begin{figure}[!htbp]
+\centering
+\shorthandoff{<>}
+\begin{tikzpicture}[>=Stealth, font=\small,
+    caja/.style={rectangle,draw,align=center,inner sep=4pt},
+    dec/.style={diamond,draw,aspect=2.6,align=center,inner sep=1pt},
+    term/.style={ellipse,draw,align=center},
+    dato/.style={trapezium,trapezium left angle=70,trapezium right angle=110,draw,align=center}]
+
+    \path (0,0) node[term] (ini) {Inicio};
+    \path (0,-1.2) node[dato] (in) {\texttt{tea}, \texttt{tds}, $K$};
+    \path (0,-2.75) node[caja] (p1) {\texttt{usuarios} $\leftarrow$ número de elementos de \texttt{tea}\\
+        \texttt{reloj} $\leftarrow$ suma acumulada de \texttt{tea}\\ $n\leftarrow 1$};
+    \path (0,-5.0) node[dec] (d1) {¿\texttt{salida} del $K$-ésimo\\ último admitido $>$ \texttt{reloj}$[n]$?};
+    \path (6.0,-5.0) node[caja] (blq) {\texttt{bloqueado}$[n]\leftarrow$ sí};
+    \path (0,-7.7) node[dec] (d2) {¿\texttt{salida} del último\\ admitido $>$ \texttt{reloj}$[n]$?};
+    \path (-4.3,-9.4) node[caja] (ia) {\texttt{inicio}$[n]\leftarrow$ \texttt{salida}\\ del último admitido};
+    \path (4.3,-9.4) node[caja] (ib) {\texttt{inicio}$[n]\leftarrow$\\ \texttt{reloj}$[n]$};
+    \path (0,-10.9) node[caja] (act) {\texttt{salida}$[n]\leftarrow$ \texttt{inicio}$[n]$ + \texttt{tds}$[n]$\\
+        el usuario $n$ se agrega a \texttt{dentro}};
+    \path (0,-12.3) node[caja] (nn) {$n\leftarrow n+1$};
+    \path (0,-13.8) node[dec] (d3) {¿$n>$ \texttt{usuarios}?};
+    \path (0,-15.6) node[caja] (pk) {\texttt{espera} $\leftarrow$ \texttt{inicio} $-$ \texttt{reloj}\\
+        $\hat{P}_K\leftarrow$ (número de bloqueados) / \texttt{usuarios}};
+    \path (0,-17.0) node[term] (fin) {Fin};
+
+    \draw[->] (ini) -- (in);
+    \draw[->] (in) -- (p1);
+    \draw[->] (p1) -- (d1);
+    \draw[->] (d1) -- node[above]{Sí} (blq);
+    \draw[->] (d1) -- node[right]{No} (d2);
+    \draw[->] (d2.west) -| node[above,pos=0.25]{Sí} (ia.north);
+    \draw[->] (d2.east) -| node[above,pos=0.25]{No} (ib.north);
+    \draw[->] (ia.south) |- (act.west);
+    \draw[->] (ib.south) |- (act.east);
+    \draw[->] (act) -- (nn);
+    \draw[->] (blq.south) |- (nn.east);
+    \draw[->] (nn) -- (d3);
+    \draw[->] (d3.west) -- node[above]{No} (-6.8,-13.8) |- (d1.west);
+    \draw[->] (d3) -- node[right]{Sí} (pk);
+    \draw[->] (pk) -- (fin);
+\end{tikzpicture}
+\caption{Diagrama de flujo de la simulación de la cola M/M/1/K. Si todavía no hay $K$ admitidos, el sistema no puede estar lleno; si no hay admitidos, la atención inicia en \texttt{reloj}$[n]$.}
+\end{figure}
+
+\subsection{Prueba y validación de la función}
+
+\textbf{Prueba de escritorio con valores fijos.} Con los vectores del ejemplo de clase y $K=2$, la función reproduce la tabla de la sección anterior, calculada a mano, y retorna $\hat{P}_K=0{,}1111$. Esta prueba muestra que el código implementa correctamente la lógica planteada en el diagrama de flujo.
+
+\textbf{Validación con tiempos exponencialmente distribuidos.} Para validar la función se usa un método distinto al de la simulación: se compara la estimación con el valor teórico de $P_K$ obtenido en la Actividad 1, que es válido cuando los tiempos entre arribos y de servicio se distribuyen exponencialmente. Siguiendo el ejemplo de partida del enunciado, se generan $10^6$ usuarios con tiempos entre arribos exponenciales de parámetro $\lambda=A\mu$ y tiempos de servicio exponenciales de parámetro $\mu=4$. Se prueban capacidades $K=1$, $2$ y $5$ con valores de $A$ desde $0{,}5$ hasta $6$, de modo que se incluyen casos con tráfico bajo ($A<1$), con $A=1$, y con $A$ mayor que $K$, en los que llegan muchos más usuarios de los que el sistema puede recibir. El código de la prueba y de la validación se encuentra en el Anexo~\ref{anexo:pruebas}.
+
+\begin{center}
+\begin{tabular}{c c c c}
+\hline
+$A$ & $K$ & $\hat{P}_K$ (simulación) & $P_K$ (teórico) \\
+\hline
+0,5 & 1 & 0,3334 & 0,3333 \\
+0,5 & 2 & 0,1426 & 0,1429 \\
+0,5 & 5 & 0,0157 & 0,0159 \\
+1,0 & 1 & 0,5002 & 0,5000 \\
+1,0 & 2 & 0,3337 & 0,3333 \\
+1,0 & 5 & 0,1679 & 0,1667 \\
+1,5 & 1 & 0,5999 & 0,6000 \\
+1,5 & 2 & 0,4737 & 0,4737 \\
+1,5 & 5 & 0,3642 & 0,3654 \\
+3,0 & 1 & 0,7494 & 0,7500 \\
+3,0 & 2 & 0,6914 & 0,6923 \\
+3,0 & 5 & 0,6672 & 0,6676 \\
+6,0 & 1 & 0,8570 & 0,8571 \\
+6,0 & 2 & 0,8374 & 0,8372 \\
+6,0 & 5 & 0,8333 & 0,8334 \\
+\hline
+\end{tabular}
+\end{center}
+
+En todos los casos la estimación coincide con el valor teórico hasta la segunda o tercera cifra decimal, tanto para $A<1$ como para $A=1$ y para valores de $A$ mayores que $K$. Las diferencias se deben a que la simulación usa un número finito de usuarios. Cuando $A$ es grande, la probabilidad de bloqueo depende cada vez menos de $K$ y se acerca a $1-1/A$: con $A=6$ los tres valores de $K$ dan entre $0{,}83$ y $0{,}86$, y $1-1/6\approx 0{,}83$. Esto ocurre porque llegan muchos más usuarios de los que el servidor puede atender, y agregar puestos en la línea de espera casi no ayuda. A diferencia de la M/M/1, la cola M/M/1/K se puede simular con $A\geq 1$, porque la capacidad finita impide que la línea de espera crezca indefinidamente.
+
+\section{Actividad 3}
+
+Realicen la simulación de la cola asignada, variando $A=\lambda/\mu$. Consideren que los elementos del vector de tiempos entre arribos consecutivos se distribuyen exponencialmente, con parámetro $\lambda$; y que los elementos del vector de tiempos de servicio se distribuyen exponencialmente, con parámetro $\mu$. Como resultado principal, realicen la gráfica de la medida de desempeño versus $A$. Verifiquen que los resultados de simulación coincidan con el valor teórico de la medida de desempeño.
+
+\subsection{Valor teórico de la medida de desempeño}
+
+Con los resultados de la Actividad 1, la probabilidad de bloqueo de la cola M/M/1/K en función de la intensidad de tráfico $A=\lambda/\mu$ es
+\[
+P_K(A)=
+\begin{cases}
+\dfrac{(1-A)A^{K}}{1-A^{K+1}}, & A\neq 1\\[3mm]
+\dfrac{1}{K+1}, & A=1
+\end{cases}
+\]
+Esta expresión es válida para cualquier $A>0$, pero solo cuando los tiempos entre arribos y los tiempos de servicio se distribuyen exponencialmente. A diferencia de la M/M/1, que solo es estable con $A<1$, en la M/M/1/K la capacidad finita impide que la línea de espera crezca indefinidamente. Por eso la simulación se puede realizar también con $A\geq 1$.
+
+\subsection{Procedimiento de la simulación}
+
+Se utilizó el código guía de la Actividad 3 presentado en clase para la cola M/M/1, y solo se modificaron las líneas indicadas en sus comentarios: el valor teórico, la función que simula la cola, el valor máximo de $A$ y los títulos de la gráfica. El procedimiento es el siguiente:
+
+\begin{enumerate}
+    \item \textbf{Variación de $A$.} Lo que se modifica es el cociente $A=\lambda/\mu$, no $\lambda$ y $\mu$ por separado: si ambos cambian en la misma proporción, se repite la misma simulación. Por eso se fija la tasa media de arribo en $\lambda=1$ y la tasa media de servicio se calcula como $\mu=\lambda/A$.
+    \item \textbf{Resultado teórico.} Se evalúa $P_K(A)$ en $10\,000$ valores de $A$ igualmente espaciados, y se grafica como una curva continua con \texttt{superplot}. Donde $A=1$ se usa el valor $1/(K+1)$.
+    \item \textbf{Rango de $A$.} Se empieza en $A=0{,}05$, porque $A=0$ significaría que no llegan usuarios. Para el valor máximo, la recomendación de clase para la M/M/1/K es simular con valores de $A$ mucho mayores que $K$, empezando en $20K$, para que la gráfica muestre tanto probabilidades de bloqueo pequeñas como cercanas a uno, y ajustar ese valor según la forma de la curva. Con $K=2$ y $A$ hasta $20K=40$, la probabilidad de bloqueo ya supera $0{,}9$ desde $A\approx 10$, de modo que tres cuartas partes de la gráfica quedan muy cerca de uno. Por eso se redujo el máximo a $10K=20$, que sigue siendo diez veces la capacidad del sistema y con el que $P_K$ va desde $0{,}0024$ en $A=0{,}05$ hasta $0{,}95$ en $A=20$.
+    \item \textbf{Resultado de simulación.} Se toman 20 valores de $A$ igualmente espaciados en el mismo intervalo. Para cada uno se generan los tiempos entre arribos y de servicio con la función \texttt{exprnd}, que recibe la media de cada distribución ($1/\lambda$ y $1/\mu$), y se estima $\hat{P}_K$ con la función \texttt{mm1k} de la Actividad 2. Los resultados se grafican sobre la curva teórica con \texttt{superstem}.
+    \item \textbf{Capacidad del sistema.} Se usa $K=2$, la misma capacidad del ejemplo de la Actividad 2: un usuario en servicio y como máximo uno en la línea de espera.
+    \item \textbf{Cantidad de usuarios.} La simulación se repite con $10^5$, $10^6$ y $10^7$ usuarios. Por la ley de los grandes números, a medida que aumenta la cantidad de usuarios la estimación debe acercarse al valor teórico.
+\end{enumerate}
+
+El código completo se encuentra en el Anexo~\ref{anexo:actividad3}.
+
+\subsection{Resultados}
+
+La Figura~\ref{fig:actividad3} muestra la probabilidad de bloqueo teórica y simulada versus $A$ para las tres cantidades de usuarios.
+
+\begin{figure}[!htbp]
+\centering
+\begin{subfigure}{0.62\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{actividad3_100000.png}
+    \caption{$10^5$ usuarios}
+\end{subfigure}
+
+\begin{subfigure}{0.62\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{actividad3_1000000.png}
+    \caption{$10^6$ usuarios}
+\end{subfigure}
+
+\begin{subfigure}{0.62\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{actividad3_10000000.png}
+    \caption{$10^7$ usuarios}
+\end{subfigure}
+\caption{Probabilidad de bloqueo de la cola M/M/1/K con $K=2$ versus $A=\lambda/\mu$: valor teórico (línea) y estimación por simulación (puntos).}
+\label{fig:actividad3}
+\end{figure}
+
+A simple vista las tres gráficas son iguales: en todos los casos los puntos simulados caen sobre la curva teórica. Las diferencias se aprecian en los valores numéricos. El Cuadro~\ref{tab:actividad3} compara algunos de ellos con el valor teórico, y el Cuadro~\ref{tab:errores} resume la diferencia entre la simulación y la teoría en los 20 valores de $A$.
+
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{c c c c c}
+\hline
+$A$ & $\hat{P}_K$ ($10^5$ usuarios) & $\hat{P}_K$ ($10^6$ usuarios) & $\hat{P}_K$ ($10^7$ usuarios) & $P_K$ (teórico) \\
+\hline
+1,10  & 0,3661 & 0,3646 & 0,3656 & 0,3656 \\
+2,15  & 0,5958 & 0,5944 & 0,5946 & 0,5947 \\
+6,35  & 0,8420 & 0,8464 & 0,8460 & 0,8458 \\
+10,55 & 0,9065 & 0,9059 & 0,9060 & 0,9060 \\
+20,00 & 0,9502 & 0,9499 & 0,9501 & 0,9501 \\
+\hline
+\end{tabular}
+\caption{Probabilidad de bloqueo simulada y teórica para $K=2$ en algunos valores de $A$.}
+\label{tab:actividad3}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{c c c}
+\hline
+Usuarios & $\max\left|\hat{P}_K-P_K\right|$ & Promedio de $\left|\hat{P}_K-P_K\right|$ \\
+\hline
+$10^5$ & 0,00379 & 0,00074 \\
+$10^6$ & 0,00097 & 0,00028 \\
+$10^7$ & 0,00025 & 0,00009 \\
+\hline
+\end{tabular}
+\caption{Diferencia entre la simulación y el valor teórico en los 20 valores de $A$.}
+\label{tab:errores}
+\end{table}
+
+\subsection{Análisis de los resultados}
+
+\begin{itemize}
+    \item \textbf{Coincidencia con la teoría.} En todo el intervalo de $A$, tanto para $A<1$ como para $A$ mucho mayor que $K$, los valores simulados coinciden con la curva teórica. Esto valida la función \texttt{mm1k}: la simulación reproduce el resultado analítico de la Actividad 1, obtenido por un método completamente distinto.
+    \item \textbf{Ley de los grandes números.} La mayor diferencia pasa de $0{,}00379$ con $10^5$ usuarios a $0{,}00097$ con $10^6$ y a $0{,}00025$ con $10^7$. Cada vez que la cantidad de usuarios se multiplica por 10, el error se reduce casi cuatro veces. Las diferencias que quedan se deben a que cada simulación usa una cantidad finita de usuarios, no a un error en la lógica de la cola.
+    \item \textbf{Tráfico bajo.} Para $A$ pequeño casi ningún usuario se bloquea: con $A=0{,}05$, $P_K=0{,}0024$. Los usuarios llegan con poca frecuencia comparada con la rapidez del servidor, y casi siempre encuentran el sistema con espacio.
+    \item \textbf{Crecimiento de la probabilidad de bloqueo.} La probabilidad de bloqueo crece rápidamente cuando $A$ aumenta desde cero: en $A=1$, cuando llegan en promedio tantos usuarios como el servidor puede atender, ya se bloquea uno de cada tres ($P_K=1/(K+1)=1/3$), y en $A=5$ se bloquea el 81\%. Después el crecimiento es más lento.
+    \item \textbf{Tráfico alto.} Con $K=2$, la probabilidad de bloqueo se puede escribir como $P_K=A^2/(A^2+A+1)$, que tiende a 1 cuando $A\to\infty$. En $A=10$ se bloquea el 90\% de los usuarios y en $A=20$ el 95\%: llegan muchos más usuarios de los que el servidor puede atender, y la capacidad de la línea de espera, de un solo puesto, no alcanza para recibirlos.
+    \item \textbf{Simulación con $A\geq1$.} A diferencia de la M/M/1, cuya serie solo converge con $A<1$, la cola M/M/1/K se simuló sin problema hasta $A=20$, diez veces la capacidad del sistema. En lugar de que la línea de espera crezca sin límite, el exceso de usuarios se convierte en usuarios bloqueados.
+\end{itemize}
+
+% ===== Reemplazar también la sección del Anexo B por esta =====
+
+\section{Código de la prueba y la validación de la función \texttt{mm1k}}\label{anexo:pruebas}
+
+\begin{lstlisting}[caption={Prueba de \texttt{mm1k} con los vectores de clase.}]
+tea = [1,2,3,7,2,3,8,0,5];
+tds = [9,1,4,1,1,5,3,8,2];
+Pk = mm1k(tea,tds,2)
+\end{lstlisting}
+
+\IfFileExists{codigos/validacion2.m}{%
+\lstinputlisting[caption={Validación de \texttt{mm1k} con tiempos exponenciales.}]{codigos/validacion2.m}%
+}{\textbf{Falta subir el archivo codigos/validacion2.m al proyecto.}}
